@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<languages>
+  <language name="English" id="en">
+    <episerver>
+      <cms>
+        <components>
+          <templates>
+            <command>
+              <download>Download</download>
+              <label>Upload files</label>
+              <openineditor>Open in Image Editor</openineditor>
+            </command>
+            <description>Template Management</description>
+            <nocontent>This folder does not contain any media</nocontent>
+            <title>Templates</title>
+
+          </templates>
+        </components>
+      </cms>
+    </episerver>
+  </language>
+</languages>
