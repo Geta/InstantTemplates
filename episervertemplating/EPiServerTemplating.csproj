@@ -331,6 +331,13 @@
   <ItemGroup>
     <Content Include="ClientResources\Images\icons\layoutIcons24x24.png" />
     <Content Include="ClientResources\Scripts\Editors\StringList.js" />
+    <Content Include="ClientResources\Scripts\TemplateSystem\AddItemFromTemplateCommandProvider.js" />
+    <Content Include="ClientResources\Scripts\TemplateSystem\CreateContentView.js" />
+    <Content Include="ClientResources\Scripts\TemplateSystem\CreateContentViewModel.js" />
+    <Content Include="ClientResources\Scripts\TemplateSystem\CreateItemFromTemplate.js" />
+    <Content Include="ClientResources\Scripts\TemplateSystem\PasteContent.js" />
+    <Content Include="ClientResources\Scripts\TemplateSystem\TemplateModule.js" />
+    <Content Include="ClientResources\Scripts\TemplateSystem\templates\CreateContentView.html" />
     <Content Include="ClientResources\Styles\LayoutIcons.css" />
     <Content Include="ClientResources\Styles\Styles.css" />
     <Content Include="favicon.ico" />
@@ -498,7 +505,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:43702/</IISUrl>
+          <IISUrl>http://localhost:58945/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
