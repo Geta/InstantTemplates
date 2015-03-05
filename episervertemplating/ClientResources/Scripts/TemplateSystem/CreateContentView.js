@@ -102,6 +102,7 @@ function (
 
         modelBindingMap: {
             "parent": ["parent"],
+            "contentLink": ["contentLink"],
 
             "headingText": ["headingText"],
             "templateName": ["templateName"],

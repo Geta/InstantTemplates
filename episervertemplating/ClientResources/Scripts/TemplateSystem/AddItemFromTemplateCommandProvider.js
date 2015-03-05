@@ -58,22 +58,14 @@
 
         _addCreateCommands: function () {
 
-            var templateRoot = "47"; //TODO: Remove hard coded.
-
             var that = this;
 
-            when(this.getContentDataStore().query({ referenceId: templateRoot, query: "getchildren" }), function (children) {
+            when(this.getContentDataStore().query({ referenceId: this.templatesRoot, query: "getchildren" }), function (children) {
                 children.forEach(function (child) {
                     var a = new CreateItemFromTemplate({"contentLink" : child.contentLink, label : "Create new " + child.name});
                     that.addCommand(a, { category: "create" });
                 });
             });
-
-            //array.forEach(descriptorsForCurrentView, function (descriptor) {
-            //    array.forEach(descriptor.creatableTypes, function (type) {
-            //        this.addCommand(this._createCommand(type), { category: "create" });
-            //    }, this);
-            //}, this);
         },
 
         getContentDataStore: function () {

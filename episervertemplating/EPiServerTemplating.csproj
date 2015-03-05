@@ -326,6 +326,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Templates\TemplatesGadget.cs" />
     <Compile Include="Templates\TemplatesInit.cs" />
+    <Compile Include="Templates\TemplatesModule.cs" />
+    <Compile Include="Templates\TemplatesModuleViewModel.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

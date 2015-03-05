@@ -22,12 +22,18 @@ function (
         // tags:
         //      internal
 
+        _settings: null,
+
+        constructor: function (settings) {
+            this._settings = settings;
+        },
+
         initialize: function () {
 
             var commandregistry = dependency.resolve("epi.globalcommandregistry");
 
             //We need to wait for the viewsettings to initialized before creating the global toolbar command provider
-            commandregistry.registerProvider("epi.cms.globalToolbar", new AddItemFromTemplateCommandProvider());
+            commandregistry.registerProvider("epi.cms.globalToolbar", new AddItemFromTemplateCommandProvider({templatesRoot : this._settings.templatesRoot}));
         }
     });
 });

@@ -15,6 +15,8 @@
     "epi/shell/TypeDescriptorManager",
     "epi-cms/core/ContentReference",
 
+    "epi-cms/widget/ContentTreeStoreModel",
+
 // resources
     "epi/i18n!epi/shell/ui/nls/episerver.shared.messages"
 ],
@@ -36,6 +38,8 @@ function (
     TypeDescriptorManager,
     ContentReference,
 
+    ContentTreeStoreModel,
+
 // resources
     sharedMessages
 ) {
@@ -47,24 +51,12 @@ function (
         //      internal
 
         // =======================================================================
-        // Private stuffs
-        // =======================================================================
-
-        // _topLevelContainerType: String
-        //      The default top level container type used in properties form.
-        _topLevelContainerType: "epi/shell/layout/SimpleContainer",
-
-        // _groupContainerType: String
-        //      The default group container type used in properties form.
-        _groupContainerType: "epi-cms/layout/CreateContentGroupContainer",
-
-        // =======================================================================
         // Dependencies
         // =======================================================================
 
-        // contentDataStore: epi/shell/RestStore
-        //      The content data store instance.
-        contentDataStore: null,
+        // contentStructureStore: epi/shell/RestStore
+        //      The content structure store instance.
+        contentStructureStore: null,
 
         // =======================================================================
         // Data model properties
@@ -73,14 +65,6 @@ function (
         // parent: Content
         //      The parent content on which the new content is created.
         parent: null,
-
-        // autoPublish: Boolean 
-        //       Indicates if the content should be published automatically when created if the user has publish rights.
-        autoPublish: false,
-
-        // addToDestination: Delegate
-        //      A delagate object which contains a save method. The method will be executed after the content is successfully created.
-        addToDestination: null,
 
         // =======================================================================
         // View model properties
@@ -131,13 +115,7 @@ function (
         //      Indicates that the breadcrumb should show current content node.
         showCurrentNodeOnBreadcrumb: null,
 
-        // actualParentLink: String
-        //      Link of the parent beneath which the content is created. It could be the given parent or the given parent's local asset folder.
-        actualParentLink: null,
-
-        // metadata: Object
-        //      The metadata object of the content being created.
-        metadata: null,
+        contentTreeStoreModel: null,
 
         // =======================================================================
         // Public methods
@@ -155,8 +133,12 @@ function (
 
             if (!this.contentDataStore) {
                 var registry = dependency.resolve("epi.storeregistry");
-                this.contentDataStore = registry.get("epi.cms.contentdata");
+                this.contentStructureStore = registry.get("epi.cms.content.light");
             }
+
+            this.contentTreeStoreModel = new ContentTreeStoreModel({
+                store: this.contentStructureStore
+            });
         },
 
         update: function (settings) {
@@ -175,7 +157,6 @@ function (
             this.set("ignoreDefaultNameWarning", false);
             this.set("properties", null);
             this.set("saveButtonIsVisible", false);
-            this.set("wizardStep", this.startWizardStep);
 
             this.set("namePanelIsVisible", true);
             this.set("headingPanelIsVisible", true);
@@ -185,7 +166,7 @@ function (
 
             // Copy data properties from topic sender
             if (settings) {
-                array.forEach(["propertyName", "ownerContentLink", "requestedType", "parent", "autoPublish", "addToDestination", "headingText", "templateName"], function (property) {
+                array.forEach(["propertyName", "contentLink", "requestedType", "parent", "autoPublish", "addToDestination", "headingText", "templateName"], function (property) {
                     this.set(property, settings[property]);
                 }, this);
             }
@@ -213,14 +194,23 @@ function (
             // Validate content name
             if (!this.ignoreDefaultNameWarning && (!this.contentName || this.contentName === "" || this.contentName === this.defaultName)) {
 
-                var contentName = this.contentName;
-                if (this.metadata && this.metadata.additionalValues && this.metadata.additionalValues.modelTypeIdentifier) {
-                    contentName = TypeDescriptorManager.getResourceValue(this.metadata.additionalValues.modelTypeIdentifier, "newitemdefaultname");
-                }
-
                 this._emitSaveEvent("invalidContentName", contentName);
                 return;
             }
+
+            //canPaste: function (item, target, isCopy) {
+            if (!this.contentTreeStoreModel.canPaste(this.contentLink, this.parent, true)) {
+                console.log("Cannot copy this item.");
+                return;
+            }
+
+            console.log("Can copy this item.");
+
+            //TODO: Fetch copied item and update it's name according to the one entered ( contentName ).
+
+            //pasteItem: function (childItem, oldParentItem, newParentItem, copy, sortIndex) {
+            this.contentTreeStoreModel.pasteItem(
+                );
             
             console.log("TODO: Copy template using the content data store.");
         },
@@ -314,56 +304,6 @@ function (
             }
 
             this._emitSaveEvent("saveError", err);
-        },
-
-        buildContentObject: function () {
-            // summary:
-            //      Build up the content object to create from model properties.
-            // tags:
-            //      protected
-
-            return {
-                name: string.trim(this.contentName + ""),
-                parentLink: this._getParentLink(),
-                properties: this.properties,
-                autoPublish: this.autoPublish
-            };
-        },
-
-        _parentSetter: function (parent) {
-            this.parent = parent;
-
-            var typeIdentifier = this.parent.typeIdentifier,
-                requestedTypeName = TypeDescriptorManager.getResourceValue(this.requestedType, "name"),
-                parentTypeName = TypeDescriptorManager.getResourceValue(typeIdentifier, "name"),
-                createAsLocalAssetHelpText = TypeDescriptorManager.getResourceValue(typeIdentifier, "createaslocalassethelptext");
-
-            if (requestedTypeName && parentTypeName) {
-                createAsLocalAssetHelpText = lang.replace(createAsLocalAssetHelpText, [requestedTypeName.toLowerCase(), parentTypeName.toLowerCase()]);
-            }
-
-            this.set("createAsLocalAssetHelpText", createAsLocalAssetHelpText);
-        },
-
-        // =======================================================================
-        // Private methods
-        // =======================================================================
-
-        _getParentLink: function() {
-            // summary:
-            //      Gets the link to the parent where the content should be created under.
-            //      If the parent is a Content Asset folder the link to the owner content will be returned.
-            // tags:
-            //      private
-
-            if(!this.parent) {
-                return null;
-            }
-
-            if(this.createAsLocalAsset) {
-                return this.parent.ownerContentLink ? this.parent.ownerContentLink : this.parent.contentLink;
-            }
-            return this.parent.contentLink;
         }
     });
 
