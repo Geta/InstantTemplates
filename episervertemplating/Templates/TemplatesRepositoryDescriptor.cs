@@ -1,19 +1,15 @@
-﻿using EPiServer;
-using EPiServer.Cms.Shell.UI.UIDescriptors;
-using EPiServer.Core;
-using EPiServer.ServiceLocation;
-using EPiServer.Shell;
-using EPiServer.Shell.ViewComposition;
-using EPiServerTemplating.Templates;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using EPiServer.Core;
+using EPiServer.ServiceLocation;
+using EPiServer.Shell;
 
-namespace Codemania.LocalMediaProvider
+namespace EPiServerTemplating.Templates
 {
     [ServiceConfiguration(typeof(IContentRepositoryDescriptor))]
-    public class TemplatesRepositoryDescriptor : BlockRepositoryDescriptor
+    public class TemplatesRepositoryDescriptor : ContentRepositoryDescriptorBase
     {
         private IContentProviderManager _providerManager;
         public TemplatesRepositoryDescriptor(IContentProviderManager providerManager)
@@ -21,7 +17,7 @@ namespace Codemania.LocalMediaProvider
             _providerManager = providerManager;
         }
 
-        public static new string RepositoryKey
+        public static string RepositoryKey
         {
             get { return "templates"; }
         }
@@ -66,20 +62,6 @@ namespace Codemania.LocalMediaProvider
             {
                 return new ContentReference[] { TemplatesInit.TemplateRoot };
             }
-        }
-    }
-
-    [Component]
-    public class TemplatesMainNavigationComponent : ComponentDefinitionBase
-    {
-        public TemplatesMainNavigationComponent()
-            : base("epi-cms.component.SharedBlocks")
-        {
-            Categories = new string[] { "content" };
-            LanguagePath = "/episerver/cms/components/templates";
-            SortOrder = 102;
-            PlugInAreas = new string[] { PlugInArea.AssetsDefaultGroup };
-            Settings.Add(new Setting("repositoryKey", TemplatesRepositoryDescriptor.RepositoryKey));
         }
     }
 }
