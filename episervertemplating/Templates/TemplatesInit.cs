@@ -1,10 +1,9 @@
 ﻿using System;
-using System.Linq;
+using EPiServer.Core;
+using EPiServer.DataAbstraction;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
-using EPiServer;
-using EPiServer.Core;
 
 namespace EPiServerTemplating.Templates
 {
@@ -12,24 +11,18 @@ namespace EPiServerTemplating.Templates
     [ModuleDependency(typeof(EPiServer.Web.InitializationModule))]
     public class TemplatesInit : IInitializableModule
     {
-        public const string ROOTNAME = "Templates";
+        public const string TemplateRootName = "TemplateRoot";
+        public static Guid TemplateRootGuid = new Guid("98ed413d-d7b5-4fbf-92a6-120d850fe610");
+
         public static ContentReference TemplateRoot;
+
         public void Initialize(InitializationEngine context)
         {
-            //Add initialization logic, this method is called once after CMS has been initialized
-            //Ensure a template root exists
-            var repo = ServiceLocator.Current.GetInstance<IContentRepository>();
+            var contentRootService = ServiceLocator.Current.GetInstance<ContentRootService>();
 
-            var cf = repo.GetChildren<ContentFolder>(ContentReference.RootPage).Where(cff => cff.Name==ROOTNAME).FirstOrDefault();
+            contentRootService.Register<ContentFolder>(TemplateRootName, TemplateRootGuid, ContentReference.RootPage);
 
-            if (cf == null)
-            {
-                cf = repo.GetDefault<ContentFolder>(ContentReference.RootPage);
-                cf.Name = ROOTNAME;
-                TemplateRoot = repo.Save(cf, EPiServer.DataAccess.SaveAction.Publish, EPiServer.Security.AccessLevel.NoAccess);
-            }
-            else TemplateRoot = cf.ContentLink;
-            
+            TemplateRoot = contentRootService.Get(TemplateRootName);
         }
 
         public void Preload(string[] parameters) { }

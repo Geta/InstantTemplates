@@ -10,13 +10,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace EPiServerTemplating.Templates
+namespace Codemania.LocalMediaProvider
 {
     [Component]
     public class TemplatesMainNavigationComponent : ComponentDefinitionBase
     {
         public TemplatesMainNavigationComponent()
-            : base("epi-cms.component.SharedBlocks")
+            : base("epi-cms/widget/HierarchicalList")
         {
             Categories = new string[] { "content" };
             LanguagePath = "/episerver/cms/components/templates";
