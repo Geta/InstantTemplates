@@ -187,3 +187,8 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+episervertemplating/app_data/EPiServerDB_f3470506.mdf
+episervertemplating/app_data/EPiServerDB_f3470506_log.ldf
+episervertemplating/app_data/EPiServerDB_f3470506.mdf
+*.ldf
+episervertemplating/app_data/GeoLiteCity.dat

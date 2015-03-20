@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EPiServerTemplating", "EPiServerTemplating\EPiServerTemplating.csproj", "{7D764010-3984-40A5-ACFF-568753B4B378}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InstantTemplates", "episervertemplating\modules\_protected\InstantTemplates\InstantTemplates.csproj", "{C9B6815C-A55D-4E21-A633-76F3CC6257B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{7D764010-3984-40A5-ACFF-568753B4B378}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D764010-3984-40A5-ACFF-568753B4B378}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D764010-3984-40A5-ACFF-568753B4B378}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9B6815C-A55D-4E21-A633-76F3CC6257B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9B6815C-A55D-4E21-A633-76F3CC6257B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9B6815C-A55D-4E21-A633-76F3CC6257B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9B6815C-A55D-4E21-A633-76F3CC6257B8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
