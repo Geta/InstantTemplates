@@ -228,7 +228,6 @@
     <Content Include="ClientResources\Scripts\CreateContentView.js" />
     <Content Include="ClientResources\Scripts\CreateContentViewModel.js" />
     <Content Include="ClientResources\Scripts\CreateItemFromTemplate.js" />
-    <Content Include="ClientResources\Scripts\PasteContent.js" />
     <Content Include="ClientResources\Scripts\TemplateModule.js" />
     <Content Include="ClientResources\Scripts\templates\CreateContentView.html" />
   </ItemGroup>
