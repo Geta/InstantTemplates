@@ -198,21 +198,40 @@ function (
                 return;
             }
 
-            //canPaste: function (item, target, isCopy) {
-            if (!this.contentTreeStoreModel.canPaste(this.contentLink, this.parent, true)) {
-                console.log("Cannot copy this item.");
-                return;
-            }
+            var registry = dependency.resolve("epi.storeregistry");
+            var contentDataStore = registry.get("epi.cms.contentdata");
+            var contentDataQuery = contentDataStore.query({ id: this.contentLink });
+            var parentDataQuery = contentDataStore.query({ id: this.parent });
 
-            console.log("Can copy this item.");
+            var contentData, parentData;
 
-            //TODO: Fetch copied item and update it's name according to the one entered ( contentName ).
+            var contentTreeStoreModel = this.contentTreeStoreModel;
+            var contentName = this.contentName;
 
-            //pasteItem: function (childItem, oldParentItem, newParentItem, copy, sortIndex) {
-            this.contentTreeStoreModel.pasteItem(
-                );
-            
-            console.log("TODO: Copy template using the content data store.");
+            contentDataQuery.then(function (result) {
+                contentData = result;
+
+                parentDataQuery.then(function (parentResult) {
+                    parentData = parentResult;
+
+                    //canPaste: function (item, target, isCopy) {
+                    if (!contentTreeStoreModel.canPaste(contentData, parentData, true)) {
+                        // TODO seems to be problems with access rights. ContentData is int iD instead of ContentData object. 40 seems to be hardcoded for the this.parent
+                        console.log("Cannot copy this item.");
+                        return;
+                    }
+
+                    console.log("Can copy this item.");
+
+                    //TODO: Fetch copied item and update it's name according to the one entered ( contentName ).
+                    contentData.name = contentName;
+
+                    //pasteItem: function (childItem, oldParentItem, newParentItem, copy, sortIndex) {
+                    contentTreeStoreModel.pasteItem(contentData, parentData, parentData, undefined, 100);
+
+                    console.log("TODO: Copy template using the content data store.");
+                });
+            });
         },
 
         _emitSaveEvent: function (eventName, params) {
