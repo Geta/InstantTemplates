@@ -218,28 +218,19 @@ function (
                 parentDataQuery.then(function (parentResult) {
                     parentData = parentResult;
 
-                    //canPaste: function (item, target, isCopy) {
                     if (!contentTreeStoreModel.canPaste(contentData, parentData, true)) {
-                        // TODO seems to be problems with access rights. ContentData is int iD instead of ContentData object. 40 seems to be hardcoded for the this.parent
                         console.log("Cannot copy this item.");
                         return;
                     }
 
-                    console.log("Can copy this item.");
-
-                    // Name is not updated
+                    // TODO Name is not updated
                     contentData.name = contentName;
+                    var oldParent = contentData.parent;
 
-                    //pasteItem: function (childItem, oldParentItem, newParentItem, copy, sortIndex)
-
-                    // hardcoded parents for now
-                    contentTreeStoreModel.pasteItem(contentData, parentData, parentData, true, 100).then(function(temp) {
-                        console.log(temp);
-                        changeContext(contentData.contentLink);
+                    // epi-cms\widget\ContentTreeStoreModel.js
+                    contentTreeStoreModel.pasteItem(contentData, oldParent, parentData, true).then(function (copyResponse) {
+                        changeContext(copyResponse.extraInformation);
                     });
-
-
-                    // redirect to page
                 });
             });
         },
