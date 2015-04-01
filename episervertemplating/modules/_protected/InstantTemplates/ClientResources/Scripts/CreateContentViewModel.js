@@ -9,6 +9,7 @@
     "dojo/string",
     "dojo/when",
     "dojo/Evented",
+    "dojo/topic",
 
 // epi
     "epi/dependency",
@@ -32,6 +33,7 @@ function (
     string,
     when,
     Evented,
+    topic,
 
 // epi
     dependency,
@@ -200,6 +202,7 @@ function (
 
             var registry = dependency.resolve("epi.storeregistry");
             var contentDataStore = registry.get("epi.cms.contentdata");
+
             var contentDataQuery = contentDataStore.query({ id: this.contentLink });
             var parentDataQuery = contentDataStore.query({ id: this.parent });
 
@@ -207,6 +210,7 @@ function (
 
             var contentTreeStoreModel = this.contentTreeStoreModel;
             var contentName = this.contentName;
+            var changeContext = this._changeContext;
 
             contentDataQuery.then(function (result) {
                 contentData = result;
@@ -223,13 +227,19 @@ function (
 
                     console.log("Can copy this item.");
 
-                    //TODO: Fetch copied item and update it's name according to the one entered ( contentName ).
+                    // Name is not updated
                     contentData.name = contentName;
 
-                    //pasteItem: function (childItem, oldParentItem, newParentItem, copy, sortIndex) {
-                    contentTreeStoreModel.pasteItem(contentData, parentData, parentData, undefined, 100);
+                    //pasteItem: function (childItem, oldParentItem, newParentItem, copy, sortIndex)
 
-                    console.log("TODO: Copy template using the content data store.");
+                    // hardcoded parents for now
+                    contentTreeStoreModel.pasteItem(contentData, parentData, parentData, true, 100).then(function(temp) {
+                        console.log(temp);
+                        changeContext(contentData.contentLink);
+                    });
+
+
+                    // redirect to page
                 });
             });
         },
@@ -283,6 +293,26 @@ function (
                     changeToNewContext(versionAgnosticRef.toString());
                 }
             }));
+        },
+
+        _changeContext: function (contentLink) {
+            // summary:
+            //    Redirect the newly created content to editmode.
+            //
+            // contentLink:
+            //    The content link.
+            //
+            // tags:
+            //    private
+
+            topic.publish("/epi/shell/context/request", {
+                uri: "epi.cms.contentdata:///" + contentLink
+            }, {
+                sender: this,
+                viewName: this.view,
+                forceContextChange: true,
+                forceReload: true
+            });
         },
 
         _saveErrorHandler: function (err) {

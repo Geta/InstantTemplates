@@ -45,7 +45,7 @@ define([
 
         _execute: function() {
             topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
-                parent: "40", //TODO: remove hard coded value
+                parent: this.getCurrentContext().parentLink,
                 contentLink: this.contentLink, //This should be populated when the command is created instead with the contentLink of the item. This is the ID of the page to copy from (template, example: 171)
                 headingText: "Needed?",
                 templateName: this.label
