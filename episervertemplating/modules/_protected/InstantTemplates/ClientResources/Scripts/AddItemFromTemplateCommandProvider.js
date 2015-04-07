@@ -3,6 +3,7 @@
     "dojo/_base/declare",
     "dojo/_base/lang",
     "dojo/when",
+    "dojo/topic",
 
     "dijit/form/ToggleButton",
     "dijit/layout/ContentPane",
@@ -12,7 +13,7 @@
 
     "epi/shell/ViewSettings",
 
-    "instantTemplates/CreateItemFromTemplate",
+    "instantTemplates/TemplateContentTypesCommand",
     "dijit/form/Button",
 
     "epi/shell/command/_CommandProviderMixin"
@@ -21,6 +22,7 @@
     declare,
     lang,
     when,
+    topic,
 
     ToggleButton,
     ContentPane,
@@ -29,7 +31,7 @@
     ToggleCommand,
     ViewSettings,
 
-    CreateItemFromTemplate,
+    TemplateContentTypesCommand,
     Button,
 
     _CommandProviderMixin
@@ -53,34 +55,10 @@
 
             this.viewName = this.viewName || ViewSettings.viewName;
 
-            this._addCreateCommands();
+            this.addCommand();
         },
 
-        _addCreateCommands: function () {
-
-            var that = this;
-
-            when(this.getContentDataStore().query({ referenceId: this.templatesRoot, query: "getchildren" }), function (children) {
-                children.forEach(function (child) {
-                    var a = new CreateItemFromTemplate({"contentLink" : child.contentLink, label : "Create new " + child.name});
-                    that.addCommand(a, { category: "create" });
-                });
-            });
-        },
-
-        getContentDataStore: function () {
-            // summary:
-            //      Gets the content data store from store registry if it's not already cached
-
-            if (!this.contentDataStore) {
-                var registry = dependency.resolve("epi.storeregistry");
-                this.contentDataStore = registry.get("epi.cms.content.light");
-            }
-            return this.contentDataStore;
-        },
-
-
-        addCommand: function (/*_Command*/command, /*Object*/settings) {
+        addCommand: function () {
             // summary:
             //      Append the given command to the command list, uncategorized commands will be added to the "leading" category
             // command:
@@ -89,9 +67,13 @@
             //      The settings to use when creating the menu item for the command
             // tags:
             //      protected
+
+            var command = new TemplateContentTypesCommand({ label: "New from Template", templatesRoot: this.templatesRoot });
+            var settings = { category: "create" };
+
             settings = lang.mixin({
-                "class": "epi-mediumButton",
-                iconClass: command.iconClass,
+                "class": "epi-mediumButton epi-iconLayout",
+                iconClass: "epi-iconLayout",
                 category: "leading",
                 label: command.label,
                 tooltip: command.tooltip,

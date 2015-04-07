@@ -1,4 +1,4 @@
-define([
+﻿define([
     "dojo/_base/declare",
     "dojo/topic",
     // Resources
@@ -6,7 +6,7 @@ define([
     // Parent class and mixins
     "epi/shell/command/_Command",
     "epi-cms/_ContentContextMixin"
-], function(
+], function (
     declare,
     topic,
     // Resources
@@ -35,19 +35,22 @@ define([
         //      Flag which indicates whether this command is in an active state.
         active: true,
 
+        templatesRoot: null,
+
         contextChanged: function (context, callerData) {
-            this.inherited(arguments);             
+            this.inherited(arguments);
             // the context changed, probably because we navigated or published something            
 
             //TODO: Check if we are allowed to create this type/item here. (_onModelChange)
         },
 
-        _execute: function() {
-            topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
-                parent: this.getCurrentContext().parentLink,
+        _execute: function () {
+            topic.publish("/epi/shell/action/changeview", "instantTemplates/ContentTypeList", {
+                parentLink: this.getCurrentContext().parentLink,
                 contentLink: this.contentLink,
                 headingText: "New Instant Template",
-                templateName: this.label
+                templateName: this.label,
+                templatesRoot: this.templatesRoot
             });
         }
     });

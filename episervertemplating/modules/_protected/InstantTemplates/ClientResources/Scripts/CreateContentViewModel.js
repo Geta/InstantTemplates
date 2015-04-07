@@ -190,7 +190,6 @@ function (
             //      On success, "saveSuccess" event is emitted, otherwise "saveError" is emitted.
             // tags:
             //      public
-
             this.set("saveButtonDisabled", true);
 
             // Validate content name
@@ -212,7 +211,9 @@ function (
             var contentName = this.contentName;
             var changeContext = this._changeContext;
 
+
             contentDataQuery.then(function (result) {
+
                 contentData = result;
 
                 parentDataQuery.then(function (parentResult) {
@@ -223,13 +224,27 @@ function (
                         return;
                     }
 
-                    // TODO Name is not updated
-                    contentData.name = contentName;
                     var oldParent = contentData.parent;
 
                     // epi-cms\widget\ContentTreeStoreModel.js
                     contentTreeStoreModel.pasteItem(contentData, oldParent, parentData, true).then(function (copyResponse) {
-                        changeContext(copyResponse.extraInformation);
+                        contentDataStore.query({ id: copyResponse.extraInformation }).then(function(newContentData) {
+                            newContentData.name = contentName;
+
+                            // TODO save the updated newContentData
+                            contentDataStore.patchCache({
+                                contentLink: newContentData.contentLink,
+                                changedBy: newContentData.changedBy,
+                                //saved: epiDate.serialize(new Date()),
+                                properties: {
+                                    name: "New name"
+                                }
+                            }).then(function(temp) {
+                                console.log(temp);
+                                debugger;
+                                changeContext(newContentData.contentLink);
+                            });
+                        });
                     });
                 });
             });
