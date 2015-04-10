@@ -17,6 +17,7 @@
     "epi-cms/core/ContentReference",
 
     "epi-cms/widget/ContentTreeStoreModel",
+    "epi-cms/_ContentContextMixin",
 
 // resources
     "epi/i18n!epi/shell/ui/nls/episerver.shared.messages"
@@ -42,11 +43,13 @@ function (
 
     ContentTreeStoreModel,
 
+    _ContentContextMixin,
+
 // resources
     sharedMessages
 ) {
 
-    return declare([Stateful, Evented], {
+    return declare([Stateful, Evented, _ContentContextMixin], {
         // summary:
         //      View model of epi-cms/contentediting/CreateContent component.
         // tags:
@@ -201,10 +204,9 @@ function (
 
             var registry = dependency.resolve("epi.storeregistry");
             var contentDataStore = registry.get("epi.cms.contentdata");
-            console.log(this.parent);
 
             var contentDataQuery = contentDataStore.query({ id: this.contentLink });
-            var parentDataQuery = contentDataStore.query({ id: this.parent });
+            var parentDataQuery = contentDataStore.query({ id: this.getCurrentContext().id /* this.parent*/ });
 
             var contentData, parentData;
 
