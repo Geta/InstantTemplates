@@ -190,7 +190,7 @@ function (
             //      On success, "saveSuccess" event is emitted, otherwise "saveError" is emitted.
             // tags:
             //      public
-            this.set("saveButtonDisabled", true);
+            //this.set("saveButtonDisabled", true);
 
             // Validate content name
             if (!this.ignoreDefaultNameWarning && (!this.contentName || this.contentName === "" || this.contentName === this.defaultName)) {
@@ -201,6 +201,7 @@ function (
 
             var registry = dependency.resolve("epi.storeregistry");
             var contentDataStore = registry.get("epi.cms.contentdata");
+            console.log(this.parent);
 
             var contentDataQuery = contentDataStore.query({ id: this.contentLink });
             var parentDataQuery = contentDataStore.query({ id: this.parent });
@@ -210,7 +211,6 @@ function (
             var contentTreeStoreModel = this.contentTreeStoreModel;
             var contentName = this.contentName;
             var changeContext = this._changeContext;
-
 
             contentDataQuery.then(function (result) {
 
@@ -224,28 +224,14 @@ function (
                         return;
                     }
 
-                    var oldParent = contentData.parent;
+                    var contentLink = jQuery.ajax({
+                        type: "POST",
+                        url: "/instanttemplate/create",
+                        data: { templateLink: contentData.contentLink, parentLink: parentData.contentLink, name: contentName },
+                        async: false
+                    }).responseText;
 
-                    // epi-cms\widget\ContentTreeStoreModel.js
-                    contentTreeStoreModel.pasteItem(contentData, oldParent, parentData, true).then(function (copyResponse) {
-                        contentDataStore.query({ id: copyResponse.extraInformation }).then(function(newContentData) {
-                            newContentData.name = contentName;
-
-                            // TODO save the updated newContentData
-                            contentDataStore.patchCache({
-                                contentLink: newContentData.contentLink,
-                                changedBy: newContentData.changedBy,
-                                //saved: epiDate.serialize(new Date()),
-                                properties: {
-                                    name: "New name"
-                                }
-                            }).then(function(temp) {
-                                console.log(temp);
-                                debugger;
-                                changeContext(newContentData.contentLink);
-                            });
-                        });
-                    });
+                    changeContext(contentLink);
                 });
             });
         },
@@ -319,6 +305,24 @@ function (
                 forceContextChange: true,
                 forceReload: true
             });
+        },
+
+        _clearCreateMode: function () {
+            // summary:
+            //      Clear create new content state for current mode
+            // tags:
+            //      private
+
+            // clear text field
+            // re-enable save button
+
+            domClass.remove(this.stackContainer.domNode, "epi-animation-node-reset");
+
+            lang.mixin(this._contextService.currentContext, {
+                "currentMode": undefined
+            });
+
+            topic.publish("/epi/cms/action/togglecreatemode", false);
         },
 
         _saveErrorHandler: function (err) {

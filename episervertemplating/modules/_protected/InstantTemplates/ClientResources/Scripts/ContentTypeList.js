@@ -107,7 +107,6 @@ function (
 
             var suggested = new ContentTypeGroup();
             
-
             domClass.add(suggested.titleNode, "epi-ribbonHeaderSpecial");
             suggested.set("title", "Available Instant Templates");
             suggested.set("templatesRoot", this.templatesRoot);
@@ -299,8 +298,7 @@ function (
             // tags:
             //      callback
 
-            // TODO this.parentLink is 1 for some reason.. Hardcoded for now
-            this.parentLink = 5;
+            console.log(this.parentLink);
 
             topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
                 parent: this.parentLink,

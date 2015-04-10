@@ -46,7 +46,7 @@
 
         _execute: function () {
             topic.publish("/epi/shell/action/changeview", "instantTemplates/ContentTypeList", {
-                parentLink: this.getCurrentContext().parentLink,
+                parentLink: this.getCurrentContext().id,
                 contentLink: this.contentLink,
                 headingText: "New Instant Template",
                 templateName: this.label,
