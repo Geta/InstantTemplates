@@ -82,8 +82,6 @@
         _setDescriptionAttr: { node: "descriptionNode", type: "innerText" },
 
         _setIconAttr: function (value) {
-            this._set("icon", value);
-            this.iconNode.innerHTML = value ? string.substitute(this.iconTemplate, [value, this.name]) : this.emptyIconTemplate;
         },
 
         focus: function () {
