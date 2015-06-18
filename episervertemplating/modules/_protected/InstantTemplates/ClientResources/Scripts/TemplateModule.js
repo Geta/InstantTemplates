@@ -4,7 +4,8 @@
     "dojo/_base/lang",
     "epi/_Module",
     "epi/dependency",
-    "instantTemplates/AddItemFromTemplateCommandProvider"
+    "instantTemplates/AddItemFromTemplateCommandProvider",
+    "instantTemplates/ContextMenuCommandProvider"
 ],
 
 function (
@@ -12,7 +13,8 @@ function (
     lang,
     _Module,
     dependency,
-    AddItemFromTemplateCommandProvider
+    AddItemFromTemplateCommandProvider,
+    ContextMenuCommandProvider
 ) {
 
     return declare([_Module], {
@@ -33,7 +35,7 @@ function (
             var commandregistry = dependency.resolve("epi.globalcommandregistry");
 
             //We need to wait for the viewsettings to initialized before creating the global toolbar command provider
-            commandregistry.registerProvider("epi.cms.globalToolbar", new AddItemFromTemplateCommandProvider({templatesRoot : this._settings.templatesRoot}));
+            commandregistry.registerProvider("epi.cms.globalToolbar", new AddItemFromTemplateCommandProvider({ templatesRoot: this._settings.templatesRoot }));
         }
     });
 });

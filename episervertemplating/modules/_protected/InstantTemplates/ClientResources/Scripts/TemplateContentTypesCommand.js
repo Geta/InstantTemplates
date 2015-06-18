@@ -25,7 +25,9 @@
 
         // iconClass: [public] String
         //      The CSS class which represents the icon to be used in visual elements.
-        iconClass: "epi-iconCompare",
+        iconClass: "epi-iconLayout",
+
+        label: "New from Template",
 
         // canExecute: [readonly] Boolean
         //      Flag which indicates whether this command is able to be executed.

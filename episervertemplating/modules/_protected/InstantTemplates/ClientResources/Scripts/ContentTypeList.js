@@ -103,6 +103,7 @@ function (
             // tags:
             //      protected
 
+            console.log("buildrendering is called");
             this.inherited(arguments);
 
             var suggested = new ContentTypeGroup();
@@ -126,6 +127,8 @@ function (
             //      public
 
             // Clear any existing data first to stop flickering in the UI.
+
+            console.log("refresh is called");
             this.clear();
 
             this._setupWidgetTemplate();
@@ -297,8 +300,6 @@ function (
             //      is clicked.
             // tags:
             //      callback
-
-            console.log(this.parentLink);
 
             topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
                 parent: this.parentLink,

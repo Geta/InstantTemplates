@@ -42,10 +42,8 @@
         //      Default command provider for the epi-cms/component/GlobalToolbar
         // tags:
         //      internal
-
         contentRepositoryDescriptors: null,
         viewName: null,
-
         postscript: function () {
             // summary:
             //      Ensure that an array of commands has been initialized.
@@ -68,13 +66,11 @@
             // tags:
             //      protected
 
-            var command = new TemplateContentTypesCommand({ label: "New from Template", templatesRoot: this.templatesRoot });
-            var settings = { category: "create" };
+            var command = new TemplateContentTypesCommand({ templatesRoot: this.templatesRoot });
+            var settings = {};
 
             settings = lang.mixin({
-                "class": "epi-mediumButton epi-iconLayout",
-                iconClass: "epi-iconLayout",
-                category: "leading",
+                category: "create",
                 label: command.label,
                 tooltip: command.tooltip,
                 showLabel: false,

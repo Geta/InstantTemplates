@@ -70,7 +70,6 @@
             this.templatesRoot = 168; // TODO remove hardcoded value
             var that = this;
 
-
             this.getContentDataStore().query({ referenceId: this.templatesRoot, query: "getchildren" }).then(function (children) {
                 array.forEach(children, function(contentData) {
                     var child = new ContentType({ contentData: contentData });
