@@ -50,8 +50,6 @@
             topic.publish("/epi/shell/action/changeview", "instantTemplates/ContentTypeList", {
                 parentLink: this.getCurrentContext().id,
                 contentLink: this.contentLink,
-                headingText: "New Instant Template",
-                templateName: this.label,
                 templatesRoot: this.templatesRoot
             });
         }
