@@ -25,7 +25,7 @@
 
         // iconClass: [public] String
         //      The CSS class which represents the icon to be used in visual elements.
-        iconClass: "epi-iconLayout",
+        iconClass: "epi-iconObjectPageContextual",
 
         label: "New from Template",
 
