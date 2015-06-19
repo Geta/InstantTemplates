@@ -85,7 +85,7 @@
         <!-- Create the package -->
         <PropertyGroup>
             <NugetCommand>
-                "$(NuGetExe)" pack "$(NuspecFile)" -Version "$(Version)" -Properties Configuration=$(Configuration)
+              "$(NuGetExe)" pack "$(NuspecFile)" -Version "$(Version)-alpha" -Properties Configuration=$(Configuration)
             </NugetCommand>
 
         </PropertyGroup>
