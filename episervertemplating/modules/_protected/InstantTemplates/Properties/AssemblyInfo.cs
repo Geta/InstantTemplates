@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("InstantTemplates")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Allows editors to easily create their own templates from within EPiServer")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("EPiServer and Geta")]
 [assembly: AssemblyProduct("InstantTemplates")]
-[assembly: AssemblyCopyright("Copyright ©  2015")]
+[assembly: AssemblyCopyright("Copyright © EPiServer and Geta 2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

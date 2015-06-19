@@ -1,0 +1,23 @@
+﻿<?xml version="1.0"?>
+<package >
+    <metadata>
+        <id>EPiServer.InstantTemplates</id>
+        <version>$version$</version>
+        <title>EPiServer InstantTemplates</title>
+        <authors>EPiServer and Geta</authors>
+        <owners>EPiServer and Geta</owners>
+        <projectUrl>https://github.com/Geta/templatecreator</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Allows editors to easily create their own templates from within EPiServer.</description>
+        <releaseNotes></releaseNotes>
+        <copyright></copyright>
+        <tags>EPiServer InstantTemplates</tags>
+        <dependencies>
+          <dependency id="EPiServer.CMS.UI" version="[7.6.0,9.0)" />
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="bin\EPiServer.InstantTemplates.dll" target="lib\net45\" />
+        <file src="bin\EPiServer-InstantTemplates.zip" target="content\modules\_protected\InstantTemplates\" />
+    </files>
+</package>

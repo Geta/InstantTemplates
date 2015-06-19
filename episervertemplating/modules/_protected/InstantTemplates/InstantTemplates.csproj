@@ -226,9 +226,8 @@
     <Content Include="ClientResources\Scripts\TemplateContentTypesCommand.js" />
     <Content Include="ClientResources\Scripts\templates\ContentType.html" />
     <Content Include="ClientResources\Scripts\templates\ContentTypeGroup.html" />
-    <Content Include="module.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <None Include="module.config">
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientResources\Scripts\AddItemFromTemplateCommandProvider.js" />
@@ -241,11 +240,19 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="msbuild\Main.proj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="InstantTemplates.nuspec" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(ProjectDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <Import Project="$(ProjectDir)\msbuild\Main.proj" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <ProjectExtensions>
