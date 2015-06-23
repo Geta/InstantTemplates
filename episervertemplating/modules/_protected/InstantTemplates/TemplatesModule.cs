@@ -1,20 +1,17 @@
-﻿using EPiServer.Shell.Modules;
+﻿using EPiServer.Framework.Web.Resources;
+using EPiServer.Shell.Modules;
 
 namespace EPiServer.InstantTemplates
 {
     public class TemplatesModule : ShellModule
     {
-        public TemplatesModule(string name, string routeBasePath, string resourceBasePath)
-            : base(name, routeBasePath, resourceBasePath)
+        public TemplatesModule(string name, string routeBasePath, string resourceBasePath) : base(name, routeBasePath, resourceBasePath)
         {
-            string a = "";
         }
 
-        public override ModuleViewModel CreateViewModel(ModuleTable moduleTable, EPiServer.Framework.Web.Resources.IClientResourceService clientResourceService)
+        public override ModuleViewModel CreateViewModel(ModuleTable moduleTable, IClientResourceService clientResourceService)
         {
-            var viewModel = new TemplatesModuleViewModel(this);
-
-            viewModel.TemplatesRoot = TemplatesInit.TemplateRoot;
+            var viewModel = new TemplatesModuleViewModel(this) { TemplatesRoot = TemplatesInit.TemplateRoot };
 
             return viewModel;
         }

@@ -67,7 +67,6 @@
             //		public
 
             this.clear();
-            this.templatesRoot = 168; // TODO remove hardcoded value
             var that = this;
 
             this.getContentDataStore().query({ referenceId: this.templatesRoot, query: "getchildren" }).then(function (children) {

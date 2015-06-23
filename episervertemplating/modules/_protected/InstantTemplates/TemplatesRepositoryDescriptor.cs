@@ -31,18 +31,18 @@ namespace EPiServer.InstantTemplates
         {
             get
             {
-                return new System.Type[]
+                return new[]
 				{
 					typeof(ContentFolder)
 				};
             }
         }
 
-        public override System.Collections.Generic.IEnumerable<System.Type> ContainedTypes
+        public override IEnumerable<Type> ContainedTypes
         {
             get
             {
-                return new System.Type[]
+                return new[]
 				{
 					typeof(ContentFolder),
 					typeof(BlockData),
@@ -53,7 +53,7 @@ namespace EPiServer.InstantTemplates
 
         public override IEnumerable<string> MainViews { get { return new string[] {  }; } }
 
-        public override System.Collections.Generic.IEnumerable<System.Type> CreatableTypes
+        public override IEnumerable<Type> CreatableTypes
         {
             get
             {
@@ -68,7 +68,7 @@ namespace EPiServer.InstantTemplates
         {
             get
             {
-                return new ContentReference[] { TemplatesInit.TemplateRoot };
+                return new[] { TemplatesInit.TemplateRoot };
             }
         }
     }

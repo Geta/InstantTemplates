@@ -252,43 +252,6 @@ function (
             this.addToDestination && (typeof this.addToDestination.cancel === "function") && this.addToDestination.cancel();
         },
 
-        _saveSuccessHandler: function (contentLink) {
-            // summary:
-            //      Save success handler
-            // contentLink: String
-            //      The newly created content's link
-            // tags:
-            //      private
-
-            var ref = new ContentReference(contentLink),
-                versionAgnosticRef = ref.createVersionUnspecificReference(),
-                changeToNewContext = lang.hitch(this, function (/*String*/targetLink) {
-                    this._emitSaveEvent("saveSuccess", {
-                        newContentLink: targetLink,
-                        changeContext: true
-                    });
-                });
-
-            when(this.contentDataStore.refresh(contentLink), lang.hitch(this, function (newContent) {
-                if (this.addToDestination) {
-                    this.addToDestination.save({
-                        contentLink: versionAgnosticRef.toString(),
-                        name: newContent.name,
-                        typeIdentifier: this.requestedType
-                    });
-
-                    // Keep the current context
-                    this._emitSaveEvent("saveSuccess", {
-                        changeContext: false
-                    });
-
-                } else {
-                    // Change to new context
-                    changeToNewContext(versionAgnosticRef.toString());
-                }
-            }));
-        },
-
         _changeContext: function (contentLink) {
             // summary:
             //    Redirect the newly created content to editmode.
@@ -307,65 +270,6 @@ function (
                 forceContextChange: true,
                 forceReload: true
             });
-        },
-
-        _clearCreateMode: function () {
-            // summary:
-            //      Clear create new content state for current mode
-            // tags:
-            //      private
-
-            // clear text field
-            // re-enable save button
-
-            domClass.remove(this.stackContainer.domNode, "epi-animation-node-reset");
-
-            lang.mixin(this._contextService.currentContext, {
-                "currentMode": undefined
-            });
-
-            topic.publish("/epi/cms/action/togglecreatemode", false);
-        },
-
-        _saveErrorHandler: function (err) {
-            // summary:
-            //      Save error handler
-            // err: Object
-            //      The error object.
-            // tags:
-            //      private
-
-            // err is actually the xhr error, as for now the rest store doesn't pre handle errors.
-            if (err && err.responseText) {
-                // received a list of problems
-
-                // NOTE: Do not copy this code since it's not a good practice to handle error. We are finding a pattern to handle server errors in a nicer manner, perhaps inside the rest store.
-                var validationErrors = json.fromJson(err.responseText);
-
-                array.forEach(validationErrors, function (item) {
-                    if (item.propertyName) {
-                        this.validator.setPropertyErrors(item.propertyName, [{
-                            severity: item.severity,
-                            errorMessage: item.errorMessage
-                        }], this.validator.validationSource.server);
-                    } else {
-                        this.validator.setGlobalErrors([{
-                            severity: item.severity,
-                            errorMessage: item.errorMessage
-                        }], this.validator.validationSource.server);
-                    }
-                }, this);
-
-            } else if (err) {
-                // general error
-                this.validator.setGlobalErrors([{
-                    severity: this.validator.severity.error,
-                    errorMessage: err.message
-                }], this.validator.validationSource.server);
-            }
-
-            this._emitSaveEvent("saveError", err);
         }
     });
-
 });

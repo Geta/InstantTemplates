@@ -65,8 +65,8 @@ function (
 
             this.inherited(arguments);
 
-            var suggested = new ContentTypeGroup();
-            
+            var suggested = new ContentTypeGroup({templatesRoot: this.templatesRoot});
+
             domClass.add(suggested.titleNode, "epi-ribbonHeaderSpecial");
             suggested.set("title", "Available Instant Templates");
             suggested.set("templatesRoot", this.templatesRoot);

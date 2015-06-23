@@ -1,5 +1,4 @@
-﻿using EPiServer.InstantTemplates;
-using EPiServer.Shell;
+﻿using EPiServer.Shell;
 using EPiServer.Shell.ViewComposition;
 
 namespace EPiServer.InstantTemplates
