@@ -72,7 +72,7 @@
 
             var response = jQuery.ajax({
                 type: "POST",
-                url: "/instanttemplate/query",
+                url: "/instanttemplates/query",
                 data: { templatesRoot: that.templatesRoot, parentLink: that.parentLink },
                 async: false,
                 dataType: "json"

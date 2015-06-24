@@ -68,7 +68,7 @@ namespace EPiServer.InstantTemplates
         {
             get
             {
-                return new[] { TemplatesInit.TemplateRoot };
+                return new[] { TemplatesInitialization.TemplateRoot };
             }
         }
     }

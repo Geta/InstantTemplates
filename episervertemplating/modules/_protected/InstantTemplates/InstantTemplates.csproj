@@ -211,8 +211,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InstantTemplatesController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TemplatesInit.cs" />
+    <Compile Include="TemplatesInitialization.cs" />
     <Compile Include="TemplatesMainNavigationComponent.cs" />
     <Compile Include="TemplatesModule.cs" />
     <Compile Include="TemplatesModuleViewModel.cs" />

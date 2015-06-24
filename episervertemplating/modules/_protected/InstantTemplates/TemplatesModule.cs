@@ -11,7 +11,7 @@ namespace EPiServer.InstantTemplates
 
         public override ModuleViewModel CreateViewModel(ModuleTable moduleTable, IClientResourceService clientResourceService)
         {
-            var viewModel = new TemplatesModuleViewModel(this) { TemplatesRoot = TemplatesInit.TemplateRoot };
+            var viewModel = new TemplatesModuleViewModel(this) { TemplatesRoot = TemplatesInitialization.TemplateRoot };
 
             return viewModel;
         }

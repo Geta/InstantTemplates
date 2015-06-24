@@ -228,7 +228,7 @@ function (
 
                     var contentLink = jQuery.ajax({
                         type: "POST",
-                        url: "/instanttemplate/create",
+                        url: "/instanttemplates/create",
                         data: { templateLink: contentData.contentLink, parentLink: parentData.contentLink, name: contentName },
                         async: false
                     }).responseText;

@@ -2,21 +2,27 @@
 using System.Linq;
 using System.Web.Mvc;
 using System.Web.Script.Serialization;
-using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAccess;
 using EPiServer.Security;
+using EPiServer.ServiceLocation;
 
-namespace EPiServerTemplating.Controllers
+namespace EPiServer.InstantTemplates
 {
-    public class InstantTemplateController : Controller
+    public class InstantTemplatesController : Controller
     {
         private readonly IContentRepository _contentRepository;
         private readonly IContentTypeRepository _contentTypeRepository;
         private readonly ContentTypeAvailabilityService _contentTypeAvailabilityService;
 
-        public InstantTemplateController(IContentRepository contentRepository, IContentTypeRepository contentTypeRepository, ContentTypeAvailabilityService contentTypeAvailabilityService)
+        public InstantTemplatesController() : this(ServiceLocator.Current.GetInstance<IContentRepository>(), 
+                                                  ServiceLocator.Current.GetInstance<IContentTypeRepository>(), 
+                                                  ServiceLocator.Current.GetInstance<ContentTypeAvailabilityService>())
+        {
+        }
+
+        public InstantTemplatesController(IContentRepository contentRepository, IContentTypeRepository contentTypeRepository, ContentTypeAvailabilityService contentTypeAvailabilityService)
         {
             this._contentRepository = contentRepository;
             this._contentTypeRepository = contentTypeRepository;
