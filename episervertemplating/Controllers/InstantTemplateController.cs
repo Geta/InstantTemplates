@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using System.Linq;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
@@ -28,28 +29,33 @@ namespace EPiServerTemplating.Controllers
         {
             var children = this._contentRepository.GetChildren<IContent>(new ContentReference(templatesRoot));
 
-            var parentContent = this._contentRepository.Get<PageData>(new ContentReference(parentLink));
+            var parentContent = this._contentRepository.Get<IContent>(new ContentReference(parentLink));
+
+            if (parentContent is PageData && !((PageData)parentContent).ACL.HasAccess(PrincipalInfo.CurrentPrincipal, AccessLevel.Create))
+            {
+                return Json("You don't have access to create content");
+            }
 
             var contentType = this._contentTypeRepository.Load(parentContent.ContentTypeID);
 
             var settings = this._contentTypeAvailabilityService.GetSetting(contentType.Name);
 
-            var response = children.Select(content => new
+            var response = children.Select(content => new QueryResponse
             {
                 name = content.Name, 
                 contentLink = content.ContentLink.ID.ToString(CultureInfo.InvariantCulture),
-                contentTypeId = content.ContentTypeID
+                ContentType = this._contentTypeRepository.Load(content.ContentTypeID)
             });
 
             if (settings.Availability == Availability.Specific)
             {
-                var allowedContentTypes = settings.AllowedContentTypeNames.Select(name => this._contentTypeRepository.Load(name).ID);
+                var allowedContentTypes = settings.AllowedContentTypeNames.Select(name => this._contentTypeRepository.Load(name));
 
-                response = response.Where(content => allowedContentTypes.Contains(content.contentTypeId));
+                response = response.Where(content => allowedContentTypes.Contains(content.ContentType));
             }
 
             // access right of page types
-            // access right of content creation
+            response = response.Where(content => content.ContentType.ACL.HasAccess(PrincipalInfo.CurrentPrincipal, AccessLevel.Create));
 
             return Json(response);
         }
@@ -69,5 +75,15 @@ namespace EPiServerTemplating.Controllers
 
             return Json(contentLink.ID);
         }
+    }
+
+    public class QueryResponse
+    {
+        public string name { get; set; }
+
+        public string contentLink { get; set; }
+
+        [ScriptIgnore]
+        public ContentType ContentType { get; set; }
     }
 }
