@@ -25,7 +25,7 @@
 
         // iconClass: [public] String
         //      The CSS class which represents the icon to be used in visual elements.
-        iconClass: "epi-iconObjectPageContextual",
+        iconClass: "epi-iconPackage epi-icon--inverted",
 
         label: "New from Template",
 
@@ -42,8 +42,6 @@
         contextChanged: function (context, callerData) {
             this.inherited(arguments);
             // the context changed, probably because we navigated or published something            
-
-            //TODO: Check if we are allowed to create this type/item here. (_onModelChange)
         },
 
         _execute: function () {
