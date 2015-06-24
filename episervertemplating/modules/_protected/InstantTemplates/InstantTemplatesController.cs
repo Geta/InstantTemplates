@@ -33,7 +33,7 @@ namespace EPiServer.InstantTemplates
         [HttpPost]
         public ActionResult Query(string templatesRoot, string parentLink)
         {
-            var children = this._contentRepository.GetChildren<IContent>(new ContentReference(templatesRoot));
+            var children = this._contentRepository.GetChildren<IContent>(TemplatesInitialization.TemplateRoot);
 
             var parentContent = this._contentRepository.Get<IContent>(new ContentReference(parentLink));
 
