@@ -4,6 +4,7 @@
     "dojo/_base/array",
     "dojo/dom-style",
     "dojo/text!./templates/ContentTypeGroup.html",
+    "dojo/topic",
 
     "dijit/_TemplatedMixin",
     "dijit/layout/_LayoutWidget",
@@ -14,7 +15,7 @@
 
     "epi/dependency"
 
-], function (declare, lang, array, domStyle, template, _TemplatedMixin, _LayoutWidget, ContentType, keys, _KeyNavContainer, dependency) {
+], function (declare, lang, array, domStyle, template, topic, _TemplatedMixin, _LayoutWidget, ContentType, keys, _KeyNavContainer, dependency) {
 
     return declare([_LayoutWidget, _TemplatedMixin, _KeyNavContainer], {
         // summary:
@@ -69,13 +70,28 @@
             this.clear();
             var that = this;
 
-            this.getContentDataStore().query({ referenceId: this.templatesRoot, query: "getchildren" }).then(function (children) {
-                array.forEach(children, function(contentData) {
-                    var child = new ContentType({ contentData: contentData });
-                    this.connect(child, "onSelect", this.onSelect);
-                    this.addChild(child);
-                }, that);
-            });
+            var response = jQuery.ajax({
+                type: "POST",
+                url: "/instanttemplate/query",
+                data: { templatesRoot: that.templatesRoot, parentLink: that.parentLink },
+                async: false,
+                dataType: "json"
+            }).responseText;
+
+            array.forEach(JSON.parse(response), function (contentData) {
+                        var child = new ContentType({ contentData: contentData });
+                        this.connect(child, "onSelect", this.onSelect);
+                        this.addChild(child);
+                    }, that);
+
+            //this.getContentDataStore().query({ referenceId: this.templatesRoot, query: "getchildren" }).then(function (children) {
+
+            //    array.forEach(children, function (contentData) {
+            //        var child = new ContentType({ contentData: contentData });
+            //        this.connect(child, "onSelect", this.onSelect);
+            //        this.addChild(child);
+            //    }, that);
+            //});
         },
 
         clear: function () {
@@ -99,12 +115,19 @@
             }
         },
 
-        onSelect: function (/*===== item =====*/) {
+        onSelect: function (item) {
             // summary:
             //		Callback that is executed when an item in this
             //		group is selected.
             // tags:
             //		callback
+
+            topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
+                parent: this.parentLink,
+                contentLink: item.contentLink,
+                headingText: "New Instant Template",
+                templateName: item.name
+            });
         },
 
         setVisibility: function (display) {

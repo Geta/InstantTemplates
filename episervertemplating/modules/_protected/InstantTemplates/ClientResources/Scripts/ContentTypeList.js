@@ -65,37 +65,17 @@ function (
 
             this.inherited(arguments);
 
-            var suggested = new ContentTypeGroup({templatesRoot: this.templatesRoot});
+            var suggested = new ContentTypeGroup({templatesRoot: this.templatesRoot, parentLink: this.parentLink});
 
             domClass.add(suggested.titleNode, "epi-ribbonHeaderSpecial");
             suggested.set("title", "Available Instant Templates");
             suggested.set("templatesRoot", this.templatesRoot);
-            //suggested.set("contentTypes", this._getAvailableContentTypes(this.requestedType));
             suggested.setVisibility(true);
-            this.connect(suggested, "onSelect", function (item) { this.onContentTypeSelected(item); });
             this.addChild(suggested);
             this._suggestedContentTypes = suggested;
 
             this.set("shouldSkipContentTypeSelection", false);
         },
-
-        onContentTypeSelected: function (item) {
-            // summary:
-            //      Event raised when a content type widget on the list
-            //      is clicked.
-            // tags:
-            //      callback
-
-            topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
-                parent: this.parentLink,
-                contentLink: item.contentLink,
-                headingText: "New Instant Template",
-                templateName: item.name
-            });
-
-            // TODO show the name dialog instead
-        }
-
     });
 
 });

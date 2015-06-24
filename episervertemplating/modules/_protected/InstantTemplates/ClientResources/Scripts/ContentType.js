@@ -59,15 +59,7 @@
             if (data) {
                 this.set("name", data.name);
                 this.set("description", data.localizedDescription || i18n.nodescription);
-                this.set("icon", data.imagePath);
             }
-
-            //var type = this.contentType;
-            //if (type) {
-            //    this.set("name", type.localizedName);
-            //    this.set("description", type.localizedDescription || i18n.nodescription);
-            //    this.set("icon", type.imagePath);
-            //}
         },
 
         _setContentTypeAttr: function (value) {
@@ -111,6 +103,7 @@
             //
             // tags:
             //   private
+
             this.onSelect(this.contentData);
         },
 
