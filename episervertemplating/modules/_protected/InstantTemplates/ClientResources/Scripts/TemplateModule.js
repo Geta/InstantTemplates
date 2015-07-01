@@ -3,6 +3,7 @@
     "dojo/_base/declare",
     "dojo/_base/lang",
     "epi/_Module",
+    "epi/routes",
     "epi/dependency",
     "instantTemplates/AddItemFromTemplateCommandProvider",
     "instantTemplates/ContextMenuCommandProvider"
@@ -12,6 +13,7 @@ function (
     declare,
     lang,
     _Module,
+    routes,
     dependency,
     AddItemFromTemplateCommandProvider,
     ContextMenuCommandProvider
@@ -33,9 +35,17 @@ function (
         initialize: function () {
 
             var commandregistry = dependency.resolve("epi.globalcommandregistry");
+            var registry = this.resolveDependency("epi.storeregistry");
+
+            //Register the store
+            registry.create("instanttemplates", this._getRestPath("instanttemplates"));
 
             //We need to wait for the viewsettings to initialized before creating the global toolbar command provider
             commandregistry.registerProvider("epi.cms.globalToolbar", new AddItemFromTemplateCommandProvider({ templatesRoot: this._settings.templatesRoot }));
+        },
+
+        _getRestPath: function (name) {
+            return routes.getRestPath({ moduleArea: "InstantTemplates", storeName: name });
         }
     });
 });

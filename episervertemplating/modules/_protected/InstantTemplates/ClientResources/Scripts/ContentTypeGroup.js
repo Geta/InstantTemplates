@@ -5,6 +5,7 @@
     "dojo/dom-style",
     "dojo/text!./templates/ContentTypeGroup.html",
     "dojo/topic",
+    "dojo",
 
     "dijit/_TemplatedMixin",
     "dijit/layout/_LayoutWidget",
@@ -15,7 +16,7 @@
 
     "epi/dependency"
 
-], function (declare, lang, array, domStyle, template, topic, _TemplatedMixin, _LayoutWidget, ContentType, keys, _KeyNavContainer, dependency) {
+], function (declare, lang, array, domStyle, template, topic, dojo, _TemplatedMixin, _LayoutWidget, ContentType, keys, _KeyNavContainer, dependency) {
 
     return declare([_LayoutWidget, _TemplatedMixin, _KeyNavContainer], {
         // summary:
@@ -70,28 +71,17 @@
             this.clear();
             var that = this;
 
-            var response = jQuery.ajax({
-                type: "POST",
-                url: "/instanttemplates/query",
-                data: { templatesRoot: that.templatesRoot, parentLink: that.parentLink },
-                async: false,
-                dataType: "json"
-            }).responseText;
+            var registry = dependency.resolve("epi.storeregistry");
 
-            array.forEach(JSON.parse(response), function (contentData) {
-                        var child = new ContentType({ contentData: contentData });
-                        this.connect(child, "onSelect", this.onSelect);
-                        this.addChild(child);
-                    }, that);
+            var instantTemplatesStore = registry.get("instanttemplates");
 
-            //this.getContentDataStore().query({ referenceId: this.templatesRoot, query: "getchildren" }).then(function (children) {
-
-            //    array.forEach(children, function (contentData) {
-            //        var child = new ContentType({ contentData: contentData });
-            //        this.connect(child, "onSelect", this.onSelect);
-            //        this.addChild(child);
-            //    }, that);
-            //});
+            dojo.when(instantTemplatesStore.get(that.parentLink), function (response) {
+                array.forEach(response, function (contentData) {
+                    var child = new ContentType({ contentData: contentData });
+                    this.connect(child, "onSelect", this.onSelect);
+                    this.addChild(child);
+                }, that);
+            });
         },
 
         clear: function () {

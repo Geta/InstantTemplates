@@ -10,7 +10,7 @@
     "dojo/when",
     "dojo/Evented",
     "dojo/topic",
-
+    "dojo",
 // epi
     "epi/dependency",
     "epi/shell/TypeDescriptorManager",
@@ -35,6 +35,7 @@ function (
     when,
     Evented,
     topic,
+    dojo,
 
 // epi
     dependency,
@@ -205,6 +206,8 @@ function (
             var registry = dependency.resolve("epi.storeregistry");
             var contentDataStore = registry.get("epi.cms.contentdata");
 
+            var instantTemplatesStore = registry.get("instanttemplates");
+
             var contentDataQuery = contentDataStore.query({ id: this.contentLink });
             var parentDataQuery = contentDataStore.query({ id: this.getCurrentContext().id /* this.parent*/ });
 
@@ -226,14 +229,11 @@ function (
                         return;
                     }
 
-                    var contentLink = jQuery.ajax({
-                        type: "POST",
-                        url: "/instanttemplates/create",
-                        data: { templateLink: contentData.contentLink, parentLink: parentData.contentLink, name: contentName },
-                        async: false
-                    }).responseText;
+                    dojo.when(instantTemplatesStore.add({ templateLink: contentData.contentLink, parentLink: parentData.contentLink, name: contentName }), function(response) {
+                        var contentLink = response;
 
-                    changeContext(contentLink);
+                        changeContext(contentLink);
+                    });
                 });
             });
         },
