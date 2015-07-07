@@ -18,6 +18,6 @@
     </metadata>
     <files>
         <file src="bin\EPiServer.InstantTemplates.dll" target="lib\net45\" />
-        <file src="tmp\EPiServer-InstantTemplates.zip" target="content\modules\_protected\InstantTemplates\" />
+        <file src="tmp\InstantTemplates.zip" target="content\modules\_protected\InstantTemplates\" />
     </files>
 </package>

@@ -11,6 +11,7 @@ namespace EPiServer.InstantTemplates
         {
             Categories = new string[] { "content" };
             LanguagePath = "/episerver/cms/components/templates";
+            Title = "Templates";
             SortOrder = 102;
             PlugInAreas = new string[] { PlugInArea.AssetsDefaultGroup };
             Settings.Add(new Setting("repositoryKey", TemplatesRepositoryDescriptor.RepositoryKey));

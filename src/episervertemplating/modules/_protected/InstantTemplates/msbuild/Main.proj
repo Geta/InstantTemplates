@@ -79,7 +79,7 @@
         <!-- Create the Zip file -->
         <ZipDirectory
           InputPath="$(TmpOutDir)\content"
-          OutputFileName="$(TmpOutDir)\EPiServer-InstantTemplates.zip"
+          OutputFileName="$(TmpOutDir)\InstantTemplates.zip"
           OverwriteExistingFile="true" />
 
         <!-- Create the package -->
