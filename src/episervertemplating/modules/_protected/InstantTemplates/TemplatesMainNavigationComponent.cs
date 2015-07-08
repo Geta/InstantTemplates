@@ -10,7 +10,7 @@ namespace EPiServer.InstantTemplates
             : base("epi-cms/widget/HierarchicalList")
         {
             Categories = new string[] { "content" };
-            LanguagePath = "/episerver/cms/components/templates";
+            //LanguagePath = "/episerver/cms/components/templates";
             Title = "Templates";
             SortOrder = 102;
             PlugInAreas = new string[] { PlugInArea.AssetsDefaultGroup };

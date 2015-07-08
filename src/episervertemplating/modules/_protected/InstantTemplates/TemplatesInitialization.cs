@@ -31,8 +31,6 @@ namespace EPiServer.InstantTemplates
                 new { action = "Query", controller = "InstantTemplates" });
         }
 
-        public void Preload(string[] parameters) { }
-
         public void Uninitialize(InitializationEngine context)
         {
             //Add uninitialization logic
