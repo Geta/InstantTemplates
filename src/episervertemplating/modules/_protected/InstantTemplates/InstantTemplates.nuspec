@@ -6,9 +6,9 @@
         <title>EPiServer InstantTemplates</title>
         <authors>EPiServer and Geta</authors>
         <owners>EPiServer and Geta</owners>
-        <projectUrl>https://github.com/Geta/templatecreator</projectUrl>
+        <projectUrl>https://github.com/Geta/InstantTemplates</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Allows editors to easily create their own templates from within EPiServer.</description>
+        <description>Allows editors to easily create their own templates from within EPiServer edit mode.</description>
         <releaseNotes></releaseNotes>
         <copyright></copyright>
         <tags>EPiServer InstantTemplates</tags>
