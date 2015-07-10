@@ -209,6 +209,7 @@ function (
             this.inherited(arguments);
 
             this.model = new this.modelType();
+            this.model.parent = this.parent;
 
             this.own(this.model.on("saveSuccess", lang.hitch(this, this._onSaveSuccess)));
             this.own(this.model.on("saveError", lang.hitch(this, this._onSaveError)));

@@ -209,7 +209,7 @@ function (
             var instantTemplatesStore = registry.get("instanttemplates");
 
             var contentDataQuery = contentDataStore.query({ id: this.contentLink });
-            var parentDataQuery = contentDataStore.query({ id: this.getCurrentContext().id /* this.parent*/ });
+            var parentDataQuery = contentDataStore.query({ id: this.parent });
 
             var contentData, parentData;
 

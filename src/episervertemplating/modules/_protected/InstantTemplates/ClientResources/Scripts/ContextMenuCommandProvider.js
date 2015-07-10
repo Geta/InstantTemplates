@@ -1,11 +1,11 @@
 ﻿define([
     "dojo/_base/lang",
     "epi-cms/component/ContentContextMenuCommandProvider",
-    "instantTemplates/TemplateContentTypesCommand"
+    "instantTemplates/TemplateContentSelectionCommand"
 ], function (
     lang,
     ContentContextMenuCommandProvider,
-    TemplateContentTypesCommand
+    TemplateContentSelectionCommand
 ) {
 
     var originalMethod = ContentContextMenuCommandProvider.prototype.postscript;
@@ -15,9 +15,9 @@
         postscript: function () {
             originalMethod.call(this);
 
-            var templateContentTypesCommand = new TemplateContentTypesCommand(this._settings);
+            var command = new TemplateContentSelectionCommand(this._settings);
 
-            this.commands.push(templateContentTypesCommand);
+            this.commands.push(command);
         }
     });
 
