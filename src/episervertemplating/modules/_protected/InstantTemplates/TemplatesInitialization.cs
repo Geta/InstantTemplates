@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Web.Mvc;
-using System.Web.Routing;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.Framework;
 using EPiServer.Framework.Initialization;
 using EPiServer.ServiceLocation;
+using InitializationModule = EPiServer.Web.InitializationModule;
 
 namespace EPiServer.InstantTemplates
 {
-    [ModuleDependency(typeof(Web.InitializationModule))]
+    [ModuleDependency(typeof(InitializationModule))]
     public class TemplatesInitialization : IInitializableModule
     {
         public const string TemplateRootName = "TemplateRoot";
@@ -24,11 +23,6 @@ namespace EPiServer.InstantTemplates
             contentRootService.Register<ContentFolder>(TemplateRootName, TemplateRootGuid, ContentReference.RootPage);
 
             TemplateRoot = contentRootService.Get(TemplateRootName);
-
-            RouteTable.Routes.MapRoute(
-                "InstantTemplates",
-                "instanttemplates/{action}",
-                new { action = "Query", controller = "InstantTemplates" });
         }
 
         public void Uninitialize(InitializationEngine context)
