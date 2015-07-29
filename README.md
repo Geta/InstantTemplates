@@ -1,7 +1,7 @@
 # EPiServer Instant Templates
 
 ## Installation
-Install-Package EPiServer.InstantTemplates
+Install-Package EPiServer.InstantTemplates -Prerelease
 
 ## Demo
 git clone https://github.com/Geta/InstantTemplates
