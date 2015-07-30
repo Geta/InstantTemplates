@@ -20,7 +20,8 @@ namespace EPiServer.InstantTemplates
             {
                 // manually register
                 var container = view.RootContainer.FindContainerByPlugInArea(PlugInArea.AssetsDefaultGroup);
-                container.Add(new TemplatesMainNavigationComponent().CreateComponent());
+                var component = new TemplatesMainNavigationComponent();
+                container.Add(component.CreateComponent());
             }
         }
 
