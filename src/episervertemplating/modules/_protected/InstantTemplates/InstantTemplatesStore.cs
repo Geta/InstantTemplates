@@ -33,6 +33,9 @@ namespace EPiServer.InstantTemplates
 
             var children = this._contentRepository.GetChildren<IContent>(TemplatesInitialization.TemplateRoot);
 
+            var folderContentType = this._contentTypeRepository.Load(typeof(ContentFolder));
+            children = children.Where(c => c.ContentTypeID != folderContentType.ID);
+
             var parentContent = this._contentRepository.Get<IContent>(new ContentReference(parentLink));
 
             if (parentContent is PageData && !((PageData)parentContent).ACL.HasAccess(PrincipalInfo.CurrentPrincipal, AccessLevel.Create))
