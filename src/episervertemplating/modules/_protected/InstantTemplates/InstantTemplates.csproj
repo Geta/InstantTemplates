@@ -219,7 +219,6 @@
     <Compile Include="TemplatesModule.cs" />
     <Compile Include="TemplatesModuleViewModel.cs" />
     <Compile Include="TemplatesRepositoryDescriptor.cs" />
-    <Compile Include="TemplatesViewTransformer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientResources\Scripts\ContentType.js" />
