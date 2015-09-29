@@ -101,14 +101,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\EPiServer.CMS.Core.9.0.0\lib\net45\EPiServer.LinkAnalyzer.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Packaging">
-      <HintPath>..\..\..\..\packages\EPiServer.Packaging.3.2.2\lib\net45\EPiServer.Packaging.dll</HintPath>
+    <Reference Include="EPiServer.Packaging, Version=3.2.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\packages\EPiServer.Packaging.3.2.3\lib\net45\EPiServer.Packaging.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Packaging.CmdAPI">
-      <HintPath>..\..\..\..\packages\EPiServer.Packaging.3.2.2\lib\net45\EPiServer.Packaging.CmdAPI.dll</HintPath>
+    <Reference Include="EPiServer.Packaging.CmdAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\packages\EPiServer.Packaging.3.2.3\lib\net45\EPiServer.Packaging.CmdAPI.dll</HintPath>
     </Reference>
-    <Reference Include="EPiServer.Packaging.UI">
-      <HintPath>..\..\..\..\packages\EPiServer.Packaging.UI.3.2.2\lib\net45\EPiServer.Packaging.UI.dll</HintPath>
+    <Reference Include="EPiServer.Packaging.UI, Version=3.2.3.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\packages\EPiServer.Packaging.UI.3.2.3\lib\net45\EPiServer.Packaging.UI.dll</HintPath>
     </Reference>
     <Reference Include="EPiServer.Shell, Version=9.0.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -215,6 +218,7 @@
     <Content Include="ClientResources\Scripts\TemplateContentTypesCommand.js" />
     <Content Include="ClientResources\Scripts\templates\ContentType.html" />
     <Content Include="ClientResources\Scripts\templates\ContentTypeGroup.html" />
+    <Content Include="App_Data\GeoLiteCity.dat" />
     <None Include="module.config">
     </None>
   </ItemGroup>
