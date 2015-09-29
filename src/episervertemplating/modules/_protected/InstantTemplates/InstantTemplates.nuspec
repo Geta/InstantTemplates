@@ -11,6 +11,7 @@
         <description>Allows editors to easily create their own templates from within EPiServer edit mode.</description>
         <releaseNotes></releaseNotes>
         <copyright></copyright>
+        <iconUrl>http://cdn.geta.no/opensource/icons/instant-templates.png</iconUrl>
         <tags>EPiServer InstantTemplates</tags>
         <dependencies>
           <dependency id="EPiServer.CMS.UI" version="[9.0.0,10.0.0)" />
