@@ -31,10 +31,15 @@ namespace EPiServer.InstantTemplates
         {
             string parentLink = id;
 
-            var children = this._contentRepository.GetChildren<IContent>(TemplatesInitialization.TemplateRoot);
+            var allContentReferences = this._contentRepository.GetDescendents(TemplatesInitialization.TemplateRoot);
+
+            var descendents = allContentReferences.Select(contentReference => _contentRepository.Get<IContent>(contentReference));
 
             var folderContentType = this._contentTypeRepository.Load(typeof(ContentFolder));
-            children = children.Where(c => c.ContentTypeID != folderContentType.ID);
+            descendents = descendents.Where(c => c.ContentTypeID != folderContentType.ID);
+
+            // make sure the user has access to it
+            descendents = descendents.Where(content => content.QueryDistinctAccess(AccessLevel.Create));
 
             var parentContent = this._contentRepository.Get<IContent>(new ContentReference(parentLink));
 
@@ -47,7 +52,7 @@ namespace EPiServer.InstantTemplates
 
             var settings = this._contentTypeAvailabilityService.GetSetting(contentType.Name);
 
-            var response = children.Select(content => new
+            var response = descendents.Select(content => new
             {
                 name = content.Name,
                 contentLink = content.ContentLink.ID.ToString(CultureInfo.InvariantCulture),
