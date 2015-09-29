@@ -56,7 +56,8 @@ namespace EPiServer.InstantTemplates
             {
                 name = content.Name,
                 contentLink = content.ContentLink.ID.ToString(CultureInfo.InvariantCulture),
-                ContentType = this._contentTypeRepository.Load(content.ContentTypeID)
+                ContentType = this._contentTypeRepository.Load(content.ContentTypeID),
+                localizedDescription = this._contentTypeRepository.Load(content.ContentTypeID).LocalizedDescription
             });
 
             if (settings.Availability == Availability.Specific)
