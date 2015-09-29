@@ -1,7 +1,12 @@
 # EPiServer Instant Templates
 
+Allows editors to create their own templates directly from within EPiServer.
+
 ## Installation
+
+```
 Install-Package EPiServer.InstantTemplates -Prerelease
+```
 
 ## Demo
 git clone https://github.com/Geta/InstantTemplates
