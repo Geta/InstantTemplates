@@ -14,7 +14,7 @@ namespace EPiServer.InstantTemplates
             SortOrder = 102;
             PlugInAreas = new string[] { PlugInArea.AssetsDefaultGroup };
             Settings.Add(new Setting("repositoryKey", TemplatesRepositoryDescriptor.RepositoryKey));
-            Description = "";
+            Description = "Allows editors to easily create their own templates from within EPiServer edit mode.";
         }
     }
 }
