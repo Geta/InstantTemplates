@@ -1,5 +1,7 @@
 # EPiServer Instant Templates
 
+![](http://tc.geta.no/app/rest/builds/buildType:(id:TeamFrederik_InstantTemplates_InstantTemplatesDebug)/statusIcon)
+
 Allows editors to create their own templates directly from within EPiServer.
 
 ## Installation
