@@ -20,10 +20,9 @@
 
         _execute: function () {
             var selectionData = this.get("selectionData");
-
             topic.publish("/epi/shell/action/changeview", "instantTemplates/ContentTypeList", {
-                parentLink: selectionData.contentLink,
-                contentLink: this.contentLink,
+                parentLink: selectionData.parentLink,
+                contentLink: selectionData.contentLink,
                 templatesRoot: this.templatesRoot
             });
         },

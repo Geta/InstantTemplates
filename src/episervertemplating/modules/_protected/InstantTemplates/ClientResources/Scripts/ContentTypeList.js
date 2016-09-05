@@ -54,18 +54,38 @@ function (
         // contentLink: [public] String
         //     The contentlink for which the list will be filtered on.
         contentLink: null,
-
         templatesRoot: null,
+        constructor: function(){
+            var vm = this;
+            topic.subscribe("/epi/shell/action/changeview", function (name, args) {
+                if (name !== "instantTemplates/ContentTypeList") return;
+                vm.contentLink = args.contentLink;
+                vm.render();
+            });
+        },
+        postCreate: function(){
+            this.render();
+        },
+        clear: function(){
+            // summary:
+            //		Destroys the current view.
+            // tags:
+            //		public
 
-        buildRendering: function () {
+            array.forEach(this.getChildren(), function (child) {
+                this.removeChild(child);
+                child.destroyRecursive();
+            }, this);
+        },
+        render: function () {
             // summary:
             //      Construct the base UI with suggested content types.
             // tags:
             //      protected
-
             this.inherited(arguments);
+            this.clear();
 
-            var suggested = new ContentTypeGroup({templatesRoot: this.templatesRoot, parentLink: this.parentLink});
+            var suggested = new ContentTypeGroup({ templatesRoot: this.templatesRoot, contentLink: this.contentLink });
 
             domClass.add(suggested.titleNode, "epi-ribbonHeaderSpecial");
             suggested.set("title", "Available Instant Templates");
@@ -75,7 +95,7 @@ function (
             this._suggestedContentTypes = suggested;
 
             this.set("shouldSkipContentTypeSelection", false);
-        },
+        }
     });
 
 });

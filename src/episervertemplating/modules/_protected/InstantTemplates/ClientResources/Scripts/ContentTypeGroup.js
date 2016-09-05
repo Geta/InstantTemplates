@@ -74,8 +74,9 @@
             var registry = dependency.resolve("epi.storeregistry");
 
             var instantTemplatesStore = registry.get("instanttemplates");
-
-            dojo.when(instantTemplatesStore.get(that.parentLink), function (response) {
+            console.log(this.contentLink)
+            console.log(that.contentLink)
+            dojo.when(instantTemplatesStore.get(that.contentLink), function (response) {
                 array.forEach(response, function (contentData) {
                     var child = new ContentType({ contentData: contentData });
                     this.connect(child, "onSelect", this.onSelect);
@@ -141,6 +142,6 @@
                 this.contentDataStore = registry.get("epi.cms.content.light");
             }
             return this.contentDataStore;
-        },
+        }
     });
 });
