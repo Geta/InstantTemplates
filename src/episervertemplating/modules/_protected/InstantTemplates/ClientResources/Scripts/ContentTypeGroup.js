@@ -74,14 +74,14 @@
             var registry = dependency.resolve("epi.storeregistry");
 
             var instantTemplatesStore = registry.get("instanttemplates");
-            console.log(this.contentLink)
-            console.log(that.contentLink)
-            dojo.when(instantTemplatesStore.get(that.contentLink), function (response) {
-                array.forEach(response, function (contentData) {
-                    var child = new ContentType({ contentData: contentData });
-                    this.connect(child, "onSelect", this.onSelect);
-                    this.addChild(child);
-                }, that);
+            dojo.when(instantTemplatesStore.refresh(that.contentLink), function(){
+                dojo.when(instantTemplatesStore.get(that.contentLink), function (response) {
+                    array.forEach(response, function (contentData) {
+                        var child = new ContentType({ contentData: contentData });
+                        that.connect(child, "onSelect", that.onSelect);
+                        that.addChild(child);
+                    }, that);
+                });
             });
         },
 
@@ -114,7 +114,7 @@
             //		callback
 
             topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
-                parent: this.parentLink,
+                parent: this.contentLink,
                 contentLink: item.contentLink,
                 headingText: "New Instant Template",
                 templateName: item.name

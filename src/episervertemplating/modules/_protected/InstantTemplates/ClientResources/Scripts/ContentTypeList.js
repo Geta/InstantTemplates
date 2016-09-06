@@ -60,6 +60,7 @@ function (
             topic.subscribe("/epi/shell/action/changeview", function (name, args) {
                 if (name !== "instantTemplates/ContentTypeList") return;
                 vm.contentLink = args.contentLink;
+                vm.parentLink = args.parentLink;
                 vm.render();
             });
         },
