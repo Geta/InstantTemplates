@@ -297,7 +297,7 @@ function (
             }
 
             if (this.createAsLocalAsset === true) {
-                topic.publish("/epi/cms/action/createlocalasset");
+                topic.publish("/epi-cms/action/createlocalasset");
             }
         },
 
@@ -310,7 +310,7 @@ function (
 
             this._clearCreateMode();
 
-            topic.publish("/epi/cms/action/showerror");
+            topic.publish("/epi-cms/action/showerror");
         },
 
         _onInvalidContentName: function (defaultName) {
@@ -518,7 +518,7 @@ function (
                 "currentMode": "create"
             });
 
-            topic.publish("/epi/cms/action/togglecreatemode", true);
+            topic.publish("/epi-cms/action/togglecreatemode", true);
         },
 
         _clearCreateMode: function () {
@@ -531,7 +531,7 @@ function (
                 "currentMode": undefined
             });
 
-            topic.publish("/epi/cms/action/togglecreatemode", false);
+            topic.publish("/epi-cms/action/togglecreatemode", false);
         }
     });
 });

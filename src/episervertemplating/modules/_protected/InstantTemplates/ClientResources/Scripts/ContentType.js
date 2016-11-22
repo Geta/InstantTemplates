@@ -7,7 +7,7 @@
     "dijit/_Widget",
     "dijit/_TemplatedMixin",
 
-    "epi/i18n!epi/cms/nls/episerver.cms.widget.pagetype",
+    "epi/i18n!epi-cms/nls/episerver.cms.widget.pagetype",
     "dojo/text!./templates/ContentType.html"
 ], function (dojo, domClass, string, focus, _Widget, _TemplatedMixin, i18n, template) {
 

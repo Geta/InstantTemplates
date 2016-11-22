@@ -2,7 +2,7 @@
     "dojo/_base/declare",
     "dojo/topic",
     // Resources
-    "epi/i18n!epi/cms/nls/episerver.cms.contentediting.toolbar.buttons.compare",
+    "epi/i18n!epi-cms/nls/episerver.cms.contentediting.toolbar.buttons.compare",
     // Parent class and mixins
     "epi/shell/command/_Command",
     "epi-cms/_ContentContextMixin"
