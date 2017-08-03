@@ -75,8 +75,24 @@ namespace EPiServer.InstantTemplates
 
         public RestResult Post(string templateLink, string parentLink, string name)
         {
-            var contentLink = this._contentRepository.Copy(new ContentReference(templateLink),
-                new ContentReference(parentLink), AccessLevel.Edit, AccessLevel.Edit, false);
+            var templateBlockData = this._contentRepository.Get<BlockData>(new ContentReference(templateLink));
+
+            ContentReference contentLink;
+
+            if (templateBlockData != null)
+            {
+                var assetsFolderForPage = ServiceLocator.Current
+                    .GetInstance<ContentAssetHelper>()
+                    .GetOrCreateAssetFolder(new ContentReference(parentLink));
+
+                contentLink = this._contentRepository.Copy(new ContentReference(templateLink),
+                    assetsFolderForPage.ContentLink, AccessLevel.Edit, AccessLevel.Edit, false);
+            }
+            else
+            {
+                contentLink = this._contentRepository.Copy(new ContentReference(templateLink),
+                    new ContentReference(parentLink), AccessLevel.Edit, AccessLevel.Edit, false);
+            }
 
             var temp = this._contentRepository.Get<ContentData>(contentLink).CreateWritableClone();
 
