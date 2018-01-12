@@ -6,7 +6,7 @@ namespace EPiServer.InstantTemplates
     [Component]
     public class TemplatesMainNavigationComponent : ComponentDefinitionBase
     {
-        public TemplatesMainNavigationComponent() : base("epi-cms/widget/HierarchicalList")
+        public TemplatesMainNavigationComponent() : base("epi-cms/asset/HierarchicalList")
         {
             Categories = new string[] { "content" };
             //LanguagePath = "/episerver/cms/components/templates";
