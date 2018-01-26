@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using EPiServer.Core;
+using EPiServer.DataAbstraction;
+using EPiServer.ServiceLocation;
 
 namespace EPiServerTemplating.Helpers
 {
@@ -10,6 +12,8 @@ namespace EPiServerTemplating.Helpers
     /// <remarks>ICategorizable content includes for example pages and blocks.</remarks>
     public static class CategorizableExtensions
     {
+        private static Injected<CategoryRepository> CategoryRespositoryInjected { get; set; }
+
         /// <summary>
         /// Returns the CSS classes (if any) associated with the theme(s) of the content, as decided by its categories
         /// </summary>
@@ -25,7 +29,7 @@ namespace EPiServerTemplating.Helpers
 
             var cssClasses = new HashSet<string>(); // Although with some overhead, a HashSet allows us to ensure we never add a CSS class more than once
 
-            foreach (var categoryName in content.Category.Select(category => content.Category.GetCategoryName(category).ToLower()))
+            foreach (var categoryName in content.Category.Select(category => CategoryRespositoryInjected.Service.Get(category).Name.ToLower()))
             {
                 switch (categoryName)
                 {

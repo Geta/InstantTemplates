@@ -91,7 +91,7 @@
         </PropertyGroup>
         <Exec Command="$(NugetCommand)"/>
 
-        <!-- Cleanup -->
-        <RemoveDir Directories="$(TmpOutDir)" />
+          <!-- Cleanup -->
+          <RemoveDir Directories="$(TmpOutDir)" />
     </Target>
 </Project>

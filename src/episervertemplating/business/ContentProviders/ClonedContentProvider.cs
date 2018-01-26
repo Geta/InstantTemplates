@@ -158,7 +158,9 @@ namespace EPiServerTemplating.Business.ContentProviders
 
             var languageBranchRepository = ServiceLocator.Current.GetInstance<ILanguageBranchRepository>();
 
-            var context = new LanguageSelectorContext(contentLink, languageBranchRepository, Load);
+            return Load(contentLink, languageSelector);
+           /* var context = new LanguageSelectorContext(contentLink, languageBranchRepository, Load);
+            var culture = languageSelector.Language;
 
             if (contentLink.GetPublishedOrLatest)
             {
@@ -174,7 +176,7 @@ namespace EPiServerTemplating.Business.ContentProviders
                 return ContentStore.LoadVersion(contentLink, langBr != null ? langBr.ID : -1);
             }
 
-            languageSelector.SetInitializedLanguageBranch(context);
+            languageSelector .SetInitializedLanguageBranch(context);
 
             // Get published version of Content
             var originalContent = ContentStore.Load(contentLink, context.SelectedLanguageBranch != null ? context.SelectedLanguageBranch.ID : -1);
@@ -186,7 +188,7 @@ namespace EPiServerTemplating.Business.ContentProviders
                 throw new NotSupportedException("Only cloning of pages is supported");
             }
 
-            return ClonePage(page);
+            return ClonePage(page);*/
         }
 
         protected override ContentResolveResult ResolveContent(ContentReference contentLink)

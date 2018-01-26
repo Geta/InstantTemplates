@@ -233,8 +233,11 @@
     <Content Include="ClientResources\Scripts\ContextMenuCommandProvider.js" />
     <Content Include="ClientResources\Scripts\TemplateContentSelectionCommand.js" />
     <Content Include="ClientResources\Scripts\TemplateContentTypesCommand.js" />
+    <Content Include="ClientResources\Scripts\TemplatesWidget.js" />
     <Content Include="ClientResources\Scripts\templates\ContentType.html" />
     <Content Include="ClientResources\Scripts\templates\ContentTypeGroup.html" />
+    <Content Include="web.config.install.xdt" />
+    <Content Include="web.config.uninstall.xdt" />
     <None Include="module.config">
     </None>
   </ItemGroup>

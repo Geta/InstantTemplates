@@ -16,9 +16,14 @@ namespace EPiServerTemplating.Business.Initialization
     {
         public void ConfigureContainer(ServiceConfigurationContext context)
         {
-            context.Container.Configure(ConfigureContainer);
+            var container = context.StructureMap();
+            container.Configure(x =>
+            {
+                x.For<IContentRenderer>().Use<ErrorHandlingContentRenderer>();
+                x.For<ContentAreaRenderer>().Use<AlloyContentAreaRenderer>();
+            });
 
-            DependencyResolver.SetResolver(new StructureMapDependencyResolver(context.Container));
+            DependencyResolver.SetResolver(new StructureMapDependencyResolver(container));
         }
 
         private static void ConfigureContainer(ConfigurationExpression container)

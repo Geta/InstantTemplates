@@ -20,5 +20,7 @@
     <files>
         <file src="bin\EPiServer.InstantTemplates.dll" target="lib\net45\" />
         <file src="tmp\InstantTemplates.zip" target="content\modules\_protected\InstantTemplates\" />
+        <file src="web.config.install.xdt" target="content" />
+        <file src="web.config.uninstall.xdt" target="content" />
     </files>
 </package>
