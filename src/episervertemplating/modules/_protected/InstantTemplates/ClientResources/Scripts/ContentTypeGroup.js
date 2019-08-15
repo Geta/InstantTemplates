@@ -14,9 +14,12 @@
     "dojo/keys",
     "dijit/_KeyNavContainer",
 
-    "epi/dependency"
+    "epi/dependency",
 
-], function (declare, lang, array, domStyle, template, topic, dojo, _TemplatedMixin, _LayoutWidget, ContentType, keys, _KeyNavContainer, dependency) {
+    // Resources
+    "epi/i18n!epi-cms/nls/"
+
+], function (declare, lang, array, domStyle, template, topic, dojo, _TemplatedMixin, _LayoutWidget, ContentType, keys, _KeyNavContainer, dependency, customLocalization) {
 
     return declare([_LayoutWidget, _TemplatedMixin, _KeyNavContainer], {
         // summary:
@@ -115,7 +118,8 @@
             topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
                 parent: this.parentLink,
                 contentLink: item.contentLink,
-                headingText: "New Instant Template",
+                headingText: customLocalization.episerver.cms.labels.newinstanttemplate != null ?
+                             customLocalization.episerver.cms.labels.newinstanttemplate : "New Instant Template",
                 templateName: item.name
             });
         },

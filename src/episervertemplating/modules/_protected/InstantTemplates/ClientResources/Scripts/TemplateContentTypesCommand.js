@@ -2,6 +2,7 @@
     "dojo/_base/declare",
     "dojo/topic",
     // Resources
+    "epi/i18n!epi-cms/nls/",
     "epi/i18n!epi-cms/nls/episerver.cms.contentediting.toolbar.buttons.compare",
     // Parent class and mixins
     "epi/shell/command/_Command",
@@ -10,6 +11,7 @@
     declare,
     topic,
     // Resources
+    customLocalization,
     localizations,
     // Parent class and mixins
     _Command,
@@ -27,7 +29,8 @@
         //      The CSS class which represents the icon to be used in visual elements.
         iconClass: "epi-iconPackage epi-icon--inverted",
 
-        label: "New from Template",
+        label: customLocalization.episerver.cms.command.newtemplate != null ? 
+               customLocalization.episerver.cms.command.newtemplate : "New from template",
 
         // canExecute: [readonly] Boolean
         //      Flag which indicates whether this command is able to be executed.

@@ -16,7 +16,9 @@
 // epi
     "epi/dependency",
     "epi/shell/TypeDescriptorManager",
-    "./ContentTypeGroup"
+    "./ContentTypeGroup",
+ //Resources
+    "epi/i18n!epi-cms/nls/"
 ],
 
 function (
@@ -36,7 +38,9 @@ function (
 // epi
     dependency,
     TypeDescriptorManager,
-    ContentTypeGroup
+    ContentTypeGroup,
+//Resources
+    customLocalization
 ) {
 
     return declare([_LayoutWidget], {
@@ -68,7 +72,9 @@ function (
             var suggested = new ContentTypeGroup({templatesRoot: this.templatesRoot, parentLink: this.parentLink});
 
             domClass.add(suggested.titleNode, "epi-ribbonHeaderSpecial");
-            suggested.set("title", "Available Instant Templates");
+            const title = customLocalization.episerver.cms.labels.availabletemplates != null ?
+                          customLocalization.episerver.cms.labels.availabletemplates : "Available Instant Templates"
+            suggested.set("title", title);
             suggested.set("templatesRoot", this.templatesRoot);
             suggested.setVisibility(true);
             this.addChild(suggested);

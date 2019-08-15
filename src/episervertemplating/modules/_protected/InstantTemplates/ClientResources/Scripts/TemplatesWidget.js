@@ -8,7 +8,9 @@
     "dojo/dom-geometry",
     "dojo/dom-class",
     "dojo/on",
-    "epi-cms/asset/HierarchicalList"
+    "epi-cms/asset/HierarchicalList",
+    // Resources
+    "epi/i18n!epi-cms/nls/"
 ],
     function (
         // dojo
@@ -20,14 +22,18 @@
         domGeometry,
         domClass,
         on,
-        HierarchicalList) {
+        HierarchicalList,
+        customLocalization
+    ) {
         return declare([HierarchicalList],
         {
             showCreateContentArea: false,
 
             noDataMessages: { 
-                    multiple: "These folders does not contain any templates", 
-                    single: "This folder does not contain any templates"
-                } 
+                multiple: customLocalization.episerver.cms.messages.nodatamultiple != null ?
+                          customLocalization.episerver.cms.messages.nodatamultiple : "These folders does not contain any templates", 
+                single: customLocalization.episerver.cms.messages.nodatasingle != null ?
+                        customLocalization.episerver.cms.messages.nodatasingle : "This folder does not contain any templates"
+            } 
         });
     });
