@@ -22,8 +22,8 @@
             var selectionData = this.get("selectionData");
 
             topic.publish("/epi/shell/action/changeview", "instantTemplates/ContentTypeList", {
-                parentLink: selectionData.parentLink,
-                contentLink: selectionData.contentLink,
+                parentLink: selectionData.contentLink,
+                contentLink: this.contentLink,
                 templatesRoot: this.templatesRoot
             });
         },

@@ -75,11 +75,11 @@
 
             var instantTemplatesStore = registry.get("instanttemplates");
 
-            dojo.when(instantTemplatesStore.get(that.contentLink), function (response) {
+            dojo.when(instantTemplatesStore.get(that.parentLink), function (response) {
                 array.forEach(response, function (contentData) {
                     var child = new ContentType({ contentData: contentData });
-                    that.connect(child, "onSelect", that.onSelect);
-                    that.addChild(child);
+                    this.connect(child, "onSelect", this.onSelect);
+                    this.addChild(child);
                 }, that);
             });
         },
@@ -113,7 +113,7 @@
             //		callback
 
             topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
-                parent: item.parentLink,
+                parent: this.parentLink,
                 contentLink: item.contentLink,
                 headingText: "New Instant Template",
                 templateName: item.name
