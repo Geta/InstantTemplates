@@ -57,15 +57,42 @@ function (
 
         templatesRoot: null,
 
-        buildRendering: function () {
+        updateView: function (data, context, additionalParams) {
+            var self = this;
+            topic.subscribe("/epi/shell/action/changeview", function (name, args) {
+                if (name !== "instantTemplates/ContentTypeList") return;
+                self.parentLink = args.parentLink;
+                self.contentLink = args.contentLink;
+                self.render();
+            });
+        },
+
+        clear: function () {
+            // summary:
+            //		Destroys the current view.
+            // tags:
+            //		public
+       
+            array.forEach(this.getChildren(), function (child) {
+                this.removeChild(child);
+                child.destroyRecursive();
+            }, this);
+        },
+
+        postCreate: function () {
+            this.render();
+        },
+
+        render: function () {
             // summary:
             //      Construct the base UI with suggested content types.
             // tags:
             //      protected
 
             this.inherited(arguments);
+            this.clear();
 
-            var suggested = new ContentTypeGroup({templatesRoot: this.templatesRoot, parentLink: this.parentLink});
+            var suggested = new ContentTypeGroup({ templatesRoot: this.templatesRoot, contentLink: this.contentLink });
 
             domClass.add(suggested.titleNode, "epi-ribbonHeaderSpecial");
             suggested.set("title", "Available Instant Templates");
