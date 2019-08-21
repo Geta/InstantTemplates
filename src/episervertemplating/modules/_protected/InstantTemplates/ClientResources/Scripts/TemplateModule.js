@@ -1,4 +1,7 @@
-﻿define([
+﻿// Copyright (c) Geta Digital. All rights reserved.
+// Licensed under Apache-2.0. See the LICENSE file in the project root for more information
+
+define([
     // Pull in the patches. Not used here, just evaluated, since this is the first module loaded when starting the application.
     "dojo/_base/declare",
     "dojo/_base/lang",
