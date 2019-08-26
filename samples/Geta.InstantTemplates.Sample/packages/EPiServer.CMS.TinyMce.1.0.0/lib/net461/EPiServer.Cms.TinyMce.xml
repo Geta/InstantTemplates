@@ -1,0 +1,2089 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EPiServer.Cms.TinyMce</name>
+    </assembly>
+    <members>
+        <member name="M:EPiServer.Cms.TinyMce.Core.Editor.PathExtensions.ResolvePaths(System.String[])">
+            <summary>
+            Resolves each entry in an array so they become absolute paths from application root.
+            </summary>
+            <param name="paths">The array of paths to resolve.</param>
+            <example>
+            "~/Public/Styles/Default/Editor.css" will be resolved to "/Public/Styles/Default/Editor.css"
+            </example>
+            <returns>A string array of resolved paths.</returns>
+        </member>
+        <member name="T:EPiServer.Cms.TinyMce.Core.PropertyXhtmlStringControl">
+            <summary>
+            Associates the global TinyMCE settings object with the XhtmlString property type.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Cms.TinyMce.Core.XhtmlStringEditorDescriptor">
+            <summary>
+            Editor descriptor that will configure TinyMCE as the editor for XhtmlString properties.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Cms.TinyMce.Core.XhtmlStringEditorDescriptor.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Cms.TinyMce.Core.XhtmlStringEditorDescriptor"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Cms.TinyMce.Core.XhtmlStringEditorDescriptor.#ctor(EPiServer.UI.PropertySettingsRepositoryHelper,EPiServer.Configuration.Settings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Cms.TinyMce.Core.XhtmlStringEditorDescriptor"/> class.
+            </summary>
+            <param name="propertySettingsRepositoryHelper">The _property settings repository helper.</param>
+            <param name="settings">The site settings container.</param>
+        </member>
+        <member name="M:EPiServer.Cms.TinyMce.Core.XhtmlStringEditorDescriptor.ModifyMetadata(EPiServer.Shell.ObjectEditing.ExtendedMetadata,System.Collections.Generic.IEnumerable{System.Attribute})">
+            <summary>
+            Modifies the metadata, adding any custom data, validators.
+            </summary>
+            <param name="metadata">The metadata.</param>
+            <param name="attributes">The custom attributes attached to the model class.</param>
+        </member>
+        <member name="M:EPiServer.Cms.TinyMce.Core.XhtmlStringEditorDescriptor.GetLegacyPluginsList(EPiServer.Editor.TinyMCE.TinyMCEInitOptions)">
+            <summary>
+            Returns list of lagacy plugins which should be loaded separately.
+            </summary>
+            <param name="options">The tinyMCE options.</param>
+        </member>
+        <member name="M:EPiServer.Cms.TinyMce.Core.XhtmlStringEditorDescriptor.CorrectPluginsList(EPiServer.Editor.TinyMCE.TinyMCEInitOptions)">
+            <summary>
+            Corrects the plugins list.
+            Except plugins that are used in legacy UI, and include plugins that are used in SH. Finally, take non-legacy plugins only.
+            </summary>
+            <param name="options">The tinymce init options.</param>
+        </member>
+        <member name="T:EPiServer.Cms.Shell.UI.Editor.TinyMCE.Plugins.ContentFragment">
+            <summary>
+            Handles non editable support for content fragments.
+            Set ServerSideOnly and AlwatsEnabeld both to true to prevent the plugin from being added in legacy Edit mode.
+            In Sparrowhawk, the plugin is manually added later on.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Cms.Shell.UI.Editor.TinyMCE.Plugins.EPiLink">
+            <summary>
+            Class that plugs in the EPiServer CMS link dialog.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Cms.Shell.UI.Editor.TinyMCE.Plugins.Lists">
+            <summary>
+            Advance list functionalities added in tinymce 3.5.
+            Set ServerSideOnly and AlwatsEnabeld both to true to prevent the plugin from being added in legacy Edit mode.
+            In Sparrowhawk, the plugin is manually added later on.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Cms.Shell.UI.Editor.TinyMCE.Plugins.NonEditable">
+            <summary>
+            Class that plugs in the EPiServer CMS personalized content functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.GlobalPropertyMerge">
+             <summary>
+            
+             </summary>
+             <exclude/>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.#ctor(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Merges and overrides properties
+            </summary>
+            <param name="initOptions">initial properties</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.BroadcastEvent(EPiServer.Editor.TinyMCE.GlobalPropertyMerge.GlobalPropertyEventHandler,EPiServer.Editor.TinyMCE.GlobalPropertyMergeEventArgs)">
+            <summary>
+            Sends events to receivers
+            </summary>
+            <param name="handler">An GlobalPropertyEventHandler delegate</param>
+            <param name="eventArgs">An GlobalPropertyMergerEventArgs object</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.AddProperties(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Add properties to collection
+            </summary>
+            <param name="properties">The properties to add</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.AddProperties(System.Collections.Generic.IDictionary{System.String,System.Object},System.Boolean)">
+            <summary>
+            Add properties to collection
+            </summary>
+            <param name="properties">The properties to add</param>
+            <param name="overrideExisting">True if existing elements (not mergable) will be overriden</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.AddProperty(System.String,System.Object)">
+            <summary>
+            Add property to collection
+            </summary>
+            <param name="propertyName">The name of the property</param>
+            <param name="propertyValue">Value of the property</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.AddProperty(System.String,System.Object,System.Boolean)">
+            <summary>
+            Add property to collection
+            </summary>
+            <param name="propertyName">The name of the property</param>
+            <param name="propertyValue">Value of the property</param>
+            <param name="overrideExisting">True if existing elements (not mergable) will be overriden</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.AddProperty(System.String,System.Object,System.String)">
+            <summary>
+            Add property to collection
+            </summary>
+            <param name="propertyName">The name of the property</param>
+            <param name="propertyValue">Value of the property</param>
+            <param name="pluginName">Name of the plugin.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.AddProperty(System.String,System.Object,System.String,System.Boolean)">
+            <summary>
+            Add property to collection
+            </summary>
+            <param name="propertyName">The name of the property</param>
+            <param name="propertyValue">Value of the property</param>
+            <param name="pluginName">Name of the plugin.</param>
+            <param name="overrideExisting">True if existing elements (not mergable) will be overriden</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.AddElements(System.String,System.String,System.String[],System.Boolean)">
+            <summary>
+            Add, override or merge elements to property
+            </summary>
+            <param name="pluginName">Name of the plugin.</param>
+            <param name="propertyName">Name of the property</param>
+            <param name="elements">Collection of elements to add, override or merge in the property</param>
+            <param name="overrideExisting">if set to <c>true</c> existing elements are overridden.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.AddAttributes(System.String,System.String,EPiServer.Editor.TinyMCE.GlobalPropertyMergeElement,System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Add, override or merge attribute to element
+            </summary>
+            <param name="pluginName">Name of the plugin</param>
+            <param name="propertyName">Name of the property</param>
+            <param name="mergeElement">Element used for merging attributes</param>
+            <param name="elementString">The element string.</param>
+            <param name="elementExisted">True if the element existed</param>
+            <param name="overrideExisting">If set to <c>true</c> existing attributes are overridden.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.GetElementName(System.String,System.Int32)">
+            <summary>
+            Gets the name of the element
+            </summary>
+            <param name="element">The element string with name, value, and attributes</param>
+            <param name="elementNameStart">Where the name startes in the element</param>
+            <returns>The name of the element</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.GetElementValue(System.String)">
+            <summary>
+            Gets the value of the element
+            </summary>
+            <param name="element">The element string with name, value, and attributes</param>
+            <returns>The value of the element (no attributes)</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.GetElementStarters(System.String)">
+            <summary>
+            Gets the elements starters defined before the element name
+            </summary>
+            <param name="element">The element string with name, value, and attributes</param>
+            <returns>The element starters</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.GetAttributeString(System.String)">
+            <summary>
+            Gets a string containing all attributes in an element
+            </summary>
+            <param name="elementString">The element string with name, value, and attributes</param>
+            <returns>A string containing all attributes in an element</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.GetAttributeName(System.String)">
+            <summary>
+            Gets an attribute name
+            </summary>
+            <param name="attribute">The attribute string</param>
+            <returns>The name of the attribute</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.GetProperties">
+            <summary>
+            Get the merged and overrided properties
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.SendEvent(System.String,System.String,System.Object,System.String,EPiServer.Editor.TinyMCE.GlobalPropertyMerge.InformationType)">
+            <summary>
+            Sends event to listener
+            </summary>
+            <param name="pluginName">Name of the plugin</param>
+            <param name="propertyName">Name of the property</param>
+            <param name="obj">Old value</param>
+            <param name="newValue">New Value</param>
+            <param name="informationType">Type of information</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.SendEvent(System.String,System.String,EPiServer.Editor.TinyMCE.GlobalPropertyMergeElement,EPiServer.Editor.TinyMCE.GlobalPropertyMergeAttribute,System.String,EPiServer.Editor.TinyMCE.GlobalPropertyMerge.InformationType)">
+            <summary>
+            Sends event to listener
+            </summary>
+            <param name="pluginName">Name of the plugin</param>
+            <param name="propertyName">Name of the property</param>
+            <param name="element">Element</param>
+            <param name="attribute">Old attribute</param>
+            <param name="newValue">New Value</param>
+            <param name="informationType">Type of information</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.SendEvent(System.String,System.String,EPiServer.Editor.TinyMCE.GlobalPropertyMergeElement,System.String,EPiServer.Editor.TinyMCE.GlobalPropertyMerge.InformationType)">
+            <summary>
+            Sends event to listener
+            </summary>
+            <param name="pluginName">Name of the plugin</param>
+            <param name="propertyName">Name of the property</param>
+            <param name="element">Old value</param>
+            <param name="newValue">New Value</param>
+            <param name="informationType">Type of information</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.SendEvent(System.String,System.String,EPiServer.Editor.TinyMCE.GlobalPropertyMergeElement,EPiServer.Editor.TinyMCE.GlobalPropertyMergeAttribute,System.Object,System.String,EPiServer.Editor.TinyMCE.GlobalPropertyMergeChanges.ObjectType,EPiServer.Editor.TinyMCE.GlobalPropertyMerge.InformationType)">
+            <summary>
+            Sends event to listener
+            </summary>
+            <param name="pluginName">Name of the plugin</param>
+            <param name="propertyName">Name of the property</param>
+            <param name="element">Old value</param>
+            <param name="attribute">The attribute</param>
+            <param name="obj">Old value</param>
+            <param name="newValue">New Value</param>
+            <param name="objectType">The object type event is targeting</param>
+            <param name="informationType">Type of information</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.GlobalPropertyMerge.AddToList(EPiServer.Editor.TinyMCE.GlobalPropertyMergeChanges,EPiServer.Editor.TinyMCE.GlobalPropertyMerge.InformationType)">
+            <summary>
+            Add change to list
+            </summary>
+            <param name="changes">The change object</param>
+            <param name="type">Type of change</param>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.GlobalPropertyMergeAttribute">
+            <summary>
+            Attributes used for merging properies
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.GlobalPropertyMergeChanges">
+             <summary>
+            
+             </summary>
+             <exclude/>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.GlobalPropertyMergeObjectChanges">
+            <summary>
+            Change object for objects
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.GlobalPropertyMergeElementChanges">
+            <summary>
+            Change object for elements
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.GlobalPropertyMergeAttributeChanges">
+            <summary>
+            Change object for attributes
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.GlobalPropertyMergeElement">
+            <summary>
+            Elements used for merging properties
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.GlobalPropertyMergeEventArgs">
+            <summary>
+            Eventargs used when merging and overriding properties in tinyMCE
+            </summary>
+            <exclude/>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.IDynamicConfigurationOptions">
+            <summary>
+            Interface that specifies that the plug-in wants to customize the Tiny MCE initialization options.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.IDynamicConfigurationOptions.GetConfigurationOptions">
+            <summary>
+            Gets the configuration options for the Tiny MCE plug-in.
+            </summary>
+            <returns>A list with the configuration options for the plug-in.</returns>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.InputTinyOptions">
+            <summary>
+            Web control that is used to display and edit settings for a Tiny MCE editor.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.InputTinyOptions.dataFieldValue">
+            <summary>
+            Private sting that hold the settings rows as a string.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.AllButtons">
+            <summary>
+            Gets all buttons that exists. (Searches for all plugin attributes of type <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPluginButtonAttribute"/> and filters out the interesting plugins)
+            </summary>
+            <value>All buttons.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.AllNonVisualPlugins">
+            <summary>
+            Gets all plugins that dont have a visual button. (Searches for all plugin attributes of type <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPluginNonVisualAttribute"/> and filters out the interesting plugins)
+            </summary>
+            <value>All non-visual buttonplugins.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.Groups">
+            <summary>
+            Gets the groups. This property is populated when parsing the Plugins for creating the GUI and used locally in the process of generating the buttonlists.
+            The property is used to ensure that no groups are missed (even if the list has no items when loaded we want to display it)
+            </summary>
+            <value>The groups.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.Settings">
+            <summary>
+            Gets or sets the settings.
+            </summary>
+            <value>The settings.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.OptionsAsString">
+            <summary>
+            Gets the options as string.
+            </summary>
+            <value>The options as string.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.OptionsAsButtonRows">
+            <summary>
+            Gets the options as button rows.
+            </summary>
+            <value>The options as button rows.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.DataInput">
+            <summary>
+            Gets the data input field.
+            </summary>
+            <value>The data input.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.EditorWidth">
+            <summary>
+            Gets the width of the editor.
+            </summary>
+            <value>The width of the editor.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.EditorHeight">
+            <summary>
+            Gets the height of the editor.
+            </summary>
+            <value>The height of the editor.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.ContentCss">
+            <summary>
+            Gets the height of the editor.
+            </summary>
+            <value>The height of the editor.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.ButtonsContainer">
+            <summary>
+            Gets the buttons container.
+            </summary>
+            <value>The buttons container.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.NonVisualPluginCheckboxes">
+            <summary>
+            Gets or sets the non visual plugin checkboxes.
+            </summary>
+            <value>The non visual plugin checkboxes.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.NonVisualPluginCheckboxesClientIds">
+            <summary>
+            Gets or sets the non visual plugin checkboxes client ids.
+            </summary>
+            <value>The non visual plugin checkboxes client ids.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.InputTinyOptions.SelectedNonVisualPlugins">
+            <summary>
+            Gets or sets the selected plugins.
+            </summary>
+            <value>The selected plugins.</value>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.CreateChildControls">
+            <summary>
+            Called by the ASP.NET page framework to notify server controls that use composition-based implementation to create any child controls they contain in preparation for posting back or rendering.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.GetActiveToolsHTML">
+            <summary>
+            Gets the active tools HTML.
+            </summary>
+            <returns>The active tools HTML</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.GetInactiveToolsHTML">
+            <summary>
+            Gets the inactive tools HTML.
+            </summary>
+            <returns>The inactive tools HTML</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.GetPluginHTML(EPiServer.Editor.TinyMCE.TinyMCEPlugIn,System.Boolean)">
+            <summary>
+            Gets the HTML for one button.
+            </summary>
+            <param name="plugin">The plugin.</param>
+            <param name="updateDataFieldValue">if set to <c>true</c> data field value is updated.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.GetButtonsHTML">
+            <summary>
+            Gets the buttons HTML.
+            </summary>
+            <returns>The buttons HTML</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.GetDialogHTML">
+            <summary>
+            Gets the dialog HTML.
+            </summary>
+            <returns>The dialog HTML</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.AddScripts">
+            <summary>
+            Adds the scripts to the head of the document.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.AddLiteral(System.String)">
+            <summary>
+            Adds a literal control.
+            </summary>
+            <param name="text">The text to add tothe literal.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.AddTinyButtonsControl">
+            <summary>
+            Adds the tiny buttons control.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.GetOptionsAsButtonRows">
+            <summary>
+            Gets the options as button rows.
+            </summary>
+            <returns> A List of buttonRows</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.LoadSettingsUI(EPiServer.Core.PropertySettings.IPropertySettings)">
+            <summary>
+            Loads the user interface for the property settings.
+            </summary>
+            <param name="settings">The current settings for the property.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.InputTinyOptions.UpdateSettings(EPiServer.Core.PropertySettings.IPropertySettings)">
+            <summary>
+            Saves the new settings.
+            </summary>
+            <param name="settings">The current settings for the property.</param>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.PlugInAssembler">
+            <summary>
+            Helper class to filter plugins by plugin names and button names.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.PlugInAssembler.ResourceUrls">
+            <summary>
+            A collection a resources requirements for the collected plugins and buttons.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.PlugInAssembler.Plugins">
+            <summary>
+            A collection of enabled tinyMCE plugins required.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.PlugInAssembler.ToolbarRows">
+            <summary>
+            Gets or sets the toolbar rows.
+            </summary>
+            <value>The toolbar rows.</value>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.PlugInAssembler.#ctor(EPiServer.Editor.TinyMCE.GlobalPropertyMerge)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.PlugInAssembler"/> class.
+            </summary>
+            <param name="propertyMerger">The property merger used when merging plugin init configuration.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.PlugInAssembler.AddSettings(EPiServer.Editor.TinyMCE.TinyMCESettings)">
+            <summary>
+            Populate the <see cref="P:EPiServer.Editor.TinyMCE.PlugInAssembler.Plugins"/>, <see cref="P:EPiServer.Editor.TinyMCE.PlugInAssembler.ToolbarRows"/> and <see cref="P:EPiServer.Editor.TinyMCE.PlugInAssembler.ResourceUrls"/>
+            collections from a <see cref="T:EPiServer.Editor.TinyMCE.TinyMCESettings"/> instance.
+            </summary>
+            <param name="settings">The settings instance used for population.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.PlugInAssembler.AddToolbarRow(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Registers button plugins based on a list (tool bar) of button names.
+            </summary>
+            <param name="buttonNames">The list of button names</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.PlugInAssembler.AddPlugins(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Adds plugins based on plugin names.
+            </summary>
+            <param name="plugins">A list of plugin names.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.PlugInAssembler.RegisterPlugin(EPiServer.Editor.TinyMCE.TinyMCEPlugIn)">
+            <summary>
+            Registers a plugin, i.e.
+            Add its resource url to the <see cref="P:EPiServer.Editor.TinyMCE.PlugInAssembler.ResourceUrls"/> collection.
+            Merge the plugin init configuration.
+            Add the plugin name to the <see cref="P:EPiServer.Editor.TinyMCE.PlugInAssembler.Plugins"/> list
+            </summary>
+            <param name="plugin">The plugin.</param>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.PluginNotFoundException">
+            <summary>
+            Exception that is thrown when an EPiServer Tiny MCE plug-in can not be loaded.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.PluginNotFoundException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.PluginNotFoundException"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.PluginNotFoundException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.PluginNotFoundException"/> class.
+            </summary>
+            <param name="message">The exception message.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.PluginNotFoundException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.PluginNotFoundException"/> class.
+            </summary>
+            <param name="message">The exception message.</param>
+            <param name="inner">The inner exception.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.PluginNotFoundException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.PluginNotFoundException"/> class.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo"/> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext"/> that contains contextual information about the source or destination.</param>
+            <exception cref="T:System.ArgumentNullException">
+            The <paramref name="info"/> parameter is null.
+            </exception>
+            <exception cref="T:System.Runtime.Serialization.SerializationException">
+            The class name is null or <see cref="P:System.Exception.HResult"/> is zero (0).
+            </exception>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Separator">
+            <summary>
+            Class that plugs in the built in separator functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Bold">
+            <summary>
+            Class that plugs in the built in bold functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Italic">
+            <summary>
+            Class that plugs in the built in italic functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Underline">
+            <summary>
+            Class that plugs in the built in underline functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Strikethrough">
+            <summary>
+            Class that plugs in the built in strike through functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Justifyleft">
+            <summary>
+            Class that plugs in the built in justify left functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Justifycenter">
+            <summary>
+            Class that plugs in the built in justify center functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Justifyright">
+            <summary>
+            Class that plugs in the built in justify right functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Justifyfull">
+            <summary>
+            Class that plugs in the built in justify full functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Bullist">
+            <summary>
+            Class that plugs in the built in bullet list functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Numlist">
+            <summary>
+            Class that plugs in the built in numeric list functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Outdent">
+            <summary>
+            Class that plugs in the built in outdent functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Indent">
+            <summary>
+            Class that plugs in the built in indent functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Cut">
+            <summary>
+            Class that plugs in the built in cut functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Copy">
+            <summary>
+            Class that plugs in the built in copy functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Paste">
+            <summary>
+            Class that plugs in the built in paste functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Undo">
+            <summary>
+            Class that plugs in the built in undo functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Redo">
+            <summary>
+            Class that plugs in the built in redo functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Link">
+            <summary>
+            Class that plugs in the built in link functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Unlink">
+            <summary>
+            Class that plugs in the built in unlink functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Image">
+            <summary>
+            Class that plugs in the built in image functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Cleanup">
+            <summary>
+            Class that plugs in the built in clean up functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Code">
+            <summary>
+            Class that plugs in the built in code functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Hr">
+            <summary>
+            Class that plugs in the built in horizontal row functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Removeformat">
+            <summary>
+            Class that plugs in the built in remove format functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Fontselect">
+            <summary>
+            Class that plugs in the built in font selection functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Fontsizeselect">
+            <summary>
+            Class that plugs in the built in font size selection functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Styleselect">
+            <summary>
+            Class that plugs in the built in style selection functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Formatselect">
+            <summary>
+            Class that plugs in the built in format selection functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Sup">
+            <summary>
+            Class that plugs in the built in sup functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Sub">
+            <summary>
+            Class that plugs in the built in sub functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Forecolor">
+            <summary>
+            Class that plugs in the built in fore color functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Backcolor">
+            <summary>
+            Class that plugs in the built in back color functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Forecolorpicker">
+            <summary>
+            Class that plugs in the built in fore color picker functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Backcolorpicker">
+            <summary>
+            Class that plugs in the built in back color picker functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Charmap">
+            <summary>
+            Class that plugs in the built in char map functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Visualaid">
+            <summary>
+            Class that plugs in the built in visual aid functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Anchor">
+            <summary>
+            Class that plugs in the built in anchor functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.AdvImage">
+            <summary>
+            Class that plugs in the built in advanced image functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Ltr">
+            <summary>
+            Class to plug-in the built in left to right functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Rtl">
+            <summary>
+            Class to plug-in the built in right to left functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiAccessKeysRemove">
+            <summary>
+            Since access keys in TinyMCE does not work at all for us and access keys in general have alot of problem we are removing them for the moment.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiEditorDisable">
+            <summary>
+            Since access keys in TinyMCE does not work at all for us and access keys in general have alot of problem we are removing them for the moment.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiExternalToolbar">
+            <summary>
+            Class that plugs in the EPiServer CMS external editor toolbar functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiFileBrowser">
+            <summary>
+            Plug-In registration for the file browser dialog
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiImageEditor">
+            <summary>
+            A Tiny MCE plug-in that enables the editor to open an image editor directly from the html editor when an image is selected.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.Plugins.EPiImageEditor.GetConfigurationOptions">
+            <summary>
+            Gets the configuration options for the Tiny MCE plug-in.
+            </summary>
+            <returns>
+            A list with the configuration options for the plug-in.
+            </returns>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiImageResize">
+            <summary>
+            Plugin to detected when imaged within the editor are resized.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiPersonalizedContent">
+            <summary>
+            Class that plugs in the EPiServer CMS personalized content functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiQuote">
+            <summary>
+            Class that plugs in the quote/block quote functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiStyleMatcher">
+            <summary>
+            Improve style matching functionalities of the editor
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiTrailing">
+            <summary>
+            Class that enables the user to set cursor last in the document unregardless if there is a block element before (table, dynamic or personalized content etc).
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiVisualAid">
+            <summary>
+            Plug-In registration for the enhanced visual aid.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.EPiWindowManager">
+            <summary>
+            Plug-In registration for EPiServer Window Manager plugin.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Fullscreen">
+            <summary>
+            Class that plugs in the built in full screen functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.InsertLayer">
+            <summary>
+            Class that plugs in the built in insert layer functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Absolute">
+            <summary>
+            Class that plugs in the built in absolute positioning functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.MoveForward">
+            <summary>
+            Class that plugs in the built in move forward navigation.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.MoveBackward">
+            <summary>
+            Class that plugs in the built in move backward navigation.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Media">
+            <summary>
+            Class that plugs in the built in media functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Nonbreaking">
+            <summary>
+            Class that plugs in the built in non breaking functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Pastetext">
+            <summary>
+            Class that plugs in the built in paste as text functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Pasteword">
+            <summary>
+            Class that plugs in the built in paste as word functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Selectall">
+            <summary>
+            Class that plugs in the built in select all functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.RTLSupport">
+            <summary>
+            A Tiny MCE plug-in that enables RTL support for Tiny MCE when editing languages that is RTL.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.Plugins.RTLSupport.GetConfigurationOptions">
+            <summary>
+            Gets the configuration options for the Tiny MCE plug-in.
+            </summary>
+            <returns>
+            A list with the configuration options for the plug-in.
+            </returns>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Search">
+            <summary>
+            Class that plugs in the built in search functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Replace">
+            <summary>
+            Class that plugs in the built in replace functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.StyleProps">
+            <summary>
+            Class that plugs in the built in style properties functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Table">
+            <summary>
+            Class that plugs in the built in table functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Delete_Table">
+            <summary>
+            Class that plugs in the built in table delete functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.TableControls">
+            <summary>
+            Class that plugs in the built in table controls functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Row_Props">
+            <summary>
+            Class that plugs in the built in table row properties functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Cell_Props">
+            <summary>
+            Class that plugs in the built in table cell properties functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Delete_Col">
+            <summary>
+            Class that plugs in the built in table delete column functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Delete_Row">
+            <summary>
+            Class that plugs in the built in table delete row functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Col_After">
+            <summary>
+            Class that plugs in the built in table insert column after functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Col_Before">
+            <summary>
+            Class that plugs in the built in table insert column before functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Row_After">
+            <summary>
+            Class that plugs in the built in table insert row after functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Row_Before">
+            <summary>
+            Class that plugs in the built in table insert row before functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Split_Cells">
+            <summary>
+            Class that plugs in the built in table split cells functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Merge_Cells">
+            <summary>
+            Class that plugs in the built in table merge cells functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Wordcount">
+            <summary>
+            Class that plugs in the built in word count functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Cite">
+            <summary>
+            Class that plugs in the built in cite functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Abbr">
+            <summary>
+            Class that plugs in the built in abbriviation functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Acronym">
+            <summary>
+            Class that plugs in the built in acronym functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Ins">
+            <summary>
+            Class that plugs in the built in ins functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Del">
+            <summary>
+            Class that plugs in the built in del functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.Plugins.Attribs">
+            <summary>
+            Class that plugs in the built in attributes functionality.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEButtons">
+            <summary>
+            Defines constant strings for built in Tiny MCE buttons in the EPiServer user interface.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Separator">
+            <summary>
+            A graphical element to separate buttons in the toolbar.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Bold">
+            <summary>
+            The bold button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Italic">
+            <summary>
+            The italic button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Underline">
+            <summary>
+            The underline button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.StrikeThrough">
+            <summary>
+            The strike through button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.JustifyLeft">
+            <summary>
+            The justify left button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.JustifyCenter">
+            <summary>
+            The justify center button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.JustifyRight">
+            <summary>
+            The justify right button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.JustifyFull">
+            <summary>
+            The justify full button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.BulletedList">
+            <summary>
+            The bulleted list button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.NumericList">
+            <summary>
+            The numeric list button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Outdent">
+            <summary>
+            The outdent button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Indent">
+            <summary>
+            The indent button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Cut">
+            <summary>
+            The cut button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Copy">
+            <summary>
+            The copy button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Paste">
+            <summary>
+            The paste button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Undo">
+            <summary>
+            The undo button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Redo">
+            <summary>
+            The redo button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Link">
+            <summary>
+            The default Tiny MCE link button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.EPiServerLink">
+            <summary>
+            The EPiServer link button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Unlink">
+            <summary>
+            The unlink button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Image">
+            <summary>
+            The image button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.CleanUp">
+            <summary>
+            The clean up button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Code">
+            <summary>
+            The code button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.HorizontalRow">
+            <summary>
+            The horizontal row button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.RemoveFormat">
+            <summary>
+            The remove format button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.FontSelect">
+            <summary>
+            The font select button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.FontSizeSelect">
+            <summary>
+            The font size select button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.StyleSelect">
+            <summary>
+            The style select button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.FormatSelect">
+            <summary>
+            The format select button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.SuperScript">
+            <summary>
+            The super script button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.SubScript">
+            <summary>
+            The sub script button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.ForeColor">
+            <summary>
+            The fore color button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.BackColor">
+            <summary>
+            The back color button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.ForeColorPicker">
+            <summary>
+            The fore color picker button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.BackColorPicker">
+            <summary>
+            The back color picker button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.CharacterMap">
+            <summary>
+            The character map button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.VisualAid">
+            <summary>
+            The visual aid button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Anchor">
+            <summary>
+            The anchor button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.LeftToRight">
+            <summary>
+            The left to right button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.RightToLeft">
+            <summary>
+            The right to left button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.EPiServerImageEditor">
+            <summary>
+            The EPiServer image editor button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.EPiServerPersonalizedContent">
+            <summary>
+            The EPiServer personalized content button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.EPiServerQuote">
+            <summary>
+            The EPiServer quote button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Fullscreen">
+            <summary>
+            The full screen button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.InsertLayer">
+            <summary>
+            The insert layer button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Absolute">
+            <summary>
+            The absolute button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.MoveForward">
+            <summary>
+            The move forward button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.MoveBackward">
+            <summary>
+            The move backward button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Media">
+            <summary>
+            The media button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.NonBreaking">
+            <summary>
+            The non breaking button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.PasteText">
+            <summary>
+            The paste text button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.PasteWord">
+            <summary>
+            The paste word button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.SelectAll">
+            <summary>
+            The select all button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Search">
+            <summary>
+            The search button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Replace">
+            <summary>
+            The replace button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.StyleProperties">
+            <summary>
+            The style properties button.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons">
+            <summary>
+            Contains buttons that affects table editing.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.Table">
+            <summary>
+            The table button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.Delete">
+            <summary>
+            The delete button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.Controls">
+            <summary>
+            The controls button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.RowProperties">
+            <summary>
+            The row properties button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.CellProperties">
+            <summary>
+            The cell properties button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.DeleteColumns">
+            <summary>
+            The delete columns button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.DeleteRow">
+            <summary>
+            The delete row button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.InsertColumnsAfter">
+            <summary>
+            The insert columns after button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.InsertColumnBefore">
+            <summary>
+            The insert column before button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.InsertRowAfter">
+            <summary>
+            The insert row after button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.InsertRowBefore">
+            <summary>
+            The insert row before button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.SplitCells">
+            <summary>
+            The split cells button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.TableButtons.MergeCells">
+            <summary>
+            The merge cells button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Cite">
+            <summary>
+            The cite button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Abbreviation">
+            <summary>
+            The abbreviation button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Acronym">
+            <summary>
+            The acronym button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Insertion">
+            <summary>
+            The insertion button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Deletion">
+            <summary>
+            The deletion button.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEButtons.Attributes">
+            <summary>
+            The attributes button.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEInitOptions">
+            <summary>
+            Acts as a composer of the various init-options required by TinyMCE to start.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType">
+            <summary>
+            Used to specify what options to start with
+            when composing the InitOptions
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType.None">
+            <summary>
+            No init type defined
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType.EditMode">
+            <summary>
+            Options valid for full CMS edit mode
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType.Ope">
+            <summary>
+            Options valid for On Page edit mode
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.#ctor(EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEInitOptions"/> class.
+            </summary>
+            <param name="initType">Type of the init.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.#ctor(EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType,EPiServer.Editor.TinyMCE.TinyMCESettings)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEInitOptions"/> class.
+            </summary>
+            <param name="initType">Type of the init.</param>
+            <param name="settings">The settings.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.#ctor(EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType,EPiServer.Editor.TinyMCE.TinyMCESettings,EPiServer.Core.IContent)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEInitOptions"/> class.
+            </summary>
+            <param name="initType">The type.</param>
+            <param name="settings">The settings.</param>
+            <param name="content">A <see cref="T:EPiServer.Core.IContent"/> object.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.#ctor(EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType,System.Collections.Generic.IDictionary{System.String,System.Object},EPiServer.Editor.TinyMCE.TinyMCESettings,EPiServer.Core.IContent)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEInitOptions"/> class.
+            </summary>
+            <param name="initType">The type</param>
+            <param name="options">The options.</param>
+            <param name="settings">The settings.</param>
+            <param name="content">A <see cref="T:EPiServer.Core.IContent"/> object.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.AddSettings(EPiServer.Editor.TinyMCE.TinyMCESettings,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Adds the settings.
+            </summary>
+            <param name="settings">The settings.</param>
+            <param name="initOptions">The init options.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.CreateInitOptions(EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType)">
+            <summary>
+            Creates the default settings dictionary used for initializing tinyMCE.
+            </summary>
+            <returns>A dictionary with configuration options for tinyMCE.</returns>
+            <remarks>Primarily for control developers.</remarks>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitOptions">
+            <summary>
+            Gets the init options object for starting an instance of TinyMCE.
+            </summary>
+            <value>The init options.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.ResourceUrls">
+            <summary>
+            Gets the resource urls required by plugins.
+            </summary>
+            <value>The resource urls.</value>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.AddPageDataContext(EPiServer.Core.IContent,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Sets the epi_page_context and the UIEditorCssPaths based on the supplied contentData.
+            </summary>
+            <param name="content">The content.</param>
+            <param name="initOptions">The init options.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.AddStyleFormats(System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Adds the style formats found from the contentCss property in the settings object.
+            </summary>
+            <param name="initOptions">The init options.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.ParseStyleFormats(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Parses css files and returns style formats
+            </summary>
+            <param name="cssFilePaths">The CSS file paths.</param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.LoadCssStream(System.String)">
+            <summary>
+            Loads the specified CSS file from the virtual path.
+            </summary>
+            <param name="cssVirtualPath">The CSS path.</param>
+            <returns>Contents of the css file or null if path is null or empty.</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEInitOptions.AddPluginsAndToolbars(EPiServer.Editor.TinyMCE.PlugInAssembler,EPiServer.Editor.TinyMCE.TinyMCEInitOptions.InitType,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Adds the merged plugins and associated toolbars and buttons.
+            </summary>
+            <param name="assembler">The assembler.</param>
+            <param name="initType">The type.</param>
+            <param name="initOptions">The init options.</param>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIn">
+            <summary>
+            Used for keeping information about TinyMCE plugins and settings
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.#ctor(System.String,System.String,System.Collections.Generic.IDictionary{System.String,System.Object},System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIn"/> class as a non-visual plugin
+            </summary>
+            <param name="name">Name of the plug-in.</param>
+            <param name="decoratedTypeName">Full name of the decorated class.</param>
+            <param name="editorInitConfigurationOptions">Any additional configuration options added to editor initialization.</param>
+            <param name="alwaysEnabled">True if the plugin should always be enabled, i.e. not possible to disable the plug-in in admin mode.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Collections.Generic.IDictionary{System.String,System.Object})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIn"/> class as button plugin
+            </summary>
+            <param name="name">Name of the plug-in.</param>
+            <param name="decoratedTypeName">Full name of the decorated class.</param>
+            <param name="resourceUrl">The resource URL.</param>
+            <param name="buttonName">Name of the button.</param>
+            <param name="buttonClass">The button class.</param>
+            <param name="buttonUrl">The button URL.</param>
+            <param name="groupName">Name of the plug-in group.</param>
+            <param name="buttonSortIndex">Index of the button in the configuration view.</param>
+            <param name="editorInitConfigurationOptions">Any additional configuration options added to editor initialization.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.#ctor(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.Int32,System.Collections.Generic.IDictionary{System.String,System.Object},System.Boolean,EPiServer.Editor.TinyMCE.TinyMCEPlugIn.PluginType)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIn"/> class.
+            </summary>
+            <param name="name">Name of the plug-in.</param>
+            <param name="decoratedTypeName">Full name of the decorated class.</param>
+            <param name="resourceUrl">The resource URL.</param>
+            <param name="buttonName">Name of the button.</param>
+            <param name="buttonClass">The button class.</param>
+            <param name="buttonUrl">The button URL.</param>
+            <param name="groupName">Name of the plug-in group.</param>
+            <param name="buttonSortIndex">Index of the button in the configuration view.</param>
+            <param name="editorInitConfigurationOptions">Any additional configuration options added to editor initialization.</param>
+            <param name="alwaysEnabled">True if the plugin should always be enabled, i.e. not possible to disable the plug-in in admin mode.</param>
+            <param name="pluginType">Type of the plugin.</param>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.DecoratedTypeName">
+            <summary>
+            Gets the fullname of the decorated type for this plugin.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.Name">
+            <summary>
+            Gets or sets the name.
+            </summary>
+            <value>The name.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.ResourceUrl">
+            <summary>
+            Gets or sets the resource URL.
+            </summary>
+            <value>The resource URL.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.ButtonName">
+            <summary>
+            Gets or sets the name of the button.
+            </summary>
+            <value>The name of the button.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.ButtonClass">
+            <summary>
+            Gets or sets the button css-class.
+            </summary>
+            <value>The button css-class.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.ButtonUrl">
+            <summary>
+            Gets or sets the buttons image URL. Can be used instead of <see cref="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.ButtonClass"/>
+            </summary>
+            <value>The buttons image URL.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.ButtonSortIndex">
+            <summary>
+            Gets or sets the sortindex of the button.
+            </summary>
+            <value>The sortindex of the button.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.GroupName">
+            <summary>
+            Gets or sets the name of the group.
+            </summary>
+            <value>The name of the group.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.UseTinyResourceLoad">
+            <summary>
+            Gets  a value indicating whether to use tinys client-side resource load.
+            </summary>
+            <value>
+            	<c>true</c> if tiny should load resources; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.EditorInitConfigurationOptions">
+            <summary>
+            Gets or sets the editor init configuration options.
+            </summary>
+            <value>The editor init configuration options.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.DynamicConfigurationOptionsHandler">
+            <summary>
+            Gets or sets a class that implements <see cref="T:EPiServer.Editor.TinyMCE.IDynamicConfigurationOptions"/> that is responsible for creating init options for the plug-in/editor.
+            </summary>
+            <value>A class that handles configuration options for the plug-in dynamically.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.AlwaysEnabled">
+            <summary>
+            Gets value indicating if the plugin always will be enabled (not possible to disable it in admin mode)
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.Type">
+            <summary>
+            Type of plugin
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.ServerSideOnly">
+            <summary>
+            Gets or sets a value indicating whether this plug-in is server side only and should not be added to the init configuration plug-in list.
+            </summary>
+            <value><c>true</c> if this plug-in is server side only; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.GetPlugins">
+            <summary>
+            Gets the plugins.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.GetPluginList">
+            <summary>
+            Loads and returns all enabled plugins, or gets them from the cache if they've been loaded previously.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.GetPluginsByButtonNames(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Gets all plugins where the button name matches a name in the list.
+            </summary>
+            <param name="buttonList">A collection of button names.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.GetPluginsByPluginNames(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Gets all enabled plugins having a name matching  the name of the plugins by.
+            </summary>
+            <param name="pluginNames">A collection of plugin names.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.ParsePluginInitConfiguration(System.String,System.String)">
+            <summary>
+            Parses the editor init configuration of a plug-in using the <see cref="T:System.Web.Script.Serialization.JavaScriptSerializer"/>.
+            </summary>
+            <param name="initOptions">The initialization options a a JSON object</param>
+            <param name="pluginName">Name of the parsed plugin. Only used for error logging</param>
+            <returns>A Dictionary containing the init options, or null if <paramref name="initOptions"/> is empty.</returns>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.EqualGroupNameComparer">
+            <summary>
+            Compares two <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIn"/> objects to see if the Groupname properties are equal.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.EqualGroupNameComparer.Equals(EPiServer.Editor.TinyMCE.TinyMCEPlugIn,EPiServer.Editor.TinyMCE.TinyMCEPlugIn)">
+            <summary>
+            Determines whether the specified objects are equal.
+            </summary>
+            <param name="x">The first object of type <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIn"/> to compare.</param>
+            <param name="y">The second object of type <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIn"/> to compare.</param>
+            <returns>
+            true if the specified objects are equal; otherwise, false.
+            </returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.EqualGroupNameComparer.GetHashCode(EPiServer.Editor.TinyMCE.TinyMCEPlugIn)">
+            <summary>
+            Returns a hash code for the specified object.
+            </summary>
+            <param name="obj">The <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIn"/> for which a hash code is to be returned.</param>
+            <returns>A hash code for the specified object.</returns>
+            <exception cref="T:System.ArgumentNullException">
+            The type of <paramref name="obj"/> is a reference type and <paramref name="obj"/> is null.
+            </exception>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPlugIn.CompareTo(EPiServer.Editor.TinyMCE.TinyMCEPlugIn)">
+            <summary>
+            Compares the current object with another object of the same type.
+            </summary>
+            <param name="other">An object to compare with this object.</param>
+            <returns>
+            A 32-bit signed integer that indicates the relative order of the objects being compared. The return value has the following meanings:
+            Value
+            Meaning
+            Less than zero
+            This object is less than the <paramref name="other"/> parameter.
+            Zero
+            This object is equal to <paramref name="other"/>.
+            Greater than zero
+            This object is greater than <paramref name="other"/>.
+            </returns>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEPluginBaseAttribute">
+            <summary>
+            Base class for tiny mce attribute classes.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginBaseAttribute.PlugInName">
+            <summary>
+            Gets or sets the plug-in name. This must correspond to the plug-in name registered in the TinyMCE Plugin Manager (and sub folder name in plugins folder).
+            </summary>
+            <value>The name of the plug in.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginBaseAttribute.EditorInitConfigurationOptions">
+            <summary>
+            Gets or sets the editor init configuration options.
+            </summary>
+            <value>The editor init configuration options.</value>
+            <remarks>A string representing a JSON object with configuration settings to set in the TinyMCE init.</remarks>
+            <example>
+            EditorInitConfigurationOptions = "{ extended_valid_elements: 'img[class|src|border=0|alt|title|hspace|vspace|width|height|align|onmouseover|onmouseout|name]' }"
+            </example>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginBaseAttribute.DynamicConfigurationOptionsHandler">
+            <summary>
+            Gets or sets a class that implements <see cref="T:EPiServer.Editor.TinyMCE.IDynamicConfigurationOptions"/> that is responsible for creating init options for the plug-in/editor.
+            </summary>
+            <value>A type that handles configuration options for the plug-in dynamically.</value>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEPluginBaseAttribute.Match(System.Object)">
+            <summary>
+            Checks if the given plug-in is an instance of a <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPluginBaseAttribute"/>.
+            </summary>
+            <param name="plugInObject">The plug in object.</param>
+            <returns><c>true</c> if the given plug-in is an instance of a <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEPluginBaseAttribute"/>; otherwise false.</returns>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEPluginButtonAttribute">
+            <summary>
+            Settings for the TinyMCE editor plug-ins.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginButtonAttribute.ButtonName">
+            <summary>
+            Gets or sets the name of the TinyMCE button. This must correspond to the name of the button added by the plug-in the JavaScript file.
+            </summary>
+            <value>The name of the TinyMCE button.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginButtonAttribute.ButtonSortIndex">
+            <summary>
+            Gets or sets the sort index used when sorting the buttons within a group in the inactive part of the EPiServer CMS admin interface.
+            </summary>
+            <value>The sort index of the button.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginButtonAttribute.IconUrl">
+            <summary>
+            Gets or sets the icon URL.
+            </summary>
+            <value>The icon URL.</value>
+            <remarks> If there is no CSS class to style the button with a background image you can enter an URL to an image that will be displayed in admin mode. The URL is relative to the Util folder.</remarks>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginButtonAttribute.IconClass">
+            <summary>
+            Gets or sets the CSS class to use for the plug-in icon.
+            </summary>
+            <value>The CSS class to use for the plug-in icon.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginButtonAttribute.GroupName">
+            <summary>
+            Gets or sets the group name of the plug-in. This is used in admin mode for grouping the tools in the inactive buttons area.
+            </summary>
+            <value>The group name of the plug-in.</value>
+            <remarks>
+            You can specify your own or use one of these defaults:
+                misc
+                textchar
+                textpara
+                media
+                paste
+                table
+            </remarks>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEPluginNonVisualAttribute">
+            <summary>
+            Used to enable a plug-in for Tiny MCE that has no connected button.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginNonVisualAttribute.AlwaysEnabled">
+            <summary>
+            Gets or sets a value indicating whether the plug-in should always be enabled.
+            </summary>
+            <value><c>true</c> if the plug-in should always be enabled; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEPluginNonVisualAttribute.ServerSideOnly">
+            <summary>
+            Gets or sets a value indicating whether this plug-in is server side only and should not be added to the init configuration plug-in list.
+            </summary>
+            <value><c>true</c> if this plug-in is server side only; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEPlugIns">
+            <summary>
+            Contains constant strings for built in Tiny MCE non-visual tools in the EPiServer user interface.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.AdvancedImage">
+            <summary>
+            The advanced image plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.AdvancedList">
+            <summary>
+            The advanced list plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.Fullscreen">
+            <summary>
+            The fullscreen plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.Layer">
+            <summary>
+            The layer plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.Media">
+            <summary>
+            The media plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.NonBreaking">
+            <summary>
+            The non breaking plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.Paste">
+            <summary>
+            The paste plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.RightToLeftSupport">
+            <summary>
+            The right to left support plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.SearchAndReplace">
+            <summary>
+            The search and replace plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.Style">
+            <summary>
+            The style plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.Table">
+            <summary>
+            The table plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.WordCount">
+            <summary>
+            The word count plug-in.
+            </summary>
+        </member>
+        <member name="F:EPiServer.Editor.TinyMCE.TinyMCEPlugIns.XhtmlExtras">
+            <summary>
+            The XHTML extras plug-in.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCESettings">
+            <summary>
+            Used together with <see cref="N:EPiServer.Editor"/> class to store settings.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCESettings.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCESettings"/> class.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCESettings.Width">
+            <summary>
+            Gets or sets the width of the editor.
+            </summary>
+            <value>The width.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCESettings.Height">
+            <summary>
+            Gets or sets the height of the editor.
+            </summary>
+            <value>The height.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCESettings.ContentCss">
+            <summary>
+            Gets or sets the content CSS.
+            One or more paths to css files separated by comma.
+            </summary>
+            <value>The content CSS.</value>
+            <example>"/css/editor.css, /css/template.css"</example>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCESettings.Skin">
+            <summary>
+            Gets the skin from current UI theme.
+            </summary>
+            <returns>The skin name</returns>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCESettings.ToolbarRows">
+            <summary>
+            Gets the button rows. They in turn contains buttons and separators.
+            </summary>
+            <value>The button rows.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCESettings.NonVisualPlugins">
+            <summary>
+            Gets or sets the plugins that doesn't have any UI.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCESettings.GetDefaultValues">
+            <summary>
+            Gets a new object set with default values.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCESettings.Copy">
+            <summary>
+            Creates a deep copy of this settings instance.
+            </summary>
+            <returns>A copy of this instance.</returns>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatter">
+            <summary>
+            Parses a specified css file for css classes to create the format options in Tiny MCE.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatter.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatter"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatter.#ctor(EPiServer.Framework.Localization.LocalizationService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatter"/> class.
+            </summary>
+            <param name="localizationService">The resource locator that should be used by the instance to get localized strings.</param>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatter.CreateStyleFormats(System.IO.Stream)">
+            <summary>
+            Creates the style formatsfor TinyMCE.
+            </summary>
+            <param name="styleSheet">The style sheet.</param>
+            <returns>IEnumerable of objects that can be serialized to javascript. If style sheet is null or empty string <b>null</b> is returned.</returns>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatter.CreateStyleFormats(System.String)">
+            <summary>
+            Creates the style formats.
+            </summary>
+            <param name="styleSheet">The style sheet.</param>
+            <returns></returns>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.Title">
+            <summary>
+            Gets the title from the EditMenyName.
+            </summary>
+            <value>The title.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.ChangeElementType">
+            <summary>
+            Gets the type of the changeElementStyle flag.
+            </summary>
+            <value>The type of the change element.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.GroupTitle">
+            <summary>
+            Gets the group title.
+            </summary>
+            <value>The group title.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.InlineElements">
+            <summary>
+            Gets the inline elements.
+            </summary>
+            <value>The inline elements.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.BlockElements">
+            <summary>
+            Gets the block elements.
+            </summary>
+            <value>The block elements.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.Selectors">
+            <summary>
+            Gets the selectors.
+            </summary>
+            <value>The selectors.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.Classes">
+            <summary>
+            Gets the classes.
+            </summary>
+            <value>The classes.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.IsInline">
+            <summary>
+            Gets a value indicating whether this instance has inline elements.
+            </summary>
+            <value><c>true</c> if this instance has inline elements; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.IsBlock">
+            <summary>
+            Gets a value indicating whether this instance is block.
+            </summary>
+            <value><c>true</c> if this instance is block; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.HasClasses">
+            <summary>
+            Gets a value indicating whether this instance has one or more classes.
+            </summary>
+            <value>
+            	<c>true</c> if this instance has classes; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.HasSelectors">
+            <summary>
+            Gets a value indicating whether this instance has one or more selectors.
+            </summary>
+            <value>
+            	<c>true</c> if this instance has selectors; otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.TinyMCEStyleFormatterHelper.GetTranslatedNameWithFallback(System.String)">
+            <summary>
+            Will attempt to translate the style option by looking for a tag
+            with the name of the style option in the editorstyleoptions of the language files.
+            </summary>
+            <remarks>
+            Any space in the supplied style option will be replaced with an underscore and the whole string will be to lowered
+            before trying find the key in the language file.
+            </remarks>
+            <param name="styleOption">The name of the style option, defined using EditMenuName in the css file.</param>
+            <returns></returns>
+        </member>
+        <member name="T:EPiServer.Editor.TinyMCE.ToolbarRow">
+            <summary>
+            Container class for settings regarding the editor toolbar.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.ToolbarRow.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.ToolbarRow"/> class.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Editor.TinyMCE.ToolbarRow.#ctor(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Editor.TinyMCE.ToolbarRow"/> class.
+            </summary>
+            <param name="buttons">A collection of button plugins.</param>
+        </member>
+        <member name="P:EPiServer.Editor.TinyMCE.ToolbarRow.Buttons">
+            <summary>
+            Gets the buttons in this toolbar row.
+            </summary>
+        </member>
+    </members>
+</doc>

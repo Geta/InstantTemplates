@@ -15,7 +15,7 @@ namespace Geta.InstantTemplates.Sample
     public class Startup
     {
 
-        public void Configuration(AppBuilder app)
+        public void Configuration(IAppBuilder app)
         {
 
             // Add CMS integration for ASP.NET Identity

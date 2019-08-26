@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<configuration  xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <configSections>
+    <section name="episerver.shell" type="EPiServer.Shell.Configuration.EPiServerShellSection, EPiServer.Shell" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)"/>
+  </configSections>
+  <episerver.shell xdt:Transform="InsertIfMissing">
+    <publicModules rootPath="~/modules/" autoDiscovery="Modules" xdt:Transform="InsertIfMissing"/>
+    <protectedModules rootPath="~/EPiServer/" xdt:Transform="InsertIfMissing">
+      <add name="Shell" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)" />
+      <add name="CMS" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)"/>
+    </protectedModules>
+  </episerver.shell>
+  <system.web>
+    <pages xdt:Transform="InsertIfMissing" >
+      <namespaces xdt:Transform="InsertIfMissing" >
+        <add namespace="EPiServer.Shell.Web.Mvc.Html" xdt:Transform="InsertIfMissing" xdt:Locator="Match(namespace)" />
+      </namespaces>
+    </pages>
+  </system.web>
+  <system.webServer>
+    <modules runAllManagedModulesForAllRequests="true" xdt:Transform="InsertIfMissing">
+      <add name="ShellRoutingModule" type="EPiServer.Shell.Web.Routing.ShellRoutingModule, EPiServer.Shell" xdt:Transform="InsertIfMissing" xdt:Locator="Match(name)"/>
+    </modules>
+  </system.webServer>
+</configuration>

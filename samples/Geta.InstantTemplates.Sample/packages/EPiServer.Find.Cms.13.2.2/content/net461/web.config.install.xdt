@@ -1,0 +1,10 @@
+﻿<?xml version="1.0"?>
+<configuration xmlns:xdt="http://schemas.microsoft.com/XML-Document-Transform">
+  <system.webServer>
+    <handlers>
+      <add name="ExtensionlessUrlHandler-Integrated-4.0" xdt:Transform="RemoveAll" xdt:Locator="Match(name)" />
+      <add name="ExtensionlessUrlHandler-Integrated-4.0" path="*." verb="GET,HEAD,POST,DEBUG,PUT,DELETE,PATCH,OPTIONS" type="System.Web.Handlers.TransferRequestHandler" preCondition="integratedMode,runtimeVersionv4.0" xdt:Transform="Insert" />
+    </handlers>
+  </system.webServer>
+
+</configuration>

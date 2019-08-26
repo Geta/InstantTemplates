@@ -17,7 +17,6 @@ using EPiServer.Find.Api.Querying.Queries;
 using Geta.InstantTemplates.Sample.Controllers;
 using EPiServer.Web;
 using EPiServer.Find.Cms;
-using Geta.InstantTemplates.Sample.Models.Pages;
 
 namespace Geta.InstantTemplates.Sample.Controllers
 {
@@ -145,9 +144,9 @@ namespace Geta.InstantTemplates.Sample.Controllers
         private bool SearchIndexIsConfigured(EPiServer.Find.Configuration configuration)
         {
             return (!configuration.ServiceUrl.IsNullOrEmpty()
-                    && !configuration.ServiceUrl.Contains("YOUR_URI")
+                    && !configuration.ServiceUrl.Contains("https://es-eu-dev-api01.episerver.net/9GGB9lk6VeibSrIe0b0KOwiFaZZhogtT/")
                     && !configuration.DefaultIndex.IsNullOrEmpty()
-                    && !configuration.DefaultIndex.Equals("YOUR_INDEX"));
+                    && !configuration.DefaultIndex.Equals("milosmihajlovic92_instanttemplates123"));
         }
 
         /// <summary>

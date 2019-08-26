@@ -1,0 +1,43 @@
+﻿2019-08-26 03:34:41,108 [10] ERROR EPiServer.Find.Cms.CmsUnifiedSearchSetUp: IAttachmentHelper can not be initiated.
+2019-08-26 03:33:50,967 [6] ERROR EPiServer.Global: Unhandled exception in ASP.NET
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\inetpub\wwwroot\App_Data\blobs\e7f2cc0bf76c4ecb8d8bea67db7212d5\e6b6a9b869714ea485f3fd17c38b537f.png'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Web.HttpResponse.TransmitFile(String filename, Int64 offset, Int64 length)
+   at System.Web.HttpResponseWrapper.TransmitFile(String filename)
+   at EPiServer.Web.BlobHttpHandler.ProcessRequestAsyncInternal(HttpContextWrapper context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\inetpub\wwwroot\App_Data\blobs\e7f2cc0bf76c4ecb8d8bea67db7212d5\e6b6a9b869714ea485f3fd17c38b537f.png'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Web.HttpResponse.TransmitFile(String filename, Int64 offset, Int64 length)
+   at System.Web.HttpResponseWrapper.TransmitFile(String filename)
+   at EPiServer.Web.BlobHttpHandler.ProcessRequestAsyncInternal(HttpContextWrapper context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+2019-08-26 03:33:50,967 [12] ERROR EPiServer.Global: Unhandled exception in ASP.NET
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\inetpub\wwwroot\App_Data\blobs\e181e1131d4646dda9bbcf785bb10cb2\e5b75ca76f414e5a8a7b7ca19ee41841.png'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Web.HttpResponse.TransmitFile(String filename, Int64 offset, Int64 length)
+   at System.Web.HttpResponseWrapper.TransmitFile(String filename)
+   at EPiServer.Web.BlobHttpHandler.ProcessRequestAsyncInternal(HttpContextWrapper context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'C:\inetpub\wwwroot\App_Data\blobs\e181e1131d4646dda9bbcf785bb10cb2\e5b75ca76f414e5a8a7b7ca19ee41841.png'.
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy, Boolean useLongPath, Boolean checkHost)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share)
+   at System.Web.HttpResponse.TransmitFile(String filename, Int64 offset, Int64 length)
+   at System.Web.HttpResponseWrapper.TransmitFile(String filename)
+   at EPiServer.Web.BlobHttpHandler.ProcessRequestAsyncInternal(HttpContextWrapper context, AsyncCallback cb, Object extraData)
+   at System.Web.HttpApplication.CallHandlerExecutionStep.System.Web.HttpApplication.IExecutionStep.Execute()
+   at System.Web.HttpApplication.ExecuteStepImpl(IExecutionStep step)
+   at System.Web.HttpApplication.ExecuteStep(IExecutionStep step, Boolean& completedSynchronously)
