@@ -33,5 +33,5 @@ services:
     ports:
     - target: 80
     volumes:
-    - C:\Projects\InstantTemplates\branches\docker-support\src\module\ClientResources:C:/data/ClientResources/:rw
+    - C:\Projects\InstantTemplates\branches\docker-support\src\module:C:/data/:rw
 version: '3.4'

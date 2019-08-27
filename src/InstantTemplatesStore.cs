@@ -3,6 +3,7 @@
 
 using System.Globalization;
 using System.Linq;
+using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAccess;
@@ -10,7 +11,7 @@ using EPiServer.Security;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.Services.Rest;
 
-namespace EPiServer.InstantTemplates
+namespace InstantTemplates
 {
     [RestStore("instanttemplates")]
     public class InstantTemplatesStore : RestControllerBase

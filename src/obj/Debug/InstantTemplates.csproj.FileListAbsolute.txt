@@ -43,6 +43,7 @@ C:\Projects\InstantTemplates\branches\docker-support\src\bin\EPiServer.Framework
 C:\Projects\InstantTemplates\branches\docker-support\src\bin\EPiServer.Web.WebControls.xml
 C:\Projects\InstantTemplates\branches\docker-support\src\bin\Newtonsoft.Json.xml
 C:\Projects\InstantTemplates\branches\docker-support\src\bin\System.Web.Optimization.xml
+C:\Projects\InstantTemplates\branches\docker-support\src\obj\Debug\InstantTemplates.csprojAssemblyReference.cache
 C:\Projects\InstantTemplates\branches\docker-support\src\obj\Debug\InstantTemplates.csproj.CoreCompileInputs.cache
 C:\Projects\InstantTemplates\branches\docker-support\src\obj\Debug\InstantTemplates.csproj.CopyComplete
 C:\Projects\InstantTemplates\branches\docker-support\src\obj\Debug\InstantTemplates.dll

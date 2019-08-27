@@ -4,7 +4,7 @@
 using EPiServer.Framework.Web.Resources;
 using EPiServer.Shell.Modules;
 
-namespace EPiServer.InstantTemplates
+namespace InstantTemplates
 {
     public class TemplatesModule : ShellModule
     {

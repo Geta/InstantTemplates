@@ -5,7 +5,7 @@ using EPiServer.Cms.Shell.UI.Components;
 using EPiServer.Shell;
 using EPiServer.Shell.ViewComposition;
 
-namespace EPiServer.InstantTemplates
+namespace InstantTemplates
 {
     [Component]
     public class TemplatesMainNavigationComponent : ComponentDefinitionBase
