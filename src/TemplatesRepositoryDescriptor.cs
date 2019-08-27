@@ -74,5 +74,7 @@ namespace InstantTemplates
                 return new[] { TemplatesInitialization.TemplateRoot };
             }
         }
+
+        public bool EnableContextualContent { get { return true; } }
     }
 }
