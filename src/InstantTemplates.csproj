@@ -11,8 +11,8 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>EPiServer.InstantTemplates</RootNamespace>
-    <AssemblyName>EPiServer.InstantTemplates</AssemblyName>
+    <RootNamespace>InstantTemplates</RootNamespace>
+    <AssemblyName>InstantTemplates</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -164,19 +164,24 @@
     <Compile Include="TemplatesRepositoryDescriptor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientResources\Scripts\ContentType.js" />
-    <Content Include="ClientResources\Scripts\ContentTypeGroup.js" />
-    <Content Include="ClientResources\Scripts\ContentTypeList.js" />
-    <Content Include="ClientResources\Scripts\ContextMenuCommandProvider.js" />
-    <Content Include="ClientResources\Scripts\TemplateContentSelectionCommand.js" />
-    <Content Include="ClientResources\Scripts\TemplateContentTypesCommand.js" />
-    <Content Include="ClientResources\Scripts\TemplatesWidget.js" />
-    <Content Include="ClientResources\Scripts\templates\ContentType.html" />
-    <Content Include="ClientResources\Scripts\templates\ContentTypeGroup.html" />
+    <Content Include="module\ClientResources\Scripts\AddItemFromTemplateCommandProvider.js" />
+    <Content Include="module\ClientResources\Scripts\ContentType.js" />
+    <Content Include="module\ClientResources\Scripts\ContentTypeGroup.js" />
+    <Content Include="module\ClientResources\Scripts\ContentTypeList.js" />
+    <Content Include="module\ClientResources\Scripts\CreateContentView.js" />
+    <Content Include="module\ClientResources\Scripts\CreateContentViewModel.js" />
+    <Content Include="module\ClientResources\Scripts\ContextMenuCommandProvider.js" />
+    <Content Include="module\ClientResources\Scripts\TemplateContentSelectionCommand.js" />
+    <Content Include="module\ClientResources\Scripts\TemplateContentTypesCommand.js" />
+    <Content Include="module\ClientResources\Scripts\TemplatesWidget.js" />
+    <Content Include="module\ClientResources\Scripts\TemplateModule.js" />
+    <Content Include="module\ClientResources\Scripts\templates\ContentType.html" />
+    <Content Include="module\ClientResources\Scripts\templates\ContentTypeGroup.html" />
+    <Content Include="module\ClientResources\Scripts\templates\CreateContentView.html" />
     <Content Include="web.config.install.xdt" />
     <Content Include="web.config.uninstall.xdt" />
     <Content Include="App_Data\GeoLiteCity.dat" />
-    <None Include="module.config">
+    <None Include="module\module.config">
     </None>
     <Content Include="web.config">
       <SubType>Designer</SubType>
@@ -195,19 +200,14 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClientResources\Scripts\AddItemFromTemplateCommandProvider.js" />
-    <Content Include="ClientResources\Scripts\CreateContentView.js" />
-    <Content Include="ClientResources\Scripts\CreateContentViewModel.js" />
-    <Content Include="ClientResources\Scripts\TemplateModule.js" />
-    <Content Include="ClientResources\Scripts\templates\CreateContentView.html" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <None Include="msbuild\Main.proj" />
+    <None Include="msbuild\Main.proj">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="InstantTemplates.nuspec" />

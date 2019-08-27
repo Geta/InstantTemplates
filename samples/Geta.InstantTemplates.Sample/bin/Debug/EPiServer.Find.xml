@@ -1,0 +1,524 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EPiServer.Find</name>
+    </assembly>
+    <members>
+        <member name="T:EPiServer.Find.Api.ITrackContext">
+            <summary>
+            The Find track context interface which exposes Find track context.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.ITrackContext.Id">
+            <summary>
+            Gets the track id.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.ITrackContext.Query">
+            <summary>
+            Gets the query.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.ITrackContext.From">
+            <summary>
+            Gets the from value.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.ITrackContext.Size">
+            <summary>
+            Gets the size.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.ITrackContext.Result">
+            <summary>
+            Gets the result.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Api.ITrackContext.TryTrack(System.Action{EPiServer.Find.Api.ITrackContext})">
+            <summary>
+            Try to track a search request.
+            </summary>
+            <param name="tracker">The track context</param>
+        </member>
+        <member name="M:EPiServer.Find.Api.BulkCommand.Execute(System.Collections.Generic.List{EPiServer.Find.Api.BulkCommand.SerializationFailure}@)">
+            <summary>
+            Execute the actions if all actions can be serialized. Otherwise the first action that
+            could not be serialized will be appended to the serializationFailures list.
+            </summary>
+            <param name="serializationFailures">A list of items that could not be serialized.
+            This list should be empty for the initial call to this function.</param>
+            <returns>If all actions could be serialized this will return the result wrapped in an ExecuteResult
+            with Execute.Done = true and the result in Execute.Result.
+            Otherwise it will return Execute.Done = false with Execute.Result = null. And in that case, the action
+            that could not be initialized will be removed from this.actions and a failure will be appended to serializationFailures.
+            In that case this function should be executed again.
+            executed again.</returns>
+        </member>
+        <member name="T:EPiServer.Find.Api.Command">
+            <summary>
+            The Find command abstract class which supports executing query command.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Api.Command.#ctor(EPiServer.Find.Api.ICommandContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Find.Api.Command" /> class.
+            </summary>
+            <param name="commandContext">The command context.</param>
+        </member>
+        <member name="P:EPiServer.Find.Api.Command.CommandContext">
+            <summary>
+            Gets the command context.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.Command.ExplicitRequestTimeout">
+            <summary>
+            Gets or sets the explicit request time out.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.Command.TraceId">
+            <summary>
+            Gets or set the trace id.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Api.Command.GetServerUrl">
+            <summary>
+            Gets the server url.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Api.Command.GetResponse``1(EPiServer.Find.Connection.IJsonRequest)">
+            <summary>
+            Gets response from a request.
+            </summary>
+            <typeparam name="TResult">The result type.</typeparam>
+            <param name="request">The json request.</param>
+            <returns>The response result.</returns>
+        </member>
+        <member name="T:EPiServer.Find.Api.CommandContext">
+            <summary>
+            The Find command context class which exposes fully mapped Find command context.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Api.CommandContext.#ctor(Newtonsoft.Json.JsonSerializer,EPiServer.Find.Connection.IJsonRequestFactory,System.String,EPiServer.Find.Connection.ICache)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Find.Api.CommandContext" /> class.
+            </summary>
+            <param name="serializer">The Json serializer.</param>
+            <param name="requestFactory">The Json request factory.</param>
+            <param name="serverUrl">The server URL.</param>
+            <param name="cache">The cache.</param>
+        </member>
+        <member name="P:EPiServer.Find.Api.CommandContext.Serializer">
+            <summary>
+            The Json serializer.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CommandContext.RequestFactory">
+            <summary>
+            The Json request factory.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CommandContext.ServerUrl">
+            <summary>
+            The server URL.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CommandContext.Cache">
+            <summary>
+            The cache.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CommandContext.ExplicitRequestTimeout">
+            <summary>
+            The explicit request time out value.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Find.Api.CountCommand">
+            <summary>
+            The count command class to be used to count result 
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Api.CountCommand.#ctor(EPiServer.Find.Api.ICommandContext,EPiServer.Find.Api.SearchRequestBody)">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Find.Api.CountCommand"/>
+            </summary>
+            <param name="commandContext">The command context.</param>
+            <param name="searchRequestBody">The search request body.</param>
+        </member>
+        <member name="P:EPiServer.Find.Api.CountCommand.Indexes">
+            <summary>
+            The list of index names.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CountCommand.Types">
+            <summary>
+            The list of type name.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CountCommand.Body">
+            <summary>
+            The search request body.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CountCommand.Routing">
+            <summary>
+            The routing value.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CountCommand.Query">
+            <summary>
+            The query.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Api.CountCommand.Execute">
+            <summary>
+            Execute the Count command to get Count result.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CountResult.Count">
+            <summary>
+            Gets or sets the count value of count result.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.CountResult.Shards">
+            <summary>
+            Gets or sets the shards value of count result.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Find.Api.ICommandContext">
+            <summary>
+            The Find command context interface which exposes Find command context.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.ICommandContext.Serializer">
+            <summary>
+            Gets the Json serializer.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.ICommandContext.RequestFactory">
+            <summary>
+            Gets the Json request factory.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.ICommandContext.ServerUrl">
+            <summary>
+            Gets the server URL.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Api.ICommandContext.Cache">
+            <summary>
+            Gets the cache.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Find.LanguageRoutingAttribute">
+            <summary>
+            This attribute is used for any property that needs language routing.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Find.ClientConventions.ILanguageRoutingConvention">
+            <summary>
+            This convention is used to set up the mapping for the property to be used for language routing.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Helpers.Linq.ExpressionExtensions.Find``1(System.Linq.Expressions.Expression,System.Func{``0,System.Boolean})">
+            <summary>
+            Returns a list of <typeparamref name="TExpression"/> instances
+            that matches the <paramref name="predicate"/>.
+            </summary>
+            <typeparam name="TExpression">The type of <see cref="T:System.Linq.Expressions.Expression"/>
+            to search for.</typeparam>
+            <param name="expression">The <see cref="T:System.Linq.Expressions.Expression"/> that represents the sub tree for which to start searching.</param>
+            <param name="predicate">The <see cref="T:System.Func`2"/> used to filter the result</param>
+            <returns>A list of <see cref="T:System.Linq.Expressions.Expression"/> instances that matches the given predicate.</returns>
+        </member>
+        <member name="M:EPiServer.Find.Helpers.Linq.ExpressionExtensions.Replace``1(System.Linq.Expressions.Expression,System.Func{``0,System.Boolean},System.Func{``0,System.Linq.Expressions.Expression})">
+            <summary>
+            Searches for expressions using the given <paramref name="predicate"/> and replaces matches with
+            the result from the <paramref name="replaceWith"/> delegate.
+            </summary>
+            <typeparam name="TExpression">The type of <see cref="T:System.Linq.Expressions.Expression"/> to search for.</typeparam>
+            <param name="expression">The <see cref="T:System.Linq.Expressions.Expression"/> that represents the sub tree
+            for which to start searching.</param>
+            <param name="predicate">The <see cref="T:System.Func`2"/> used to filter the result</param>
+            <param name="replaceWith">The <see cref="T:System.Func`2"/> used to specify the replacement expression.</param>
+            <returns>The modified <see cref="T:System.Linq.Expressions.Expression"/> tree.</returns>
+        </member>
+        <member name="T:EPiServer.Find.Helpers.Linq.ExpressionFinder`1">
+            <summary>
+            A class used to search for <see cref="T:System.Linq.Expressions.Expression"/> instances. 
+            </summary>
+            <typeparam name="TExpression">The type of <see cref="T:System.Linq.Expressions.Expression"/> to search for.</typeparam>
+        </member>
+        <member name="M:EPiServer.Find.Helpers.Linq.ExpressionFinder`1.Find(System.Linq.Expressions.Expression,System.Func{`0,System.Boolean})">
+            <summary>
+            Returns a list of <typeparamref name="TExpression"/> instances that matches the <paramref name="predicate"/>.
+            </summary>
+            <param name="expression">The <see cref="T:System.Linq.Expressions.Expression"/> that represents the sub tree for which to start searching.</param>
+            <param name="predicate">The <see cref="T:System.Func`2"/> used to filter the result</param>
+            <returns>A list of <see cref="T:System.Linq.Expressions.Expression"/> instances that matches the given predicate.</returns>
+        </member>
+        <member name="M:EPiServer.Find.Helpers.Linq.ExpressionFinder`1.Visit(System.Linq.Expressions.Expression)">
+            <summary>
+            Visits each node of the <see cref="T:System.Linq.Expressions.Expression"/> tree checks 
+            if the current expression matches the predicate.         
+            </summary>
+            <param name="expression">The <see cref="T:System.Linq.Expressions.Expression"/> currently being visited.</param>
+            <returns><see cref="T:System.Linq.Expressions.Expression"/></returns>
+        </member>
+        <member name="T:EPiServer.Find.Helpers.Linq.ExpressionReplacer`1">
+            <summary>
+            A class that is capable of doing a find and replace in an <see cref="T:System.Linq.Expressions.Expression"/> tree.
+            </summary>
+            <typeparam name="TExpression">The type of <see cref="T:System.Linq.Expressions.Expression"/> to find and replace.</typeparam>
+        </member>
+        <member name="M:EPiServer.Find.Helpers.Linq.ExpressionReplacer`1.Replace(System.Linq.Expressions.Expression,System.Func{`0,System.Boolean},System.Func{`0,System.Linq.Expressions.Expression})">
+            <summary>
+            Searches for expressions using the given <paramref name="predicate"/> and 
+            replaces matches with the result from the <paramref name="replaceWith"/> delegate.          
+            </summary>
+            <param name="expression">The <see cref="T:System.Linq.Expressions.Expression"/> that 
+            represents the sub tree for which to start searching.</param>
+            <param name="predicate">The <see cref="T:System.Func`2"/> used to filter the result</param>
+            <param name="replaceWith">The <see cref="T:System.Func`2"/> 
+            used to specify the replacement expression.</param>
+            <returns>The modified <see cref="T:System.Linq.Expressions.Expression"/> tree.</returns>
+        </member>
+        <member name="M:EPiServer.Find.Helpers.Linq.ExpressionReplacer`1.Visit(System.Linq.Expressions.Expression)">
+            <summary>
+            Visits each node of the <see cref="T:System.Linq.Expressions.Expression"/> tree checks 
+            if the current expression matches the predicate. If a match is found 
+            the expression will be replaced.        
+            </summary>
+            <param name="expression">The <see cref="T:System.Linq.Expressions.Expression"/> currently being visited.</param>
+            <returns><see cref="T:System.Linq.Expressions.Expression"/></returns>        
+        </member>
+        <member name="M:EPiServer.Find.Helpers.Text.StringExtensions.StripHtml(System.String)">
+            <summary>
+            Strips html tags from text and decodes any encoded characters.
+            This ensures that text is indexed the same way that a user reads it
+            in a browser, and enhances search over these words.
+            </summary>
+            <param name="htmlText">Text from which to strip html tags and decode encoded characters</param>
+            <returns>Decoded text free from html tags</returns>
+        </member>
+        <member name="T:EPiServer.Find.Json.Base64EncoderStream">
+            <summary>
+            Class that wraps a stream and presents it in a base64 encoded form.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Json.IBookmarkableWriter.InsertBookmark(System.Func{System.IO.Stream},System.Int64)">
+            <summary>
+            Inserts a bookmark in the current location of the stream.
+            </summary>
+            <param name="streamDelegate"></param>
+            <param name="length">The length (in bytes) of the stream.</param>
+            <returns>Returns <c>true</c> if the bookmark was successfully inserted, <c>false</c> otherwise.</returns>
+        </member>
+        <member name="T:EPiServer.Find.Json.ICustomContractIgnored">
+            <summary>
+            Marker interface used by Find's JSON contract resolver. A class implementing this interface will bypass the standard JSON serialization handling in Find.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Json.Serializer.ByteCountingTextWriter.CountChar(System.Char)">
+            <summary>
+            In order to count amount of written bytes properly, 
+            we need to take into account surrogates.
+            </summary>
+            <param name="value"></param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "P:EPiServer.Find.HighlightSpec.NumberOfFragments" -->
+        <member name="P:EPiServer.Find.HighlightSpec.FragmentSize">
+            <summary>
+            The fragment size for control the length of fragments.
+            Default value is 100. Do not set the FragmentSize property to a value lower than 18.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.QueryStringSearchExtensions.InAllField``2(EPiServer.Find.IQueriedSearch{``0,``1})">
+            <summary>
+            Adds the _all field to the list of fields to search in.
+            </summary>
+            <remarks>
+            By default a free text query is executed against a special field named '_all' which 
+            contains all indexed values for a document.
+            If the free text query has been instructed to search in specific fields using for 
+            isntance the InField method the query will no longer be executed against the _all field.
+            This method adds the _all field to the list of fields to search in.
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Find.QueryStringSearchExtensions.WithAndAsDefaultOperator``1(EPiServer.Find.IQueriedSearch{``0,EPiServer.Find.Api.Querying.Queries.QueryStringQuery})">
+            <summary>
+            Modifies how a free text query will be parsed to require that each individual word be present
+            in the matched text.
+            </summary>
+            <remarks>
+            By default a free text query for 'EPiServer Find' will be parsed as 'EPiServer' AND/OR 'Find'.
+            After invoking this method the free text query will instead be parsed as 'EPiServer' AND 'Find.
+            </remarks>
+        </member>
+        <member name="M:EPiServer.Find.QueryStringSearchExtensions.InStandardFields``1(EPiServer.Find.IQueriedSearch{EPiServer.Find.UnifiedSearch.ISearchContent,``0})">
+            <summary>
+            Adds the SearchTitle, SearchText, SearchSummary and SearchAttachments fields to the list 
+            of fields to search in.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.QueryStringSearchExtensions.UsingUnifiedWeights``1(EPiServer.Find.IQueriedSearch{EPiServer.Find.UnifiedSearch.ISearchContent,``0})">
+            <summary>
+            If the client has an admin index, adds the fields from the backend otherwise adds the SearchTitle, SearchText, SearchSummary and SearchAttachments fields to the list 
+            of fields to search in.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.QueryStringSearchExtensions.UsingUnifiedWeights``1(EPiServer.Find.IQueriedSearch{EPiServer.Find.UnifiedSearch.ISearchContent,``0},EPiServer.Find.Api.UnifiedWeightsValues)">
+            <summary>
+            If the client has an admin index, adds the fields from the backend otherwise adds the SearchTitle, SearchText, SearchSummary and SearchAttachments fields to the list 
+            of fields to search in.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.QueryStringSearchExtensions.UsingSynonyms``1(EPiServer.Find.IQueriedSearch{``0})">
+            <summary>
+            If the client has an admin index, adds synonym analyzer to query.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.Configuration.GetConfiguration">
+            <summary>
+            Get configuration settings from application's default configuration.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Configuration.TakeDNTIntoAccount">
+            <summary>
+            The TakeDNTIntoAccount. This is used to consider the Do Not Track setting.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Configuration.EnableTracking">
+            <summary>
+            The enable tracking.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Configuration.ServiceUrl">
+            <summary>
+            The service URL.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Configuration.DefaultIndex">
+            <summary>
+            The default index.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Configuration.DefaultRequestTimeout">
+            <summary>
+            The default request timeout.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Configuration.IndexingQueueBatchSize">
+            <summary>
+            The indexing queue batch size.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Configuration.IndexQueueInterval">
+            <summary>
+            The index queue interval.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Configuration.IndexQueueRetryInterval">
+            <summary>
+            The index queue retry interval.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.Configuration.RemoveItemsFromIndexQueueAtExceptons">
+            <summary>
+            The remove items from index queue at exceptions.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.TrackContext.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:EPiServer.Find.TrackContext"/>
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.TrackContext.Query">
+            <summary>
+            Gets or sets the query.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.TrackContext.Result">
+            <summary>
+            Gets or sets the result.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.TrackContext.From">
+            <summary>
+            Gets or sets the from value.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.TrackContext.Size">
+            <summary>
+            Gets or sets the size.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.TrackContext.Id">
+            <summary>
+            Gets the identification value.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.TrackContext.TraceId">
+            <summary>
+            Gets the trace id.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.TrackContext.TryTrack(System.Action{EPiServer.Find.Api.ITrackContext})">
+            <summary>
+            Try to track a search request.
+            </summary>
+            <param name="tracker">The track context</param>
+        </member>
+        <member name="P:EPiServer.Find.UnifiedSearch.HitProjection.SpecTitleProjection">
+            <summary>
+            Title projection that takes a HitSpecification parameter.
+            Used to change the behaviour of e.g. encoding.
+            By default it uses TitleProjection if set, otherwise it encodes the title.
+            To override the encoding behaviour, simply set TitleProjection
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.UnifiedSearch.HitSpecification.EncodeTitle">
+            <summary>
+            Toggle the ability to encode the title.
+            Default behaviour is True: encoding enabled.
+            Set to False to disable encoding.
+            </summary>
+        </member>
+        <member name="P:EPiServer.Find.UnifiedSearch.HitSpecification.EncodeExcerpt">
+            <summary>
+            Toggle the ability to encode the excerpt.
+            Default behaviour is True: encoding enabled.
+            Set to False to disable encoding.
+            </summary>
+        </member>
+        <member name="T:EPiServer.Find.UnifiedSearch.HitOriginalTypeProjectionProcessor">
+            <summary>
+            Adds $type to the field list to the search request body if the projected to type is assignable to Hit.
+            Also fetches the $type field from the response document and if such a type exists rebuilds the projection
+            to set the OriginalObjectType property to the type and, if the projected to type is exactly Hit, to create an
+            instance of the generic Hit type with the type as type parameter.
+            </summary>
+        </member>
+        <member name="M:EPiServer.Find.QueryEscaping.ValidateTokens(System.String[])">
+            <summary>
+            Simplified analizys for valid twoArgOperators usage: foo AND bar, foo OR bar, NOT foo
+            </summary>
+            <param name="tokens"></param>
+            <returns>True if all tokens has valid operators usage, false otherwise</returns>
+        </member>
+        <member name="M:EPiServer.Find.QueryEscaping.JoinArgumentTokens(System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Join non-operator tokens in a single collection element
+            </summary>
+            <param name="tokens"></param>
+            <returns></returns>
+        </member>
+        <member name="M:EPiServer.Find.Client.TryGetOrCreateClientObject``1(``0)">
+            <summary>
+            Gets a client object for specific type. In case client object is not exist, creating new object.
+            </summary>
+            <typeparam name="TSource">Type of object</typeparam>
+            <param name="newObject">The object will be created when type is not exist.</param>
+            <returns>The object of specific type.</returns>
+        </member>
+    </members>
+</doc>
