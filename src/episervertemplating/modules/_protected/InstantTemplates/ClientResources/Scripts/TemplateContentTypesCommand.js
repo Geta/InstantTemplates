@@ -6,7 +6,9 @@
     "epi/i18n!epi-cms/nls/episerver.cms.contentediting.toolbar.buttons.compare",
     // Parent class and mixins
     "epi/shell/command/_Command",
-    "epi-cms/_ContentContextMixin"
+    "epi-cms/_ContentContextMixin",
+    //Helpers
+    "instantTemplates/helpers"
 ], function (
     declare,
     topic,
@@ -15,7 +17,8 @@
     localizations,
     // Parent class and mixins
     _Command,
-    _ContentContextMixin
+    _ContentContextMixin,
+    helpers
 ) {
 
     return declare([_Command, _ContentContextMixin], {
@@ -29,8 +32,7 @@
         //      The CSS class which represents the icon to be used in visual elements.
         iconClass: "epi-iconPackage epi-icon--inverted",
 
-        label: customLocalization.episerver.cms.command.newtemplate != null ? 
-               customLocalization.episerver.cms.command.newtemplate : "New from template",
+        label: helpers.translate(customLocalization.episerver.cms.command.newtemplate, "New from template"),
 
         // canExecute: [readonly] Boolean
         //      Flag which indicates whether this command is able to be executed.

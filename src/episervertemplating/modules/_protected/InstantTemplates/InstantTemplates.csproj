@@ -231,6 +231,7 @@
     <Content Include="ClientResources\Scripts\ContentTypeGroup.js" />
     <Content Include="ClientResources\Scripts\ContentTypeList.js" />
     <Content Include="ClientResources\Scripts\ContextMenuCommandProvider.js" />
+    <Content Include="ClientResources\Scripts\Helpers.js" />
     <Content Include="ClientResources\Scripts\TemplateContentSelectionCommand.js" />
     <Content Include="ClientResources\Scripts\TemplateContentTypesCommand.js" />
     <Content Include="ClientResources\Scripts\TemplatesWidget.js" />

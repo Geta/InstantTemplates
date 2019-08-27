@@ -5,7 +5,9 @@
     "epi/i18n!epi-cms/nls/",
     // Parent class and mixins
     "epi/shell/command/_Command",
-    "epi/shell/command/_SelectionCommandMixin"
+    "epi/shell/command/_SelectionCommandMixin",
+    //Helpers
+    "instantTemplates/helpers"
 ], function (
     declare,
     topic,
@@ -13,15 +15,15 @@
     customLocalization,
     // Parent class and mixins
     _Command,
-    _SelectionCommandMixin
+    _SelectionCommandMixin,
+    helpers
 ) {
 
     return declare([_Command, _SelectionCommandMixin], {
 
         iconClass: "epi-iconPackage epi-icon--inverted",
 
-        label: customLocalization.episerver.cms.command.newtemplate != null ?
-               customLocalization.episerver.cms.command.newtemplate : "New from template",
+        label: helpers.translate(customLocalization.episerver.cms.command.newtemplate, "New from template"),
 
         _execute: function () {
             var selectionData = this.get("selectionData");
