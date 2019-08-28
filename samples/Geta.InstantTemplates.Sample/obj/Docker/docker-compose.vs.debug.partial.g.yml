@@ -7,7 +7,7 @@ services:
       args:
         source: obj/Docker/empty/
     volumes:
-      - C:\Projects\InstantTemplates\samples\Geta.InstantTemplates.Sample:C:\inetpub\wwwroot
-      - C:\Program Files (x86)\Microsoft Visual Studio\2017\Enterprise\Common7\IDE\Remote Debugger:C:\remote_debugger:ro
+      - C:\Projects\InstantTemplates\branches\docker-support\samples\Geta.InstantTemplates.Sample:C:\inetpub\wwwroot
+      - :C:\remote_debugger:ro
     entrypoint: cmd /c "start /B C:\\ServiceMonitor.exe w3svc & C:\\remote_debugger\\x64\\msvsmon.exe /noauth /anyuser /silent /nostatus /noclrwarn /nosecuritywarn /nofirewallwarn /nowowwarn /timeout:2147483646"
 

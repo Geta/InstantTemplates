@@ -18,10 +18,10 @@ services:
       geta-instanttemplates-network:
         ipv4_address: 172.16.238.52
     volumes:
-    - C:\Projects\InstantTemplates\samples\Geta.InstantTemplates.Sample\App_Data:C:/data/:rw
+    - C:\Projects\InstantTemplates\branches\docker-support\samples\Geta.InstantTemplates.Sample\App_Data:C:/data/:rw
   geta-instanttemplates-sample-web:
     build:
-      context: C:\Projects\InstantTemplates\samples\Geta.InstantTemplates.Sample
+      context: C:\Projects\InstantTemplates\branches\docker-support\samples\Geta.InstantTemplates.Sample
       dockerfile: Dockerfile
     depends_on:
     - geta-instanttemplates-sample-db
@@ -33,5 +33,5 @@ services:
     ports:
     - target: 80
     volumes:
-    - C:\Projects\InstantTemplates\src\module:C:/data/:rw
+    - C:\Projects\InstantTemplates\branches\docker-support\src\module:C:/data/:rw
 version: '3.4'
