@@ -1,0 +1,83 @@
+﻿<languages>
+  <language id="en" name="English">
+    <episerver>
+      <cms>
+        <command>
+          <newtemplate>New from Template</newtemplate>
+        </command>
+        <labels>
+          <availabletemplates>Available Templates</availabletemplates>
+          <newinstanttemplate>New Instant Template</newinstanttemplate>
+        </labels>
+        <messages>
+          <nodatamultiple>
+            These folders does not contain any templates
+          </nodatamultiple>
+          <nodatasingle>
+            This folder does not contain any templates
+          </nodatasingle>
+        </messages>
+        <views>
+          <templates>
+            <title>Templates</title>
+            <description>Allows editors to easily create their own templates from within EPiServer edit mode.</description>
+          </templates>
+        </views>
+      </cms>
+    </episerver>
+  </language>
+  <language id="no" name="Norwegian">
+    <episerver>
+      <cms>
+        <command>
+          <newtemplate>Nytt fra mal</newtemplate>
+        </command>
+        <labels>
+          <availabletemplates>Tilgjengelige maler</availabletemplates>
+          <newinstanttemplate>Ny øyeblikkelig mal</newinstanttemplate>
+        </labels>
+        <messages>
+          <nodatamultiple>
+            Disse mappene inneholder ingen maler
+          </nodatamultiple>
+          <nodatasingle>
+            Denne mappen inneholder ingen maler
+          </nodatasingle>
+        </messages>
+        <views>
+          <templates>
+            <title>Maler</title>
+            <description>Lar redaktører enkelt lage egne maler fra EPiServer redigeringsmodus.</description>
+          </templates>
+        </views>
+      </cms>
+    </episerver>
+  </language>
+  <language id="sv" name="Swedish">
+    <episerver>
+      <cms>
+        <command>
+          <newtemplate>Nytt från mall</newtemplate>
+        </command>
+        <labels>
+          <availabletemplates>Tillgängliga mallar</availabletemplates>
+          <newinstanttemplate>Ny direktmall</newinstanttemplate>
+        </labels>
+        <messages>
+          <nodatamultiple>
+            Dessa mappar innehåller inga mallar
+          </nodatamultiple>
+          <nodatasingle>
+            Den här mappen innehåller inga mallar
+          </nodatasingle>
+        </messages>
+        <views>
+          <templates>
+            <title>Mallar</title>
+            <description>Låter redaktörer enkelt skapa sina egna mallar från EPiServer-redigeringsläget.</description>
+          </templates>
+        </views>
+      </cms>
+    </episerver>
+  </language>
+</languages>
