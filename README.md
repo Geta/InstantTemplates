@@ -1,7 +1,5 @@
 # EPiServer Instant Templates
 
-![](http://tc.geta.no/app/rest/builds/buildType:(id:TeamFrederik_InstantTemplates_InstantTemplatesDebug)/statusIcon)
-
 ## Description
 
 Allows editors to create their own re-usable templates directly from within EPiServer edit mode.
@@ -12,13 +10,17 @@ https://niteco.com/resources/blogs/Episerver-instant-templates-worth-trying-out/
 ## Installation
 
 ```
-Install-Package EPiServer.InstantTemplates -Prerelease
+Install-Package InstantTemplates -Prerelease
 ```
 
 ## Demo
 git clone https://github.com/Geta/InstantTemplates
+
 Open up in Visual Studio 2013 or newer, F5 to run (make sure you have automatic NuGet package restore enabled and EPiServerTemplating project is set as startup project).
 
+Test user for Edit mode
+username: Tester
+password: Tester.123
 
 ## Package maintainers
 https://github.com/frederikvig
@@ -27,6 +29,8 @@ https://github.com/milosmih92
 
 
 ### Docker hostnames
+
+- IP address for Docker image: http://172.16.238.51
 
 Instead of using the static IP addresses the following hostnames can be used out-of-the-box.
 
