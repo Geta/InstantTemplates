@@ -8,7 +8,7 @@ services:
       dockerfile: Dockerfile
     networks: 
       geta-instanttemplates-network:
-        ipv4_address: 172.16.238.51
+        ipv4_address: 172.16.238.91
     depends_on:
      - geta-instanttemplates-sample-db
     volumes: 
@@ -24,7 +24,7 @@ services:
       - ../Geta.InstantTemplates.Sample/App_Data:C:/data/
     networks: 
       geta-instanttemplates-network:
-        ipv4_address: 172.16.238.52
+        ipv4_address: 172.16.238.92
 networks: 
   geta-instanttemplates-network:
     ipam:
