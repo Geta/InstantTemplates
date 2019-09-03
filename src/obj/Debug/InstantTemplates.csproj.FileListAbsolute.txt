@@ -98,8 +98,8 @@ C:\Projects\InstantTemplates\src\bin\System.Threading.Tasks.Dataflow.xml
 C:\Projects\InstantTemplates\src\bin\System.ValueTuple.xml
 C:\Projects\InstantTemplates\src\bin\System.Web.Mvc.xml
 C:\Projects\InstantTemplates\src\bin\System.Web.Optimization.xml
-C:\Projects\InstantTemplates\src\obj\Debug\InstantTemplates.csprojAssemblyReference.cache
 C:\Projects\InstantTemplates\src\obj\Debug\InstantTemplates.csproj.CoreCompileInputs.cache
 C:\Projects\InstantTemplates\src\obj\Debug\InstantTemplates.csproj.CopyComplete
 C:\Projects\InstantTemplates\src\obj\Debug\InstantTemplates.dll
 C:\Projects\InstantTemplates\src\obj\Debug\InstantTemplates.pdb
+C:\Projects\InstantTemplates\src\obj\Debug\InstantTemplates.csprojAssemblyReference.cache
