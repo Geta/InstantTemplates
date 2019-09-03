@@ -59,9 +59,9 @@ define([
             this.render();
 
             this.connectKeyNavHandlers(
-				this.isLeftToRight() ? [keys.LEFT_ARROW, keys.UP_ARROW] : [keys.RIGHT_ARROW, keys.DOWN_ARROW],
-				this.isLeftToRight() ? [keys.RIGHT_ARROW, keys.DOWN_ARROW] : [keys.LEFT_ARROW, keys.UP_ARROW]
-			);
+                this.isLeftToRight() ? [keys.LEFT_ARROW, keys.UP_ARROW] : [keys.RIGHT_ARROW, keys.DOWN_ARROW],
+                this.isLeftToRight() ? [keys.RIGHT_ARROW, keys.DOWN_ARROW] : [keys.LEFT_ARROW, keys.UP_ARROW]
+            );
         },
 
         render: function () {
@@ -78,11 +78,11 @@ define([
 
             var instantTemplatesStore = registry.get("instanttemplates");
 
-            dojo.when(instantTemplatesStore.get(that.parentLink), function (response) {
+            dojo.when(instantTemplatesStore.get(that.contentLink), function (response) {
                 array.forEach(response, function (contentData) {
                     var child = new ContentType({ contentData: contentData });
-                    this.connect(child, "onSelect", this.onSelect);
-                    this.addChild(child);
+                    that.connect(child, "onSelect", that.onSelect);
+                    that.addChild(child);
                 }, that);
             });
         },
@@ -116,7 +116,7 @@ define([
             //		callback
 
             topic.publish("/epi/shell/action/changeview", "instantTemplates/CreateContentView", null, {
-                parent: this.parentLink,
+                parent: item.parentLink,
                 contentLink: item.contentLink,
                 headingText: "New Instant Template",
                 templateName: item.name

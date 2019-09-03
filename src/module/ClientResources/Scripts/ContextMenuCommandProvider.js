@@ -11,18 +11,18 @@ define([
     TemplateContentSelectionCommand
 ) {
 
-    var originalMethod = ContentContextMenuCommandProvider.prototype.postscript;
+        var originalMethod = ContentContextMenuCommandProvider.prototype.postscript;
 
-    lang.mixin(ContentContextMenuCommandProvider.prototype, {
+        lang.mixin(ContentContextMenuCommandProvider.prototype, {
 
-        postscript: function () {
-            originalMethod.call(this);
+            postscript: function () {
+                originalMethod.call(this);
 
-            var command = new TemplateContentSelectionCommand(this._settings);
+                var command = new TemplateContentSelectionCommand(this._settings);
 
-            this.commands.push(command);
-        }
+                this.commands.push(command);
+            }
+        });
+
+        ContentContextMenuCommandProvider.prototype.postscript.nom = "postscript";
     });
-
-    ContentContextMenuCommandProvider.prototype.postscript.nom = "postscript";
-});

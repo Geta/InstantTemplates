@@ -80,7 +80,7 @@ namespace InstantTemplates
 
         public RestResult Post(string templateLink, string parentLink, string name)
         {
-            var templateBlockData = this._contentRepository.Get<BlockData>(new ContentReference(templateLink));
+            var templateBlockData = this._contentRepository.Get<ContentData>(new ContentReference(templateLink)) as BlockData;
 
             ContentReference contentLink;
 

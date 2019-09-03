@@ -40,53 +40,53 @@ define([
     _CommandProviderMixin
 ) {
 
-    return declare([_CommandProviderMixin], {
-        // summary:
-        //      Default command provider for the epi-cms/component/GlobalToolbar
-        // tags:
-        //      internal
-        contentRepositoryDescriptors: null,
-        viewName: null,
-        postscript: function () {
+        return declare([_CommandProviderMixin], {
             // summary:
-            //      Ensure that an array of commands has been initialized.
+            //      Default command provider for the epi-cms/component/GlobalToolbar
             // tags:
-            //      public
-            this.inherited(arguments);
+            //      internal
+            contentRepositoryDescriptors: null,
+            viewName: null,
+            postscript: function () {
+                // summary:
+                //      Ensure that an array of commands has been initialized.
+                // tags:
+                //      public
+                this.inherited(arguments);
 
-            this.viewName = this.viewName || ViewSettings.viewName;
+                this.viewName = this.viewName || ViewSettings.viewName;
 
-            this.addCommand();
-        },
+                this.addCommand();
+            },
 
-        addCommand: function () {
-            // summary:
-            //      Append the given command to the command list, uncategorized commands will be added to the "leading" category
-            // command:
-            //      The command to append
-            // settings:
-            //      The settings to use when creating the menu item for the command
-            // tags:
-            //      protected
+            addCommand: function () {
+                // summary:
+                //      Append the given command to the command list, uncategorized commands will be added to the "leading" category
+                // command:
+                //      The command to append
+                // settings:
+                //      The settings to use when creating the menu item for the command
+                // tags:
+                //      protected
 
-            var command = new TemplateContentTypesCommand({ templatesRoot: this.templatesRoot });
-            var settings = {};
+                var command = new TemplateContentTypesCommand({ templatesRoot: this.templatesRoot });
+                var settings = {};
 
-            settings = lang.mixin({
-                category: "create",
-                label: command.label,
-                tooltip: command.tooltip,
-                showLabel: false,
-                widget: Button,
-                model: command
-            }, settings);
+                settings = lang.mixin({
+                    category: "create",
+                    label: command.label,
+                    tooltip: command.tooltip,
+                    showLabel: false,
+                    widget: Button,
+                    model: command
+                }, settings);
 
 
-            //Create a delagate for the command
-            command = lang.delegate(command, { settings: settings });
+                //Create a delagate for the command
+                command = lang.delegate(command, { settings: settings });
 
-            //Add to the command list
-            this.add("commands", command);
-        }
+                //Add to the command list
+                this.add("commands", command);
+            }
+        });
     });
-});

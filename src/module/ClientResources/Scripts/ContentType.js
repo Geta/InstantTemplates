@@ -58,7 +58,7 @@ define([
             //		public
             var data = this.contentData;
 
-            
+
             if (data) {
                 this.set("name", data.name);
                 this.set("description", data.localizedDescription || i18n.nodescription);

@@ -1,26 +1,20 @@
 ﻿<?xml version="1.0"?>
-<package >
-    <metadata>
-        <id>InstantTemplates</id>
-        <version>$version$</version>
-        <title>EPiServer InstantTemplates</title>
-        <authors>EPiServer and Geta</authors>
-        <owners>EPiServer and Geta</owners>
-        <projectUrl>https://github.com/Geta/InstantTemplates</projectUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Allows editors to easily create their own templates from within EPiServer edit mode.</description>
-        <releaseNotes></releaseNotes>
-        <copyright></copyright>
-        <iconUrl>http://cdn.geta.no/opensource/icons/instant-templates.png</iconUrl>
-        <tags>EPiServer InstantTemplates</tags>
-        <dependencies>
-          <dependency id="EPiServer.CMS.UI" version="[11,12)" />
-        </dependencies>
-    </metadata>
-    <files>
-        <file src="bin\InstantTemplates.dll" target="lib\net45\" />
-        <file src="tmp\InstantTemplates.zip" target="content\modules\_protected\InstantTemplates\" />
-        <file src="web.config.install.xdt" target="content" />
-        <file src="web.config.uninstall.xdt" target="content" />
-    </files>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Geta.InstantTemplates</id>
+    <version>$version$</version>
+    <title>Geta.InstantTemplates</title>
+    <authors>Geta Digital</authors>
+    <owners>Geta Digital</owners>
+    <projectUrl>https://github.com/Geta/InstantTemplates</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Allows editors to create their own re-usable templates directly from within EPiServer edit mode.</description>
+    <copyright>Copyright © 2019 Geta</copyright>
+    <tags>EPiServer instant templates</tags>
+    <iconUrl>https://cdn.geta.no/opensource/icons/Geta-logo-3.png</iconUrl>
+    <dependencies>
+      <dependency id="EPiServer.CMS.Core" version="[11.1.0, 12.0)" />
+      <dependency id="EPiServer.CMS.UI.Core" version="[11.1.0, 12.0)" />
+    </dependencies>
+  </metadata>
 </package>

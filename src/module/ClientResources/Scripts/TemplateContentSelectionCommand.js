@@ -15,24 +15,24 @@ define([
     _SelectionCommandMixin
 ) {
 
-    return declare([_Command, _SelectionCommandMixin], {
+        return declare([_Command, _SelectionCommandMixin], {
 
-        iconClass: "epi-iconPackage epi-icon--inverted",
+            iconClass: "epi-iconPackage epi-icon--inverted",
 
-        label: "New from Template",
+            label: "New from Template",
 
-        _execute: function () {
-            var selectionData = this.get("selectionData");
+            _execute: function () {
+                var selectionData = this.get("selectionData");
 
-            topic.publish("/epi/shell/action/changeview", "instantTemplates/ContentTypeList", {
-                parentLink: selectionData.contentLink,
-                contentLink: this.contentLink,
-                templatesRoot: this.templatesRoot
-            });
-        },
+                topic.publish("/epi/shell/action/changeview", "instantTemplates/ContentTypeList", {
+                    parentLink: selectionData.parentLink,
+                    contentLink: selectionData.contentLink,
+                    templatesRoot: this.templatesRoot
+                });
+            },
 
-        _onModelChange: function () {
-            this.set("canExecute", !!this.get("selectionData"));
-        }
+            _onModelChange: function () {
+                this.set("canExecute", !!this.get("selectionData"));
+            }
+        });
     });
-});

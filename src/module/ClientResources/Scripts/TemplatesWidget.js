@@ -25,12 +25,12 @@ define("instantTemplates/templatesWidget", [
         on,
         HierarchicalList) {
         return declare([HierarchicalList],
-        {
-            showCreateContentArea: false,
+            {
+                showCreateContentArea: false,
 
-            noDataMessages: { 
-                    multiple: "These folders does not contain any templates", 
+                noDataMessages: {
+                    multiple: "These folders does not contain any templates",
                     single: "This folder does not contain any templates"
-                } 
-        });
+                }
+            });
     });

@@ -12,43 +12,43 @@ define([
     "instantTemplates/ContextMenuCommandProvider"
 ],
 
-function (
-    declare,
-    lang,
-    _Module,
-    routes,
-    dependency,
-    AddItemFromTemplateCommandProvider,
-    ContextMenuCommandProvider
-) {
+    function (
+        declare,
+        lang,
+        _Module,
+        routes,
+        dependency,
+        AddItemFromTemplateCommandProvider,
+        ContextMenuCommandProvider
+    ) {
 
-    return declare([_Module], {
-        // summary:
-        //		Template module implementation.
-        //
-        // tags:
-        //      internal
+        return declare([_Module], {
+            // summary:
+            //		Template module implementation.
+            //
+            // tags:
+            //      internal
 
-        _settings: null,
+            _settings: null,
 
-        constructor: function (settings) {
-            this._settings = settings;
-        },
+            constructor: function (settings) {
+                this._settings = settings;
+            },
 
-        initialize: function () {
+            initialize: function () {
 
-            var commandregistry = dependency.resolve("epi.globalcommandregistry");
-            var registry = this.resolveDependency("epi.storeregistry");
+                var commandregistry = dependency.resolve("epi.globalcommandregistry");
+                var registry = this.resolveDependency("epi.storeregistry");
 
-            //Register the store
-            registry.create("instanttemplates", this._getRestPath("instanttemplates"));
+                //Register the store
+                registry.create("instanttemplates", this._getRestPath("instanttemplates"));
 
-            //We need to wait for the viewsettings to initialized before creating the global toolbar command provider
-            commandregistry.registerProvider("epi.cms.globalToolbar", new AddItemFromTemplateCommandProvider({ templatesRoot: this._settings.templatesRoot }));
-        },
+                //We need to wait for the viewsettings to initialized before creating the global toolbar command provider
+                commandregistry.registerProvider("epi.cms.globalToolbar", new AddItemFromTemplateCommandProvider({ templatesRoot: this._settings.templatesRoot }));
+            },
 
-        _getRestPath: function (name) {
-            return routes.getRestPath({ moduleArea: "InstantTemplates", storeName: name });
-        }
+            _getRestPath: function (name) {
+                return routes.getRestPath({ moduleArea: "InstantTemplates", storeName: name });
+            }
+        });
     });
-});

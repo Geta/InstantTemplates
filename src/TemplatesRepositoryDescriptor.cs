@@ -35,9 +35,9 @@ namespace InstantTemplates
             get
             {
                 return new[]
-				{
-					typeof(ContentFolder)
-				};
+                {
+                    typeof(ContentFolder)
+                };
             }
         }
 
@@ -46,24 +46,24 @@ namespace InstantTemplates
             get
             {
                 return new[]
-				{
-					typeof(ContentFolder),
-					typeof(BlockData),
+                {
+                    typeof(ContentFolder),
+                    typeof(BlockData),
                     typeof(PageData)
-				};
+                };
             }
         }
 
-        public override IEnumerable<string> MainViews { get { return new string[] {  }; } }
+        public override IEnumerable<string> MainViews { get { return new string[] { }; } }
 
         public override IEnumerable<Type> CreatableTypes
         {
             get
             {
                 return new System.Type[]
-				{
-					typeof(BlockData), typeof(PageData)
-				};
+                {
+                    typeof(BlockData), typeof(PageData)
+                };
             }
         }
 
