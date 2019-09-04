@@ -8,27 +8,20 @@ More information:
 - https://getadigital.com/no/blogg/episerver-instant-templates/
 - https://niteco.com/resources/blogs/Episerver-instant-templates-worth-trying-out/
 
-## Installation
+## Features
+
+- Create pages from template
+
+## How to get started?
 
 ```
 Install-Package InstantTemplates -Prerelease
 ```
 
-## Demo
-
-git clone https://github.com/Geta/InstantTemplates
-
-Open up in Visual Studio 2013 or newer, F5 to run (make sure you have automatic NuGet package restore enabled and EPiServerTemplating project is set as startup project).
-
-Test user for Edit mode
-username: Tester
-password: Tester.123
-
 ## Package maintainers
 
-https://github.com/frederikvig
-https://github.com/patkleef
-https://github.com/milosmih92
+- https://github.com/frederikvig
+- https://github.com/milosmih92
 
 ## Local development setup
 
