@@ -13,7 +13,6 @@ services:
      - geta-instanttemplates-sample-db
     volumes: 
       - ../../src/module/:C:/data/
-      - ../../src/lang/:C:/data/lang/
     mac_address: 84-69-95-6C-7F-85
   geta-instanttemplates-sample-db:
     image: microsoft/mssql-server-windows-developer:1709

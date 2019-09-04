@@ -1,4 +1,5 @@
-﻿<languages>
+﻿<?xml version="1.0" encoding="utf-8"?>
+<languages>
   <language id="en" name="English">
     <episerver>
       <cms>

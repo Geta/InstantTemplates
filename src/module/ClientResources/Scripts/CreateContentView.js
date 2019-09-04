@@ -274,6 +274,7 @@ define([
                         if (this.nameTextBox) {
                             this.nameTextBox.focus();
                             this.nameTextBox.textbox.select();
+                            this.nameTextBox.set("value", "");
                         }
 
                     }), function (err) {

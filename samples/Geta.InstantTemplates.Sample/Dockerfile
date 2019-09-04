@@ -14,7 +14,6 @@ RUN MKDIR data
 WORKDIR data
 RUN MKDIR ClientResources
 RUN MKDIR Views
-RUN MKDIR lang
 WORKDIR /inetpub/wwwroot
 
 RUN New-WebVirtualDirectory -Site 'Default Web Site' -Name 'EPiServer/InstantTemplates' -PhysicalPath c:\data\ 

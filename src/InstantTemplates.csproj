@@ -163,7 +163,7 @@
     <Compile Include="TemplatesRepositoryDescriptor.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="lang\CustomTranslations.xml" />
+    <EmbeddedResource Include="lang\CustomTranslations.xml" />
     <Content Include="module\ClientResources\Scripts\AddItemFromTemplateCommandProvider.js" />
     <Content Include="module\ClientResources\Scripts\ContentType.js" />
     <Content Include="module\ClientResources\Scripts\ContentTypeGroup.js" />
