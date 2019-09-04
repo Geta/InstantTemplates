@@ -179,18 +179,11 @@
     <Content Include="module\ClientResources\Scripts\templates\CreateContentView.html" />
     <Content Include="web.config.install.xdt" />
     <Content Include="web.config.uninstall.xdt" />
-    <Content Include="App_Data\GeoLiteCity.dat" />
     <None Include="module\module.config">
     </None>
     <Content Include="web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="modules\_protected\EPiServer.Cms.TinyMce\web.config" />
-    <Content Include="modules\_protected\EPiServer.Cms.TinyMce\EPiServer.Cms.TinyMce.zip" />
-    <Content Include="modules\_protected\Shell\web.config" />
-    <Content Include="modules\_protected\Shell\Shell.zip" />
-    <Content Include="modules\_protected\CMS\web.config" />
-    <Content Include="modules\_protected\CMS\CMS.zip" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
