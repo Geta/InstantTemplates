@@ -164,21 +164,21 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="lang\CustomTranslations.xml" />
-    <Content Include="module\ClientResources\Scripts\AddItemFromTemplateCommandProvider.js" />
-    <Content Include="module\ClientResources\Scripts\ContentType.js" />
-    <Content Include="module\ClientResources\Scripts\ContentTypeGroup.js" />
-    <Content Include="module\ClientResources\Scripts\ContentTypeList.js" />
-    <Content Include="module\ClientResources\Scripts\CreateContentView.js" />
-    <Content Include="module\ClientResources\Scripts\CreateContentViewModel.js" />
-    <Content Include="module\ClientResources\Scripts\ContextMenuCommandProvider.js" />
-    <Content Include="module\ClientResources\Scripts\Helpers.js" />
-    <Content Include="module\ClientResources\Scripts\TemplateContentSelectionCommand.js" />
-    <Content Include="module\ClientResources\Scripts\TemplateContentTypesCommand.js" />
-    <Content Include="module\ClientResources\Scripts\TemplatesWidget.js" />
-    <Content Include="module\ClientResources\Scripts\TemplateModule.js" />
-    <Content Include="module\ClientResources\Scripts\templates\ContentType.html" />
-    <Content Include="module\ClientResources\Scripts\templates\ContentTypeGroup.html" />
-    <Content Include="module\ClientResources\Scripts\templates\CreateContentView.html" />
+    <None Include="module\ClientResources\Scripts\AddItemFromTemplateCommandProvider.js" />
+    <None Include="module\ClientResources\Scripts\ContentType.js" />
+    <None Include="module\ClientResources\Scripts\ContentTypeGroup.js" />
+    <None Include="module\ClientResources\Scripts\ContentTypeList.js" />
+    <None Include="module\ClientResources\Scripts\CreateContentView.js" />
+    <None Include="module\ClientResources\Scripts\CreateContentViewModel.js" />
+    <None Include="module\ClientResources\Scripts\ContextMenuCommandProvider.js" />
+    <None Include="module\ClientResources\Scripts\Helpers.js" />
+    <None Include="module\ClientResources\Scripts\TemplateContentSelectionCommand.js" />
+    <None Include="module\ClientResources\Scripts\TemplateContentTypesCommand.js" />
+    <None Include="module\ClientResources\Scripts\TemplatesWidget.js" />
+    <None Include="module\ClientResources\Scripts\TemplateModule.js" />
+    <None Include="module\ClientResources\Scripts\templates\ContentType.html" />
+    <None Include="module\ClientResources\Scripts\templates\ContentTypeGroup.html" />
+    <None Include="module\ClientResources\Scripts\templates\CreateContentView.html" />
     <Content Include="web.config.install.xdt" />
     <Content Include="web.config.uninstall.xdt" />
     <None Include="module\module.config">
