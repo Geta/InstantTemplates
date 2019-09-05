@@ -154,6 +154,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Initialization\TranslationInitialization.cs" />
     <Compile Include="InstantTemplatesStore.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplatesInitialization.cs" />
