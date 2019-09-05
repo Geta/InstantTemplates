@@ -7,7 +7,7 @@ using EPiServer.Core;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell;
 
-namespace InstantTemplates
+namespace EPiServer.InstantTemplates
 {
     [ServiceConfiguration(typeof(IContentRepositoryDescriptor))]
     public class TemplatesRepositoryDescriptor : ContentRepositoryDescriptorBase

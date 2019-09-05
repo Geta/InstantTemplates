@@ -6,7 +6,7 @@ using EPiServer.Framework.Web.Resources;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.Modules;
 
-namespace InstantTemplates
+namespace EPiServer.InstantTemplates
 {
     public class TemplatesModuleViewModel : ModuleViewModel
     {
