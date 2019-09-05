@@ -60,7 +60,7 @@
     <Message Text=" SolutionDir  = $(SolutionDir)" Importance="high" />
     <Message Text=" NuGet.exe  = $(NuGetExe)" Importance="high" />
 
-    <GetVersion AssemblyPath="$(SolutionDir)\bin\InstantTemplates.dll">
+    <GetVersion AssemblyPath="$(SolutionDir)\bin\EPiServer.InstantTemplates.dll">
       <Output TaskParameter="Version" PropertyName="Version" />
     </GetVersion>
 
