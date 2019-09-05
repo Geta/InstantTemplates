@@ -11,7 +11,7 @@ using EPiServer.Security;
 using EPiServer.ServiceLocation;
 using InitializationModule = EPiServer.Web.InitializationModule;
 
-namespace InstantTemplates
+namespace EPiServer.InstantTemplates
 {
     [ModuleDependency(typeof(InitializationModule))]
     public class TemplatesInitialization : IInitializableModule

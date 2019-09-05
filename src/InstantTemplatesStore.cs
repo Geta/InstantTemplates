@@ -11,7 +11,7 @@ using EPiServer.Security;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.Services.Rest;
 
-namespace InstantTemplates
+namespace EPiServer.InstantTemplates
 {
     [RestStore("instanttemplates")]
     public class InstantTemplatesStore : RestControllerBase
