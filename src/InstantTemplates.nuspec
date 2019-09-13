@@ -11,7 +11,7 @@
     <description>Allows editors to create their own re-usable templates directly from within EPiServer edit mode.</description>
     <copyright>Copyright © 2019 Geta</copyright>
     <tags>EPiServer InstantTemplates</tags>
-    <iconUrl>https://cdn.geta.no/opensource/icons/Geta-logo-3.png</iconUrl>
+    <iconUrl>http://cdn.geta.no/opensource/icons/instant-templates.png</iconUrl>
     <dependencies>
       <dependency id="EPiServer.CMS.Core" version="[11.1.0, 12.0)" />
       <dependency id="EPiServer.CMS.UI.Core" version="[11.1.0, 12.0)" />
