@@ -10,6 +10,7 @@ define([
     // Parent class and mixins
     "epi/shell/command/_Command",
     "epi-cms/_ContentContextMixin",
+    "epi-cms/core/ContentReference",
     //Helpers
     "instantTemplates/helpers"
 ], function (
@@ -21,6 +22,7 @@ define([
     // Parent class and mixins
     _Command,
     _ContentContextMixin,
+    _ContentReference,
     helpers
 ) {
 
@@ -53,9 +55,12 @@ define([
             },
 
             _execute: function () {
+                var currentContext = this.getCurrentContext();
+                var currentContentReference = new _ContentReference(currentContext.id);
+
                 topic.publish("/epi/shell/action/changeview", "instantTemplates/ContentTypeList", {
-                    parentLink: this.getCurrentContext().id,
-                    contentLink: this.contentLink,
+                    parentLink: currentContext.parentLink,
+                    contentLink: currentContentReference.id,
                     templatesRoot: this.templatesRoot
                 });
             }
