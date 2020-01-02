@@ -56,14 +56,18 @@ namespace EPiServer.InstantTemplates
 
             var settings = this._contentTypeAvailabilityService.GetSetting(contentType.Name);
 
-            var response = descendents.Select(content => new
-            {
-                name = content.Name,
-                contentLink = content.ContentLink.ID.ToString(CultureInfo.InvariantCulture),
-                parentLink = parentContent.ContentLink.ID.ToString(CultureInfo.InvariantCulture),
-                ContentType = this._contentTypeRepository.Load(content.ContentTypeID),
-                localizedDescription = this._contentTypeRepository.Load(content.ContentTypeID).LocalizedDescription
-            });
+
+            var publishedStateAssessor = ServiceLocator.Current.GetInstance<IPublishedStateAssessor>();
+            var response = descendents
+                           .Where(content => publishedStateAssessor.IsPublished(content, PagePublishedStatus.Published))
+                           .Select(content => new
+                            {
+                                name = content.Name,
+                                contentLink = content.ContentLink.ID.ToString(CultureInfo.InvariantCulture),
+                                parentLink = parentContent.ContentLink.ID.ToString(CultureInfo.InvariantCulture),
+                                ContentType = this._contentTypeRepository.Load(content.ContentTypeID),
+                                localizedDescription = this._contentTypeRepository.Load(content.ContentTypeID).LocalizedDescription
+                            });
 
             if (settings.Availability == Availability.Specific)
             {
