@@ -1,12 +1,15 @@
 ﻿// Copyright (c) Geta Digital. All rights reserved.
 // Licensed under Apache-2.0. See the LICENSE file in the project root for more information
 
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using System.Threading;
 using EPiServer;
 using EPiServer.Core;
 using EPiServer.DataAbstraction;
 using EPiServer.DataAccess;
+using EPiServer.Globalization;
 using EPiServer.Security;
 using EPiServer.ServiceLocation;
 using EPiServer.Shell.Services.Rest;
@@ -37,12 +40,16 @@ namespace EPiServer.InstantTemplates
 
             var allContentReferences = this._contentRepository.GetDescendents(TemplatesInitialization.TemplateRoot);
 
-            var descendents = allContentReferences.Select(contentReference => _contentRepository.Get<IContent>(contentReference));
+            // Get all templates for current language
+            CultureInfo currentCulture = ContentLanguage.PreferredCulture;
+            if (currentCulture == null)
+                currentCulture = Thread.CurrentThread.CurrentCulture;
+            var descendents = _contentRepository.GetItems(allContentReferences, currentCulture);
 
             var folderContentType = this._contentTypeRepository.Load(typeof(ContentFolder));
             descendents = descendents.Where(c => c.ContentTypeID != folderContentType.ID);
 
-            // make sure the user has access to it
+            // Make sure the user has access to it
             descendents = descendents.Where(content => content.QueryDistinctAccess(AccessLevel.Create));
 
             var parentContent = this._contentRepository.Get<IContent>(new ContentReference(parentLink));
@@ -55,11 +62,12 @@ namespace EPiServer.InstantTemplates
             var contentType = this._contentTypeRepository.Load(parentContent.ContentTypeID);
 
             var settings = this._contentTypeAvailabilityService.GetSetting(contentType.Name);
-
-
+            
+            // Show only published content
             var publishedStateAssessor = ServiceLocator.Current.GetInstance<IPublishedStateAssessor>();
+            descendents = descendents.Where(content => publishedStateAssessor.IsPublished(content, PagePublishedStatus.Published));
+
             var response = descendents
-                           .Where(content => publishedStateAssessor.IsPublished(content, PagePublishedStatus.Published))
                            .Select(content => new
                             {
                                 name = content.Name,
