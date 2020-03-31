@@ -84,13 +84,16 @@ define([
 
             var instantTemplatesStore = registry.get("instanttemplates");
 
-            dojo.when(instantTemplatesStore.get(that.contentLink), function (response) {
-                array.forEach(response, function (contentData) {
-                    var child = new ContentType({ contentData: contentData });
-                    that.connect(child, "onSelect", that.onSelect);
-                    that.addChild(child);
-                }, that);
-            });
+            dojo.when(
+                instantTemplatesStore.refresh(that.contentLink),
+                function (response) {
+                    array.forEach(response, function (contentData) {
+                        var child = new ContentType({ contentData: contentData });
+                        that.connect(child, "onSelect", that.onSelect);
+                        that.addChild(child);
+                    }, that);
+                }
+            );
         },
 
         clear: function () {
