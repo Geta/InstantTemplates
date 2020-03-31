@@ -125,6 +125,10 @@
     <Reference Include="EPiServer.ImageLibrary, Version=11.13.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.CMS.AspNet.11.13.0\lib\net461\EPiServer.ImageLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="EPiServer.InstantTemplates, Version=1.0.0.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\src\bin\EPiServer.InstantTemplates.dll</HintPath>
+    </Reference>
     <Reference Include="EPiServer.Licensing, Version=11.13.0.0, Culture=neutral, PublicKeyToken=8fe83dea738b45b7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\EPiServer.Framework.11.13.0\lib\net461\EPiServer.Licensing.dll</HintPath>
     </Reference>
@@ -373,12 +377,6 @@
     <Compile Include="Models\ViewModels\VideoViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\src\InstantTemplates.csproj">
-      <Project>{c9b6815c-a55d-4e21-a633-76f3cc6257b8}</Project>
-      <Name>InstantTemplates</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="ClientResources\Images\icons\layoutIcons24x24.png" />

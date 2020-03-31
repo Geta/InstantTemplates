@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.0]
+
+### Changed
+
+- Templates are filtered by language
+
+### Fixed
+
+- Creation of template from Global toolbar
+- Only published templates are shown in available templates list
+- Layout design
+- Minor bugfixes
+
+
 ## [1.0.4]
 
 ### Changed
