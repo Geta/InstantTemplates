@@ -76,5 +76,7 @@ namespace EPiServer.InstantTemplates
         }
 
         public bool EnableContextualContent { get { return true; } }
+
+        public override int SortOrder => 10000;
     }
 }
