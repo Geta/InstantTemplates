@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.1.2]
+
+### Fixed
+
+- #57 Nuget.Core deprecated
+
 ## [1.1.1]
 
 ### Fixed
