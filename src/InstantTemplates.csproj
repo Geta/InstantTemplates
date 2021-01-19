@@ -23,6 +23,7 @@
     <Use64BitIISExpress />
     <TargetFrameworkProfile />
     <WebGreaseLibPath>..\samples\Geta.InstantTemplates.Sample\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
+    <RepositoryUrl>URL</RepositoryUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
