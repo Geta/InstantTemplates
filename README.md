@@ -1,5 +1,10 @@
 # EPiServer Instant Templates
 
+* Master<br>
+![](http://tc.geta.no/app/rest/builds/buildType:(id:GetaPackages_GetaInstantTemplates_00ci),branch:master/statusIcon)
+* Develop<br>
+![](http://tc.geta.no/app/rest/builds/buildType:(id:GetaPackages_GetaInstantTemplates_00ci),branch:develop/statusIcon)
+
 ## Description
 
 Allows editors to create their own re-usable templates directly from within EPiServer edit mode.
