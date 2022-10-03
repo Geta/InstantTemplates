@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [2.0.0]
+
+### Breaking change
+
+ - Upgrade to Optimizely CMS 12 and .NET 6
+
 ## [1.1.2]
 
 ### Fixed

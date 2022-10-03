@@ -1,0 +1,5 @@
+@model PageViewModel<samples.Models.Pages.StartPage>
+
+<div class="start">
+    @Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row" })
+</div>

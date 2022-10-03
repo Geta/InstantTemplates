@@ -10,8 +10,7 @@ namespace EPiServer.InstantTemplates
 {
     public class TemplatesModuleViewModel : ModuleViewModel
     {
-        public TemplatesModuleViewModel(ShellModule module)
-            : base(module, ServiceLocator.Current.GetInstance<IClientResourceService>())
+        public TemplatesModuleViewModel(ShellModule module) : base(module, ServiceLocator.Current.GetInstance<IClientResourceService>())
         {
 
         }
