@@ -8,7 +8,8 @@ Allows editors to create their own re-usable templates directly from within EPiS
 
 More information:
 
-- https://getadigital.com/no/blogg/episerver-instant-templates/
+- [Introducing EPiServer Instant Templates](https://getadigital.com/no/blogg/episerver-instant-templates/)
+- [Editor Guide](/docs/editor-guide.md)
 
 ## Features
 
