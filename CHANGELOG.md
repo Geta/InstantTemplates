@@ -8,6 +8,18 @@ All notable changes to this project will be documented in this file.
 
  - Upgrade to Optimizely CMS 12 and .NET 6
 
+## [1.1.2]
+
+### Fixed
+
+- #57 Nuget.Core deprecated
+
+## [1.1.1]
+
+### Fixed
+
+- #58 Pages tree/Folders tree don't display correctly when create a new page/block by click (+) button on Global toolbar
+
 ## [1.1.0]
 
 ### Changed
